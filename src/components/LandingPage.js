@@ -1,4 +1,5 @@
 import React from "react";
+import { Outlet } from "react-router-dom";
 import Header from "./Header.jsx";
 import Footer from "./Footer.jsx";
 import "./LandingPage.css";
@@ -63,6 +64,7 @@ function LandingPage() {
       </div>
 
       <Footer />
+      <Outlet />
     </div>
   );
 }
