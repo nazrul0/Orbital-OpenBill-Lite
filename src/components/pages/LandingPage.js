@@ -1,15 +1,14 @@
 import React from "react";
-import Header from "../Header.jsx";
-import Footer from "../Footer.jsx";
 import "./LandingPage.css";
 import constellation from "../imgs/constellation.png";
 import map from "../imgs/map.png";
+import { useNavigate } from "react-router-dom";
 
 function LandingPage() {
+  const navigate = useNavigate();
+
   return (
     <div className="">
-      <Header />
-
       <div className="containerFluid">
         {/* Landing Title
         Contains title, as well as the 2 carousels (proposals and articles) [todo] */}
@@ -19,10 +18,22 @@ function LandingPage() {
           <div>
             <h1 className="SpaceG">Legislative change that begins with you.</h1>
             <div className="buttons">
-              <button type="button" className="rounded-black-btn">
+              <button
+                onClick={() => {
+                  navigate("/faq");
+                }}
+                type="button"
+                className="rounded-black-btn"
+              >
                 Learn how
               </button>
-              <button type="button" className="rounded-black-btn">
+              <button
+                onClick={() => {
+                  navigate("/ProposalsHome");
+                }}
+                type="button"
+                className="rounded-black-btn"
+              >
                 See what's latest
               </button>
             </div>
@@ -61,8 +72,6 @@ function LandingPage() {
           </div>
         </section>
       </div>
-
-      <Footer />
     </div>
   );
 }
