@@ -1,9 +1,9 @@
 import React from "react";
-import Header from "./Header.jsx";
-import Footer from "./Footer.jsx";
+import Header from "../Header.jsx";
+import Footer from "../Footer.jsx";
 import "./LandingPage.css";
-import constellation from "./imgs/constellation.png";
-import map from "./imgs/map.png";
+import constellation from "../imgs/constellation.png";
+import map from "../imgs/map.png";
 
 function LandingPage() {
   return (
