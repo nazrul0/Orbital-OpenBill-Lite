@@ -1,0 +1,31 @@
+.articlePreviewContainer {
+  display: grid;
+  grid-template-columns: 20% 20% 20% 20% 20%;
+  grid-template-rows: 25% 25% 25% 25%;
+  font-family: "Red Hat Text";
+  padding: 3% 3%;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  width: 900px;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.articlePreviewTitle {
+  grid-column: 1/5;
+  grid-row: 1/2;
+}
+
+.articlePreviewBody {
+  grid-column: 1/5;
+  grid-row: 2/5;
+}
+
+.articleIcon {
+  grid-column: 5/6;
+  grid-row: 1/4;
+  height: 100px;
+  border-radius: 50%;
+  justify-self: center;
+  align-self: center;
+}

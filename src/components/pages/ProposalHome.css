@@ -15,11 +15,11 @@
 
 .proposalGrid {
   display: grid;
-  grid-template-columns: 33% 33% 33%;
+  grid-template-columns: 25% 25% 25% 25%;
   grid-template-rows: auto;
   grid-row-gap: 3rem;
   width: 1400px;
   align-items: center;
   justify-items: center;
-  margin-top: 2rem;
+  margin-top: 3rem;
 }

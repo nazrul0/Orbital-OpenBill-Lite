@@ -7,7 +7,7 @@ import "./ProposalHome.css";
 
 function ProposalsHome() {
   return (
-    <div className="">
+    <div>
       <PageTitle title="Proposals Home" />
       <section className="proposalsBody">
         <section className="searchSection">
@@ -16,6 +16,8 @@ function ProposalsHome() {
         </section>
         <section className="gridContainer">
           <div className="proposalGrid">
+            <ProposalCard author="Sample Name" title="Sample Title" />
+            <ProposalCard author="Sample Name" title="Sample Title" />
             <ProposalCard author="Sample Name" title="Sample Title" />
             <ProposalCard author="Sample Name" title="Sample Title" />
             <ProposalCard author="Sample Name" title="Sample Title" />
