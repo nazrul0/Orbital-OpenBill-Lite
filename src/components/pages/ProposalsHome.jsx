@@ -16,14 +16,14 @@ function ProposalsHome() {
         </section>
         <section className="gridContainer">
           <div className="proposalGrid">
-            <ProposalCard author="Sample Name" title="Sample Title" />
-            <ProposalCard author="Sample Name" title="Sample Title" />
-            <ProposalCard author="Sample Name" title="Sample Title" />
-            <ProposalCard author="Sample Name" title="Sample Title" />
-            <ProposalCard author="Sample Name" title="Sample Title" />
-            <ProposalCard author="Sample Name" title="Sample Title" />
-            <ProposalCard author="Sample Name" title="Sample Title" />
-            <ProposalCard author="Sample Name" title="Sample Title" />
+            <ProposalCard author="Author Name" title="Proposal Title" />
+            <ProposalCard author="Author Name" title="Proposal Title" />
+            <ProposalCard author="Author Name" title="Proposal Title" />
+            <ProposalCard author="Author Name" title="Proposal Title" />
+            <ProposalCard author="Author Name" title="Proposal Title" />
+            <ProposalCard author="Author Name" title="Proposal Title" />
+            <ProposalCard author="Author Name" title="Proposal Title" />
+            <ProposalCard author="Author Name" title="Proposal Title" />
           </div>
         </section>
       </section>
