@@ -1,0 +1,14 @@
+.createContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.createBody {
+  display: flex;
+  gap: 6rem;
+  width: 100vh;
+  height: 50vh;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6rem;
+}

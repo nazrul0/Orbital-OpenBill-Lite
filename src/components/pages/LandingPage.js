@@ -67,8 +67,22 @@ function LandingPage() {
 
             <p className="action-text">Get creating on Openbill today.</p>
 
-            <button type="button">Read the full FAQ</button>
-            <button type="button">Sign up</button>
+            <button
+              onClick={() => {
+                navigate("/faq");
+              }}
+              type="button"
+            >
+              Read the full FAQ
+            </button>
+            <button
+              onClick={() => {
+                navigate("/login");
+              }}
+              type="button"
+            >
+              Sign up
+            </button>
           </div>
         </section>
       </div>

@@ -4,7 +4,7 @@ import PageTitle from "../PageTitle";
 function Login() {
   return (
     <div className="">
-      <PageTitle title="Login" />
+      <PageTitle title="Login or Sign Up" />
     </div>
   );
 }
