@@ -1,0 +1,25 @@
+.searchSection {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.gridContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.proposalsBody {
+  margin-bottom: 4rem;
+}
+
+.proposalGrid {
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  grid-template-rows: auto;
+  grid-row-gap: 3rem;
+  width: 1400px;
+  align-items: center;
+  justify-items: center;
+  margin-top: 2rem;
+}

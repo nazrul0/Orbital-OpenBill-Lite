@@ -1,0 +1,21 @@
+.cardContainer {
+  /* background-color: aqua; */
+  display: flex;
+  flex-direction: column;
+  font-family: "Red Hat Text";
+  padding: 3% 3%;
+  border-radius: 20px;
+  width: 400px;
+  gap: 2rem;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.title {
+  align-self: center;
+}
+
+.cardContainer img {
+  height: 200px;
+  width: 200px;
+  align-self: center;
+}
