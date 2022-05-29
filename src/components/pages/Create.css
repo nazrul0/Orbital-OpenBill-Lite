@@ -1,6 +1,7 @@
 .createContainer {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .createBody {
@@ -10,5 +11,5 @@
   height: 50vh;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 6rem;
+  margin-bottom: 4rem;
 }
