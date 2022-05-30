@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/static/css/main.55f440f2.css",
+    "main.js": "/static/js/main.f38a344d.js",
+    "static/media/constellation.png": "/static/media/constellation.165d3678bcaf08a7da71.png",
+    "static/media/map.png": "/static/media/map.c99ef386c7841f69d37c.png",
+    "static/media/logo.png": "/static/media/logo.7999979c92731b5aab79.png",
+    "index.html": "/index.html",
+    "main.55f440f2.css.map": "/static/css/main.55f440f2.css.map",
+    "main.f38a344d.js.map": "/static/js/main.f38a344d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.55f440f2.css",
+    "static/js/main.f38a344d.js"
+  ]
+}
