@@ -5,9 +5,9 @@ import logo from "./imgs/plus.png";
 function ProposalCard(props) {
   return (
     <div className="cardContainer">
-      <h5 className="author">By {props.author}</h5>
+      <h6 className="author">By {props.author}</h6>
       <img src={logo} alt="Proposal Icon" />
-      <h3 className="title">{props.title}</h3>
+      <h4 className="title">{props.title}</h4>
     </div>
   );
 }
