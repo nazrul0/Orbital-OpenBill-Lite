@@ -3,9 +3,9 @@ import PageTitle from "../PageTitle";
 
 function Login() {
   return (
-    <div className="">
+    <div className="login_box">
       <PageTitle title="Login or Sign Up" />
-      <h3>test.</h3>
+      
     </div>
   );
 }
