@@ -61,7 +61,7 @@ function Login() {
           >
           </Input>
 
-          <Button type="submit">Sign up.</Button>
+          <Button type="submit">Sign up</Button>
         </form>
       </div>
       
