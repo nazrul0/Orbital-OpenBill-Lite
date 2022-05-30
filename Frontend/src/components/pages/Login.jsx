@@ -11,8 +11,8 @@ function Login() {
   let entered_text = '';
 
   const textChangeHandler = event => {
-    // to be implemented for every change of the text field
-    // vid 36 and 71
+    entered_text = event.target.value;
+    console.log(entered_text);
   };
 
   const submitHandler = event => {
