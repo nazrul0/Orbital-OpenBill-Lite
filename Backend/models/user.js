@@ -8,5 +8,6 @@ const userSchema = new mongoose.Schema({
 });
 
 // first argument specifies the name that will be converted to COLLECTION NAME by making it plural
-// second argument is the schema definition
+// if the collection does not already exist
+// second argument is the schema ie the template definition for this mongoose model
 module.exports = mongoose.model('User', userSchema);
