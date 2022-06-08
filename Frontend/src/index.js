@@ -1,15 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+//import { Navigate } from "react-router-dom";
 import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
-import LandingPage from "./components/pages/LandingPage.js";
-import Login from "./components/pages/Login";
-import ProposalsHome from "./components/pages/ProposalsHome";
-import Faq from "./components/pages/Faq";
-import Column from "./components/pages/Column";
-import Create from "./components/pages/Create";
-import ErrorPage from "./components/pages/ErrorPage.jsx";
+import LandingPage from "./pages/LandingPage.js";
+import Login from "./pages/Login";
+import ProposalsHome from "./pages/ProposalsHome";
+import Faq from "./pages/Faq";
+import Column from "./pages/Column";
+import Create from "./pages/Create";
+import ErrorPage from "./pages/ErrorPage.jsx";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

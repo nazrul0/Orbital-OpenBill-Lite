@@ -1,6 +1,6 @@
 import React from "react";
 import "./ProposalCard.css";
-import logo from "./imgs/plus.png";
+import logo from "../imgs/plus.png";
 
 function ProposalCard(props) {
   return (

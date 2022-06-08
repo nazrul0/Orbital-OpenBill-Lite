@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import PageTitle from "../PageTitle";
-import Data from "../FaqData";
+import PageTitle from "../components/PageTitle";
+import Data from "../components/FaqData";
 import "./Faq.css";
 
 function Faq() {

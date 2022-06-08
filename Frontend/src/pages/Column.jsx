@@ -1,7 +1,7 @@
 import React from "react";
-import PageTitle from "../PageTitle";
+import PageTitle from "../components/PageTitle";
 import "./Column.css";
-import ArticleRect from "../ArticleRect";
+import ArticleRect from "../components/ArticleRect";
 
 function Column() {
   return (

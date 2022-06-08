@@ -1,6 +1,6 @@
 import React from "react";
 import "./ArticleRect.css";
-import logo from "./imgs/plus.png";
+import logo from "../imgs/plus.png";
 
 function ArticleRect(props) {
   return (

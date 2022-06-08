@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import PageTitle from "../PageTitle";
+import PageTitle from "../components/PageTitle";
 import "./Login.css";
-import Input from "../templates/input.js";
-import Button from "../templates/Button.js";
+import Input from "../components/InputField";
+import Button from "../components/SubmitButton";
 import { VALIDATOR_EMAIL } from "../util/validators.js";
 
 function Login() {

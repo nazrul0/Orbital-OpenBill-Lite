@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './input.css';
+import './InputField.css';
 
 const Input = props => {
   return (

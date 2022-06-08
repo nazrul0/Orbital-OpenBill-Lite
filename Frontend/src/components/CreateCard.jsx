@@ -1,6 +1,6 @@
 import React from "react";
 import "./CreateCard.css";
-import logo from "./imgs/plus.png";
+import logo from "../imgs/plus.png";
 
 const CreateCard = (props) => {
   return (

@@ -1,6 +1,6 @@
 import React from "react";
-import PageTitle from "../PageTitle";
-import CreateCard from "../CreateCard";
+import PageTitle from "../components/PageTitle";
+import CreateCard from "../components/CreateCard";
 import "./Create.css";
 
 function Create() {
