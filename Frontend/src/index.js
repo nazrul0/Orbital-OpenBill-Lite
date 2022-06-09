@@ -6,6 +6,7 @@ import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
 import LandingPage from "./pages/LandingPage.js";
 import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 import ProposalsHome from "./pages/ProposalsHome";
 import Faq from "./pages/Faq";
 import Column from "./pages/Column";
@@ -20,6 +21,7 @@ root.render(
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/Login" element={<Login />} />
+        <Route path="/Signup" element={<Signup />} />
         <Route path="/ProposalsHome" element={<ProposalsHome />} />
         <Route path="/Faq" element={<Faq />} />
         <Route path="/Column" element={<Column />} />

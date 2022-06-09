@@ -4,6 +4,7 @@ import CreateCard from "../components/CreateCard";
 import "./Create.css";
 
 function Create() {
+  
   return (
     <div>
       <PageTitle title="Create" />

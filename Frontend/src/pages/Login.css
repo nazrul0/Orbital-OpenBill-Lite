@@ -10,3 +10,9 @@
   margin: 7rem auto;
   text-align: center;
 }
+
+.center{
+  text-align: center;
+  font-family: 'Red Hat Text';
+  margin-bottom: 5rem;
+}
