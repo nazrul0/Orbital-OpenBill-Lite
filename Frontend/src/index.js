@@ -12,23 +12,26 @@ import Faq from "./pages/Faq";
 import Column from "./pages/Column";
 import Create from "./pages/Create";
 import ErrorPage from "./pages/ErrorPage.jsx";
+import { AuthContextProvider } from "./context/authcontext.js";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Header />
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/Login" element={<Login />} />
-        <Route path="/Signup" element={<Signup />} />
-        <Route path="/ProposalsHome" element={<ProposalsHome />} />
-        <Route path="/Faq" element={<Faq />} />
-        <Route path="/Column" element={<Column />} />
-        <Route path="/Create" element={<Create />} />
-        <Route path="*" element={<ErrorPage />} />
-      </Routes>
-      <Footer />
-    </BrowserRouter>
+    <AuthContextProvider>
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/Login" element={<Login />} />
+          <Route path="/Signup" element={<Signup />} />
+          <Route path="/ProposalsHome" element={<ProposalsHome />} />
+          <Route path="/Faq" element={<Faq />} />
+          <Route path="/Column" element={<Column />} />
+          <Route path="/Create" element={<Create />} />
+          <Route path="*" element={<ErrorPage />} />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
+    </AuthContextProvider>
   </React.StrictMode>
 );

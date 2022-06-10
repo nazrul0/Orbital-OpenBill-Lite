@@ -1,9 +1,13 @@
 import { useState } from "react";
 import { projAuth } from "../config/firebase";
+import { useAuthContext } from "./useAuthContext";
+import { useEffect } from "react";
 
 export const useSignup= () => {
+    const [isCancelled, setCancelled] = useState(false);
     const [error, setError] = useState(null);
     const [pending, setPending] = useState(false);
+    const { dispatch } = useAuthContext();
 
     // the 3 properties are determined by firebase
     const signup = async (email, password, displayName) => {
@@ -24,18 +28,33 @@ export const useSignup= () => {
             // firebase only allows to set displayname after user is created
             await res.user.updateProfile({ displayName });
 
-            setPending(false);
-            setError(null);
+            // dispatching the login action
+            dispatch( {type: 'LOGIN', payload: res.user} );
+
+            // only if component exists
+            if (!isCancelled)
+            {
+                setPending(false);
+                setError(null);
+            }
         }
         catch(err){
-            console.log(err.message);
-            setError(err.message);
-            setPending(false);
+
+            if(!isCancelled)
+            {
+                console.log(err.message);
+                setError(err.message);
+                setPending(false);
+            }
         }
 
     }
 
+    // cleanup function.
+    useEffect(() => {
+        return () => setCancelled(true);
+    }, []);
+
     // have to return this since this is a hook- need to define what is returned
-    // can view this as yet another way to return/ export functions written in another file but called elsewhere
     return { signup, pending, error };
 }

@@ -15,7 +15,6 @@ function Signup() {
 
   const emailChangeHandler = (event) => {
     updateEnteredEmail(event.target.value);
-    console.log(enteredEmail);
   };
 
   const passwordChangeHandler = (event) => {
