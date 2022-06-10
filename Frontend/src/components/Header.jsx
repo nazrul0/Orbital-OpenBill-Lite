@@ -3,9 +3,11 @@ import { Link } from "react-router-dom";
 import "./Header.css";
 import logo from "../imgs/logo.png";
 import {useLogout} from "../hooks/useLogout";
+import { useAuthContext } from "../hooks/useAuthContext";
+import { Fragment } from "react";
 
 function Header() {
-
+  const { user } = useAuthContext();
   const { logout } = useLogout();
 
   return (
@@ -30,15 +32,23 @@ function Header() {
         <Link className="navItem" to="/Faq">
           FAQ
         </Link>
-        <Link className="navItem" to="/Create">
-          Create
-        </Link>
-        <Link className="navItem" to="/Login">
-          Login
-        </Link>
-        <Link className="navItem" to="/" onClick={logout}>
-          Logout
-        </Link>
+
+        {user && (
+          <Fragment>
+            <Link className="navItem" to="/Create">
+              Create
+            </Link>
+            <Link className="navItem" to="/" onClick={logout}>
+              Logout
+            </Link>
+          </Fragment>
+        )}
+        
+        {!user && (
+          <Link className="navItem" to="/Login">
+            Login
+          </Link>
+        )}
       </div>
     </div>
   );
