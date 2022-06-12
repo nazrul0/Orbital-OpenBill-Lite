@@ -18,8 +18,7 @@ function Header() {
           className="siteName"
           style={{ textDecoration: "none", color: "black" }}
           to="/"
-        >
-          OpenBill SG
+        >OpenBill SG
         </Link>
       </div>
       <div className="navBar">
@@ -38,7 +37,7 @@ function Header() {
             <Link className="navItem" to="/Create">
               Create
             </Link>
-            <Link className="navItem" to="/" onClick={logout}>
+            <Link className="navItem" to="ProposalsHome" onClick={logout}>
               Logout
             </Link>
           </Fragment>

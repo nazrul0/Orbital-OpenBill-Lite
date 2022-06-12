@@ -77,7 +77,7 @@ function LandingPage() {
             </button>
             <button
               onClick={() => {
-                navigate("/login");
+                navigate("/Signup");
               }}
               type="button"
             >
