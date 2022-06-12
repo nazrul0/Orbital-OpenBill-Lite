@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { projAuth } from "../config/firebase";
 import { useAuthContext } from "./useAuthContext";
 
@@ -8,6 +9,7 @@ export const useLogout = () => {
     const [error, setError] = useState(null);
     const [pending, setPending] = useState(false);
     const { dispatch } = useAuthContext();
+    const nav = useNavigate();
 
     const logout = async () => {
         setError(null);
@@ -26,6 +28,8 @@ export const useLogout = () => {
                 setPending(false);
                 setError(null);
             }
+
+            nav("/Login");
 
         } catch(err) {
             if(!isCancelled)

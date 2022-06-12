@@ -4,6 +4,7 @@ import "./Login.css";
 import Input from "../components/InputField";
 import Button from "../components/SubmitButton";
 import { useSignup } from "../hooks/useSignup";
+import { useNavigate } from "react-router-dom";
 
 function Signup() {
   // destructuring the standard returns of useState- 1.the latest state 2. function to update the state
@@ -12,6 +13,7 @@ function Signup() {
   const [enteredPassword, updateEnteredPassword] = useState("");
   const [enteredDisplayName, updateEnteredDisplayName] = useState("");
   const { signup, pending, error } = useSignup();
+  const nav = useNavigate();
 
   const emailChangeHandler = (event) => {
     updateEnteredEmail(event.target.value);
@@ -30,6 +32,9 @@ function Signup() {
 
     // calling the signup method we defined in the hook and returned to this file
     signup(enteredEmail, enteredPassword, enteredDisplayName);
+
+    // redirecting after signup
+    nav("/ProposalsHome");
   };
 
   // the element to return

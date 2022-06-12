@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import PageTitle from "../components/PageTitle";
 import "./Login.css";
 import Input from "../components/InputField";
@@ -14,6 +14,8 @@ function Login() {
   const [enteredPassword, updateEnteredPassword] = useState("");
   // simply importing does not work, need to destructure
   const {login, error, pending} = useLogin();
+
+  const nav = useNavigate();
   
   const emailChangeHandler = (event) => {
     updateEnteredEmail(event.target.value);
@@ -27,7 +29,10 @@ function Login() {
   const submitHandler = (event) => {
     event.preventDefault();
 
+    // already an async func, as defined in the hook
     login(enteredEmail, enteredPassword);
+
+    nav("/ProposalsHome");
   };
 
   // the element to return

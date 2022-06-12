@@ -44,9 +44,14 @@ function Header() {
         )}
         
         {!user && (
-          <Link className="navItem" to="/Login">
-            Login
-          </Link>
+          <Fragment>
+            <Link className="navItem" to="/Login">
+              Login
+            </Link>
+            <Link className="navItem" to="/Signup">
+              Sign up
+            </Link>
+        </Fragment>
         )}
       </div>
     </div>
