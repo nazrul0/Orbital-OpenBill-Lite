@@ -8,6 +8,9 @@ node_modules/
 # testing
 /coverage
 
+# firebase config info
+Frontend/src/config/connectionData.js
+
 # production
 /build
 
