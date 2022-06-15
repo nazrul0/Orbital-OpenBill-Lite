@@ -4,11 +4,15 @@ import ProposalCard from "../components/ProposalCard";
 import SearchBar from "../components/SearchBar";
 import Button from "../components/Button";
 import "./ProposalHome.css";
+import { Link } from "react-router-dom";
 
 function ProposalsHome() {
   return (
-    <div>
+    <div className="proposalsHomeContainer">
       <PageTitle title="Proposals Home" />
+      <Link id="shareLink" className="navItem" to="/SubmitOpenQuestion">
+        Have a proposal to share?
+      </Link>
       <section className="proposalsBody">
         <section className="searchSection">
           <SearchBar type="text" placeholder="Search Proposals or Users" />

@@ -9,36 +9,37 @@ import ProposalsHome from "./pages/ProposalsHome";
 import Faq from "./pages/Faq";
 import Column from "./pages/Column";
 import Create from "./pages/Create";
+import SubmitOpenQ from "./pages/SubmitOpenQ.js";
 //import ErrorPage from "./pages/ErrorPage.jsx";
 import { useAuthContext } from "./hooks/useAuthContext";
 
 function App() {
-    const {authIsReady, user} = useAuthContext();
-    
-    return (
-        <React.Fragment>
-                {authIsReady && (
-                    <BrowserRouter>
-                        <Header />
-                        <Routes>
-                            {user && (
-                                <Route path="/Create" element={<Create />} />
-                            )}
-                            {!user && (
-                                <Route path="/Signup" element={<Signup />} />
-                            )}
-                            <Route path="/" element={<LandingPage />} />
-                            <Route path="/Login" element={<Login />} />
-                            <Route path="/ProposalsHome" element={<ProposalsHome />} />
-                            <Route path="/Faq" element={<Faq />} />
-                            <Route path="/Column" element={<Column />} />
-                            <Route path="*" element={ <Navigate to={user ? "/ProposalsHome" : "/Login"} />} />
-                        </Routes>
-                        <Footer />
-                    </BrowserRouter>
-                )}
-        </React.Fragment>
-    );
+  const { authIsReady, user } = useAuthContext();
+
+  return (
+    <React.Fragment>
+      {authIsReady && (
+        <BrowserRouter>
+          <Header />
+          <Routes>
+            {user && <Route path="/Create" element={<Create />} />}
+            {!user && <Route path="/Signup" element={<Signup />} />}
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/Login" element={<Login />} />
+            <Route path="/ProposalsHome" element={<ProposalsHome />} />
+            <Route path="/Faq" element={<Faq />} />
+            <Route path="/Column" element={<Column />} />
+            <Route path="/SubmitOpenQuestion" element={<SubmitOpenQ />} />
+            <Route
+              path="*"
+              element={<Navigate to={user ? "/ProposalsHome" : "/Login"} />}
+            />
+          </Routes>
+          <Footer />
+        </BrowserRouter>
+      )}
+    </React.Fragment>
+  );
 }
 
-export default App
+export default App;
