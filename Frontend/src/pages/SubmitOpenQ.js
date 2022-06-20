@@ -18,8 +18,6 @@ function SubmitOpenQ() {
   const [questionContent, setQuestionContent] = useState("");
   const [questions, setQuestions] = useState([]);
   const questionsCollectionRef = collection(projFirestore, "OpenQuestions");
-  // console.log("Print" + questionsCollectionRef);
-  // const questionsCollectionRef = projFirestore.collection("Questions");
 
   // CREATE OpenQuestion document in database
   const createOpenQuestion = async () => {
@@ -38,37 +36,15 @@ function SubmitOpenQ() {
     .get()
     .then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
-        // doc.data() is never undefined for query doc snapshots
-        questions.push(doc);
-        // console.log(doc.id, " => ", doc.data());
+        questions.push({ Key: doc.id, Data: doc.data() });
+        console.log(doc.id, " => ", doc.data());
+        // console.log("DATA: " + questions[0].Data.Category);
       });
     })
     .catch((error) => {
       console.log("Error getting documents: ", error);
     });
-
-  // DISPLAY database items
-  const [dataToShow, setData] = useState([]);
-  projFirestore.collection("Users").onSnapshot(function (querySnapshot) {
-    const data = [];
-    querySnapshot.forEach((doc) => {
-      console.log("Title: " + doc.data().Title);
-      console.log("Content: " + doc.data().Content);
-      data.push({ title: doc.data().Title, content: doc.data().Content });
-    });
-    setData(data);
-  });
-
-  // console.log(questions);
-  // useEffect(function () {
-  //   const getQuestions = async () => {
-  //     const data = getDocs(questionsCollectionRef);
-  //     console.log(data.docs);
-  //     console.log("Got!");
-  //     setQuestions(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-  //   };
-  //   getQuestions();
-  // });
+  console.log(questions);
 
   return (
     <div>
@@ -113,23 +89,17 @@ function SubmitOpenQ() {
       </div>
 
       <div className="questionTestArea">
-        {/* {questions.map((question) => {
+        <p>TEST LOCATION</p>
+        {questions.map((question) => {
           return (
             <div>
-              <h1>Title: {question.Title}</h1>
-              <h2>Content: {question.Content}</h2>
+              <p>Title: {question.Data.Title}</p>
+              <p>Content: {question.Data.Content}</p>
             </div>
           );
-        })} */}
-        {/* <p>{console.log(dataToShow)}</p> */}
-        <p>
-          {dataToShow.map(
-            (data) => "Title: " + data.title + " Content: " + data.content
-          )}
-        </p>
+        })}
         <p>TEST LOCATION</p>
       </div>
-      {/* <div>{console.log({ questions })}</div> */}
     </div>
   );
 }
