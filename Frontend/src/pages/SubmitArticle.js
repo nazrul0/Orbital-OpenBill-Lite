@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PageTitle from "../components/PageTitle";
-import "./SubmitOpenQ.css";
+import "./SubmitArticle.css";
 import { projFirestore } from "../config/firebase";
 import {
   collection,
@@ -13,17 +13,17 @@ import {
   getDocsFromCache,
 } from "firebase/firestore";
 
-function SubmitOpenQ() {
-  const [questionTitle, setQuestionTitle] = useState("");
-  const [questionContent, setQuestionContent] = useState("");
-  const [questions, setQuestions] = useState([]);
-  const questionsCollectionRef = collection(projFirestore, "OpenQuestions");
+function SubmitArticle() {
+  const [articleTitle, setArticleTitle] = useState("");
+  const [articleContent, setArticleContent] = useState("");
+  const [articles, setArticles] = useState([]);
+  const articlesCollectionRef = collection(projFirestore, "Articles");
 
   // CREATE OpenQuestion document in database
-  const createOpenQuestion = async () => {
-    await addDoc(questionsCollectionRef, {
-      Title: questionTitle,
-      Content: questionContent,
+  const createArticle = async () => {
+    await addDoc(articlesCollectionRef, {
+      Title: articleTitle,
+      Content: articleContent,
       OwnerID: "Test",
       Category: "Test",
     });
@@ -33,11 +33,11 @@ function SubmitOpenQ() {
 
   // READ all OpenQuestions from database
   projFirestore
-    .collection("OpenQuestions")
+    .collection("Articles")
     .get()
     .then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
-        questions.push({ Key: doc.id, Data: doc.data() });
+        articles.push({ Key: doc.id, Data: doc.data() });
         console.log(doc.id, " => ", doc.data());
         // console.log("DATA: " + questions[0].Data.Category);
       });
@@ -45,36 +45,36 @@ function SubmitOpenQ() {
     .catch((error) => {
       console.log("Error getting documents: ", error);
     });
-  console.log(questions);
+  console.log(articles);
 
   return (
     <div>
-      <PageTitle title="Submit an OpenQuestion" />
-      <div className="submitQuestionContainer">
+      <PageTitle title="Submit an Article" />
+      <div className="submitArticleContainer">
         {/* <section className="questionSection">Category?</section> */}
-        <section className="questionSection">
-          <div className="sectionContainer">
-            <h3 className="questionHeader">OpenQuestion Title</h3>
+        <section className="articleSection">
+          <div className="articleContainer">
+            <h3 className="articleHeader">Article Title</h3>
             <textarea
-              className="questionTitleInput"
+              className="articleTitleInput"
               maxLength="200"
               placeholder=""
               onChange={(event) => {
-                setQuestionTitle(event.target.value);
+                setArticleTitle(event.target.value);
               }}
             ></textarea>
           </div>
         </section>
 
-        <section className="questionSection">
-          <div className="sectionContainer">
-            <h3 className="questionHeader">Elaboration</h3>
+        <section className="articleSection">
+          <div className="articleContainer">
+            <h3 className="articleHeader">Content</h3>
             <textarea
-              className="questionContentInput"
+              className="articleContentInput"
               maxLength="1000"
               placeholder=""
               onChange={(event) => {
-                setQuestionContent(event.target.value);
+                setArticleContent(event.target.value);
               }}
             ></textarea>
           </div>
@@ -82,20 +82,20 @@ function SubmitOpenQ() {
 
         <button
           type="submit"
-          className="submitQuestionTitle"
-          onClick={createOpenQuestion}
+          className="submitArticleTitle"
+          onClick={createArticle}
         >
-          Submit OpenQuestion
+          Submit Article
         </button>
       </div>
 
-      <div className="questionTestArea">
+      <div className="articleTestArea">
         <p>TEST LOCATION</p>
-        {questions.map((question) => {
+        {articles.map((bill) => {
           return (
             <div>
-              <p>Title: {question.Data.Title}</p>
-              <p>Content: {question.Data.Content}</p>
+              <p>Title: {bill.Data.Title}</p>
+              <p>Content: {bill.Data.Content}</p>
             </div>
           );
         })}
@@ -105,4 +105,4 @@ function SubmitOpenQ() {
   );
 }
 
-export default SubmitOpenQ;
+export default SubmitArticle;

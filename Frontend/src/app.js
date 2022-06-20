@@ -12,6 +12,7 @@ import Create from "./pages/Create";
 import SubmitOpenQ from "./pages/SubmitOpenQ.js";
 import SubmitOpenB from "./pages/SubmitOpenB.js";
 import SubmitOpenM from "./pages/SubmitOpenM.js";
+import SubmitArticle from "./pages/SubmitArticle.js";
 //import ErrorPage from "./pages/ErrorPage.jsx";
 import { useAuthContext } from "./hooks/useAuthContext";
 
@@ -31,9 +32,16 @@ function App() {
             <Route path="/ProposalsHome" element={<ProposalsHome />} />
             <Route path="/Faq" element={<Faq />} />
             <Route path="/Column" element={<Column />} />
-            <Route path="/SubmitOpenQuestion" element={<SubmitOpenQ />} />
-            <Route path="/SubmitOpenMotion" element={<SubmitOpenM />} />
-            <Route path="/SubmitOpenBill" element={<SubmitOpenB />} />
+            {user && (
+              <Route path="/SubmitOpenQuestion" element={<SubmitOpenQ />} />
+            )}
+            {user && (
+              <Route path="/SubmitOpenMotion" element={<SubmitOpenM />} />
+            )}
+            {user && <Route path="/SubmitOpenBill" element={<SubmitOpenB />} />}
+            {user && (
+              <Route path="/SubmitArticle" element={<SubmitArticle />} />
+            )}
             <Route
               path="*"
               element={<Navigate to={user ? "/ProposalsHome" : "/Login"} />}

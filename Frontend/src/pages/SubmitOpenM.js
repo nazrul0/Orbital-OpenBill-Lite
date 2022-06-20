@@ -28,6 +28,7 @@ function SubmitOpenM() {
       Category: "Test",
     });
     console.log("Created!");
+    alert("Submitted!");
   };
 
   // READ all OpenQuestions from database
