@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PageTitle from "../components/PageTitle";
-import "./SubmitOpenQ.css";
+import "./SubmitOpenM.css";
 import { projFirestore } from "../config/firebase";
 import {
   collection,
@@ -13,17 +13,17 @@ import {
   getDocsFromCache,
 } from "firebase/firestore";
 
-function SubmitOpenQ() {
-  const [questionTitle, setQuestionTitle] = useState("");
-  const [questionContent, setQuestionContent] = useState("");
-  const [questions, setQuestions] = useState([]);
-  const questionsCollectionRef = collection(projFirestore, "OpenQuestions");
+function SubmitOpenM() {
+  const [motionTitle, setMotionTitle] = useState("");
+  const [motionContent, setMotionContent] = useState("");
+  const [motions, setMotions] = useState([]);
+  const motionsCollectionRef = collection(projFirestore, "OpenMotions");
 
   // CREATE OpenQuestion document in database
-  const createOpenQuestion = async () => {
-    await addDoc(questionsCollectionRef, {
-      Title: questionTitle,
-      Content: questionContent,
+  const createOpenMotion = async () => {
+    await addDoc(motionsCollectionRef, {
+      Title: motionTitle,
+      Content: motionContent,
       OwnerID: "Test",
       Category: "Test",
     });
@@ -32,11 +32,11 @@ function SubmitOpenQ() {
 
   // READ all OpenQuestions from database
   projFirestore
-    .collection("OpenQuestions")
+    .collection("OpenMotions")
     .get()
     .then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
-        questions.push({ Key: doc.id, Data: doc.data() });
+        motions.push({ Key: doc.id, Data: doc.data() });
         console.log(doc.id, " => ", doc.data());
         // console.log("DATA: " + questions[0].Data.Category);
       });
@@ -44,36 +44,36 @@ function SubmitOpenQ() {
     .catch((error) => {
       console.log("Error getting documents: ", error);
     });
-  console.log(questions);
+  console.log(motions);
 
   return (
     <div>
-      <PageTitle title="Submit an OpenQuestion" />
-      <div className="submitQuestionContainer">
-        {/* <section className="questionSection">Category?</section> */}
-        <section className="questionSection">
+      <PageTitle title="Submit an OpenMotion" />
+      <div className="submitMotionContainer">
+        {/* <section className="motionSection">Category?</section> */}
+        <section className="motionSection">
           <div className="sectionContainer">
-            <h3 className="questionHeader">OpenQuestion Title</h3>
+            <h3 className="motionHeader">OpenMotion Title</h3>
             <textarea
-              className="questionTitleInput"
+              className="motionTitleInput"
               maxLength="200"
               placeholder=""
               onChange={(event) => {
-                setQuestionTitle(event.target.value);
+                setMotionTitle(event.target.value);
               }}
             ></textarea>
           </div>
         </section>
 
-        <section className="questionSection">
+        <section className="motionSection">
           <div className="sectionContainer">
-            <h3 className="questionHeader">Elaboration</h3>
+            <h3 className="motionHeader">Elaboration</h3>
             <textarea
-              className="questionContentInput"
+              className="motionContentInput"
               maxLength="1000"
               placeholder=""
               onChange={(event) => {
-                setQuestionContent(event.target.value);
+                setMotionContent(event.target.value);
               }}
             ></textarea>
           </div>
@@ -81,20 +81,20 @@ function SubmitOpenQ() {
 
         <button
           type="submit"
-          className="submitQuestionTitle"
-          onClick={createOpenQuestion}
+          className="submitMotionTitle"
+          onClick={createOpenMotion}
         >
-          Submit OpenQuestion
+          Submit OpenMotion
         </button>
       </div>
 
-      <div className="questionTestArea">
+      <div className="motionTestArea">
         <p>TEST LOCATION</p>
-        {questions.map((question) => {
+        {motions.map((motion) => {
           return (
             <div>
-              <p>Title: {question.Data.Title}</p>
-              <p>Content: {question.Data.Content}</p>
+              <p>Title: {motion.Data.Title}</p>
+              <p>Content: {motion.Data.Content}</p>
             </div>
           );
         })}
@@ -104,4 +104,4 @@ function SubmitOpenQ() {
   );
 }
 
-export default SubmitOpenQ;
+export default SubmitOpenM;

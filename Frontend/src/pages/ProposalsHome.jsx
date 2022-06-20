@@ -10,7 +10,7 @@ function ProposalsHome() {
   return (
     <div className="proposalsHomeContainer">
       <PageTitle title="Proposals Home" />
-      <Link id="shareLink" className="navItem" to="/SubmitOpenQuestion">
+      <Link id="shareLink" className="navItem" to="/Create">
         Have a proposal to share?
       </Link>
       <section className="proposalsBody">

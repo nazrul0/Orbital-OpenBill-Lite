@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PageTitle from "../components/PageTitle";
-import "./SubmitOpenQ.css";
+import "./SubmitOpenB.css";
 import { projFirestore } from "../config/firebase";
 import {
   collection,
@@ -13,17 +13,17 @@ import {
   getDocsFromCache,
 } from "firebase/firestore";
 
-function SubmitOpenQ() {
-  const [questionTitle, setQuestionTitle] = useState("");
-  const [questionContent, setQuestionContent] = useState("");
-  const [questions, setQuestions] = useState([]);
-  const questionsCollectionRef = collection(projFirestore, "OpenQuestions");
+function SubmitOpenB() {
+  const [billTitle, setBillTitle] = useState("");
+  const [billContent, setBillContent] = useState("");
+  const [bills, setBills] = useState([]);
+  const billsCollectionRef = collection(projFirestore, "OpenBills");
 
   // CREATE OpenQuestion document in database
-  const createOpenQuestion = async () => {
-    await addDoc(questionsCollectionRef, {
-      Title: questionTitle,
-      Content: questionContent,
+  const createOpenBill = async () => {
+    await addDoc(billsCollectionRef, {
+      Title: billTitle,
+      Content: billContent,
       OwnerID: "Test",
       Category: "Test",
     });
@@ -32,11 +32,11 @@ function SubmitOpenQ() {
 
   // READ all OpenQuestions from database
   projFirestore
-    .collection("OpenQuestions")
+    .collection("OpenBills")
     .get()
     .then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
-        questions.push({ Key: doc.id, Data: doc.data() });
+        bills.push({ Key: doc.id, Data: doc.data() });
         console.log(doc.id, " => ", doc.data());
         // console.log("DATA: " + questions[0].Data.Category);
       });
@@ -44,36 +44,36 @@ function SubmitOpenQ() {
     .catch((error) => {
       console.log("Error getting documents: ", error);
     });
-  console.log(questions);
+  console.log(bills);
 
   return (
     <div>
-      <PageTitle title="Submit an OpenQuestion" />
-      <div className="submitQuestionContainer">
+      <PageTitle title="Submit an OpenBill" />
+      <div className="submitBillContainer">
         {/* <section className="questionSection">Category?</section> */}
-        <section className="questionSection">
-          <div className="sectionContainer">
-            <h3 className="questionHeader">OpenQuestion Title</h3>
+        <section className="billSection">
+          <div className="billContainer">
+            <h3 className="billHeader">OpenBill Title</h3>
             <textarea
-              className="questionTitleInput"
+              className="billTitleInput"
               maxLength="200"
               placeholder=""
               onChange={(event) => {
-                setQuestionTitle(event.target.value);
+                setBillTitle(event.target.value);
               }}
             ></textarea>
           </div>
         </section>
 
-        <section className="questionSection">
-          <div className="sectionContainer">
-            <h3 className="questionHeader">Elaboration</h3>
+        <section className="billSection">
+          <div className="billContainer">
+            <h3 className="billHeader">Elaboration</h3>
             <textarea
-              className="questionContentInput"
+              className="billContentInput"
               maxLength="1000"
               placeholder=""
               onChange={(event) => {
-                setQuestionContent(event.target.value);
+                setBillContent(event.target.value);
               }}
             ></textarea>
           </div>
@@ -81,20 +81,20 @@ function SubmitOpenQ() {
 
         <button
           type="submit"
-          className="submitQuestionTitle"
-          onClick={createOpenQuestion}
+          className="submitBillTitle"
+          onClick={createOpenBill}
         >
           Submit OpenQuestion
         </button>
       </div>
 
-      <div className="questionTestArea">
+      <div className="billTestArea">
         <p>TEST LOCATION</p>
-        {questions.map((question) => {
+        {bills.map((bill) => {
           return (
             <div>
-              <p>Title: {question.Data.Title}</p>
-              <p>Content: {question.Data.Content}</p>
+              <p>Title: {bill.Data.Title}</p>
+              <p>Content: {bill.Data.Content}</p>
             </div>
           );
         })}
@@ -104,4 +104,4 @@ function SubmitOpenQ() {
   );
 }
 
-export default SubmitOpenQ;
+export default SubmitOpenB;

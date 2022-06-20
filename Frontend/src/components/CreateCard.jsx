@@ -1,6 +1,7 @@
 import React from "react";
 import "./CreateCard.css";
 import logo from "../imgs/plus.png";
+import { Link } from "react-router-dom";
 
 const CreateCard = (props) => {
   return (
@@ -8,7 +9,12 @@ const CreateCard = (props) => {
       <div className="createCardIconContainer">
         <img className="createCardIcon" src={logo} alt="Option Icon" />
       </div>
-      <button className="createType">{props.type}</button>
+      <button
+        className="createType"
+        onClick={() => this.nextPath("./SubmitOpenQuestion")}
+      >
+        {props.type}
+      </button>
     </div>
   );
 };
