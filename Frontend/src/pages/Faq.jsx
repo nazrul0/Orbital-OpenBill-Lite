@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import PageTitle from "../components/PageTitle";
 import Data from "../components/FaqData";
 import "./Faq.css";
+import { Link } from "react-router-dom";
 
 function Faq() {
   const [clicked, setClicked] = useState(false);
@@ -15,7 +16,7 @@ function Faq() {
   };
 
   return (
-    <div>
+    <div className="faqPage">
       <PageTitle title="Frequently Asked Questions" />
       <div className="accordionContainer">
         {Data.map((item, index) => {
@@ -37,6 +38,9 @@ function Faq() {
           );
         })}
       </div>
+      <Link id="shareLink" className="navItem" to="/SubmitFAQ">
+        Have a question for the OpenBill team?
+      </Link>
     </div>
   );
 }

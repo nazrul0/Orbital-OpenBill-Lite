@@ -1,0 +1,53 @@
+textarea {
+  font-size: 2rem;
+  color: rgba(0, 0, 0, 0.7);
+  border: solid rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+}
+
+.submitFaqContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.faqSection {
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 20px;
+}
+
+.faqContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 1.5rem;
+  gap: 1rem;
+}
+
+.faqHeader {
+  font-size: 2.5rem;
+  color: rgba(0, 0, 0, 0.75);
+}
+
+.faqTitleInput {
+  width: 100%;
+  height: 7rem;
+}
+
+.faqContentInput {
+  width: 100%;
+  height: 20rem;
+}
+
+.submitFaqContent {
+  width: 20rem;
+  height: 3rem;
+  border: none;
+  border-radius: 20px;
+  background-color: aquamarine;
+}
