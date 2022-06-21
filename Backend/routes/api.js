@@ -15,7 +15,7 @@ const corsOptions = {
       }
 }
 
-const reuseAuthToken = (req, res, next) => {
+const verifyAuthToken = (req, res, next) => {
   var admin = require("firebase-admin");
 
   var serviceAccount = require("../adminsdk-svc-acct.json");
@@ -23,9 +23,18 @@ const reuseAuthToken = (req, res, next) => {
   admin.initializeApp({
     credential: admin.credential.cert(serviceAccount)
   });
+
+  const tokenString = req.headers['authorization'] ? req.headers[authorization].split(" ") : null;
+  if(!tokenString){
+    console.log("no header")
+  }
+  else{
+    console.log(tokenString);
+  }
 }
+
 // GET ROUTES
-router.get('/', (req, res) =>{
+router.get('/', verifyAuthToken, (req, res) =>{
     router.use(cors(corsOptions));
     res.json({message: "a test json response"});
 })
