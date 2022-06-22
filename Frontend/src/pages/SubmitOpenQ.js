@@ -99,7 +99,7 @@ function SubmitOpenQ() {
             </div>
           );
         })}
-        <p>TEST LOCATION</p>
+        <p className="text-3xl font-bold underline">TEST LOCATION</p>
       </div>
     </div>
   );
