@@ -15,8 +15,9 @@ function SubmitOpenQ() {
     event.preventDefault();
     // getting the Owner id
     const id = user.uid;
-    
-    // destructured the addDoc therefore it can simply be used here
+
+    // destructured addDoc hence can be directly used
+    // with passing in the document argument expected
     addDoc({
       Title: questionTitle,
       Content: questionContent,
@@ -25,6 +26,15 @@ function SubmitOpenQ() {
     })
   }
 
+  // refreshing form once submitted
+  useEffect(()=> {
+    if(state.success){
+      setQuestionTitle('');
+      setQuestionContent('');
+    }
+  }, [state.success]) // will only fire when success property changes
+
+
   return (
     <div>
       <PageTitle title="Submit an OpenQuestion" />
@@ -32,28 +42,48 @@ function SubmitOpenQ() {
         <section className="questionSection">
           <div className="sectionContainer">
             <h3 className="questionHeader">OpenQuestion Title</h3>
-            <textarea
-              className="questionTitleInput"
-              maxLength="200"
-              placeholder=""
-              onChange={(event) => {
-                setQuestionTitle(event.target.value);
-              }}
-            ></textarea>
+            {!state.isPending &&
+              <textarea
+                className="questionTitleInput"
+                maxLength="200"
+                placeholder=""
+                value={questionTitle}
+                onChange={(event) => {
+                  setQuestionTitle(event.target.value);
+                }}
+              ></textarea>
+            }
+
+            {state.isPending &&
+              <textarea
+                className="questionTitleInput"
+                disabled
+              ></textarea>
+            }
           </div>
         </section>
 
         <section className="questionSection">
           <div className="sectionContainer">
             <h3 className="questionHeader">Elaboration</h3>
-            <textarea
-              className="questionContentInput"
-              maxLength="1000"
-              placeholder=""
-              onChange={(event) => {
-                setQuestionContent(event.target.value);
-              }}
-            ></textarea>
+            {!state.isPending &&
+              <textarea
+                className="questionContentInput"
+                maxLength="1000"
+                placeholder=""
+                value={questionContent}
+                onChange={(event) => {
+                  setQuestionContent(event.target.value);
+                }}
+              ></textarea>
+            }
+
+            {state.isPending &&
+              <textarea
+                className="questionContentInput"
+                disabled
+              ></textarea>
+            }
           </div>
         </section>
 
@@ -62,8 +92,15 @@ function SubmitOpenQ() {
           className="submitQuestionTitle"
           onClick={submitHandler}
         >
-          Submit OpenQuestion
+        Submit OpenQuestion
         </button>
+
+        <input
+          onChange={(event) => {
+            setQuestionContent(event.target.value);
+          }}
+          value={questionContent}
+        ></input>
 
         <p className="text-3xl font-bold underline">TEST LOCATION</p>
 

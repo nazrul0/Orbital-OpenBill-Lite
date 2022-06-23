@@ -1,4 +1,4 @@
-import { useEffect, useReducer, useState } from "react";
+import { useReducer } from "react";
 import { projFirestore, timestamp } from "../config/firebase";
 
 /*
@@ -9,11 +9,11 @@ import { projFirestore, timestamp } from "../config/firebase";
 const crudReducer = (state, action) => {
     switch (action.type) {
         case 'IS_PENDING':
-            return {...state, isPending: true, document: null};
+            return {...state, isPending: true, document: null, success: false};
         
         case 'ADDED_DOC':
             // make pending false, and save the document we got to the state
-            return {...state, isPending: false, document: action.payload};
+            return {isPending: false, document: action.payload, success: true};
         case 'ERROR':
             return {...state, isPending: false, document: null, success: false, error: action.payload};
 
@@ -31,41 +31,29 @@ let initialState = {
 
 export const useCrud = (collection) => {
     const [state, dispatch] = useReducer(crudReducer, initialState);
-    const [isCancelled, setCancelled] = useState(false);
 
     // reference to the collection
     const ref= projFirestore.collection(collection);
 
     /* ----- CRUD ----- */
     const addDoc = async (doc) => {
+        
         dispatch( {type: 'IS_PENDING'} ); // no payload, since simply changing a status
-
+        
         // attaches firestore timestamp object to doc, tries to add to db
         try {
             const createdAt = timestamp.fromDate(new Date())
             const addedDoc= await ref.add({...doc, createdAt: createdAt});
-
-            // only update the state via the dispatch if user has not clicked away
-            if (!isCancelled){
-                dispatch({type: 'ADDED_DOC', payload: addedDoc, success: true, error: null});
-            }
+            dispatch({type: 'ADDED_DOC', payload: addedDoc});
         }
         catch (err) {
-            if (!isCancelled){
-                dispatch({type: 'ERROR', payload: err.message});
-            }
+            dispatch({type: 'ERROR', payload: err.message});
         }
-
     }
 
     const deleteDoc = async (doc) => {
 
     }
-
-    // cleanup function (if user clicks away)
-    useEffect(() => {
-        return () => setCancelled(true);
-    },[])
 
     return {addDoc, deleteDoc, state}
 }
