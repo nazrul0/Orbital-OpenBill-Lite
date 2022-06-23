@@ -15,7 +15,7 @@ function LandingPage() {
         <section className="title">
           <img src={constellation} alt="Openbill Constellation" />
 
-          <div>
+          <div className="center">
             <h1 className="SpaceG">Legislative change that begins with you.</h1>
             <div className="buttons">
               <button

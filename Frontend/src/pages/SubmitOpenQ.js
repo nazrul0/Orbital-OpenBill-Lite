@@ -1,57 +1,34 @@
 import React, { useState, useEffect } from "react";
 import PageTitle from "../components/PageTitle";
 import "./SubmitOpenQ.css";
-import { projFirestore } from "../config/firebase";
-import {
-  collection,
-  getDocs,
-  addDoc,
-  updateDoc,
-  doc,
-  deleteDoc,
-  getDocsFromServer,
-  getDocsFromCache,
-} from "firebase/firestore";
+import { useCrud } from "../hooks/useCRUD";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 function SubmitOpenQ() {
   const [questionTitle, setQuestionTitle] = useState("");
   const [questionContent, setQuestionContent] = useState("");
-  const [questions, setQuestions] = useState([]);
-  const questionsCollectionRef = collection(projFirestore, "OpenQuestions");
+  const [questionCategory, setQuestionCategory] = useState("");
+  const { addDoc, state } = useCrud('OpenQuestions');
+  const { user } = useAuthContext();  // importing user to get access to uid field on the user object
 
-  // CREATE OpenQuestion document in database
-  const createOpenQuestion = async () => {
-    await addDoc(questionsCollectionRef, {
+  const submitHandler = (event) => {
+    event.preventDefault();
+    // getting the Owner id
+    const id = user.uid;
+    
+    // destructured the addDoc therefore it can simply be used here
+    addDoc({
       Title: questionTitle,
       Content: questionContent,
-      OwnerID: "Test",
-      Category: "Test",
-    });
-    console.log("Created!");
-    alert("Submitted!");
-  };
-
-  // READ all OpenQuestions from database
-  projFirestore
-    .collection("OpenQuestions")
-    .get()
-    .then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        questions.push({ Key: doc.id, Data: doc.data() });
-        console.log(doc.id, " => ", doc.data());
-        // console.log("DATA: " + questions[0].Data.Category);
-      });
+      Category: 'test',
+      OwnerID: id
     })
-    .catch((error) => {
-      console.log("Error getting documents: ", error);
-    });
-  console.log(questions);
+  }
 
   return (
     <div>
       <PageTitle title="Submit an OpenQuestion" />
       <div className="submitQuestionContainer">
-        {/* <section className="questionSection">Category?</section> */}
         <section className="questionSection">
           <div className="sectionContainer">
             <h3 className="questionHeader">OpenQuestion Title</h3>
@@ -83,23 +60,13 @@ function SubmitOpenQ() {
         <button
           type="submit"
           className="submitQuestionTitle"
-          onClick={createOpenQuestion}
+          onClick={submitHandler}
         >
           Submit OpenQuestion
         </button>
-      </div>
 
-      <div className="questionTestArea">
-        <p>TEST LOCATION</p>
-        {questions.map((question) => {
-          return (
-            <div>
-              <p>Title: {question.Data.Title}</p>
-              <p>Content: {question.Data.Content}</p>
-            </div>
-          );
-        })}
         <p className="text-3xl font-bold underline">TEST LOCATION</p>
+
       </div>
     </div>
   );
