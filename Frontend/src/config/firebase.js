@@ -12,4 +12,7 @@ firebase.initializeApp(firebaseConfig);
 const projFirestore = firebase.firestore();
 const projAuth = firebase.auth();
 
-export { projFirestore, projAuth };
+// saving and exporting timestamp function from firebase
+const timestamp = firebase.firestore.Timestamp
+
+export { projFirestore, projAuth, timestamp };

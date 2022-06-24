@@ -5,8 +5,13 @@ import SearchBar from "../components/SearchBar";
 import Button from "../components/Button";
 import "./ProposalHome.css";
 import { Link } from "react-router-dom";
+import { useCollection } from "../hooks/useCollection";
+import ProposalList from "../components/ProposalList";
 
 function ProposalsHome() {
+  const { docs, error } = useCollection('OpenQuestions');
+
+
   return (
     <div className="proposalsHomeContainer">
       <PageTitle title="Proposals Home" />
@@ -18,16 +23,10 @@ function ProposalsHome() {
           <SearchBar type="text" placeholder="Search Proposals or Users" />
           <Button text="Filter" />
         </section>
-        <section className="gridContainer">
-          <div className="proposalGrid">
-            <ProposalCard author="Author Name" title="Proposal Title" />
-            <ProposalCard author="Author Name" title="Proposal Title" />
-            <ProposalCard author="Author Name" title="Proposal Title" />
-            <ProposalCard author="Author Name" title="Proposal Title" />
-            <ProposalCard author="Author Name" title="Proposal Title" />
-            <ProposalCard author="Author Name" title="Proposal Title" />
-            <ProposalCard author="Author Name" title="Proposal Title" />
-            <ProposalCard author="Author Name" title="Proposal Title" />
+        <section>
+          <div>
+            {error && <p>{error}</p>}
+            {docs && <ProposalList proposals={docs}/>}
           </div>
         </section>
       </section>
