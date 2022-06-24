@@ -95,14 +95,7 @@ function SubmitOpenQ() {
         Submit OpenQuestion
         </button>
 
-        <input
-          onChange={(event) => {
-            setQuestionContent(event.target.value);
-          }}
-          value={questionContent}
-        ></input>
-
-        <p className="text-3xl font-bold underline">TEST LOCATION</p>
+        <p className="text-3xl underline">TEST LOCATION</p>
 
       </div>
     </div>

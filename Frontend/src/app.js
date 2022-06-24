@@ -14,6 +14,7 @@ import SubmitOpenB from "./pages/SubmitOpenB.js";
 import SubmitOpenM from "./pages/SubmitOpenM.js";
 import SubmitArticle from "./pages/SubmitArticle.js";
 import SubmitFAQ from "./pages/SubmitFAQ.js";
+import Proposal from "./components/ParticularProposal.jsx";
 //import ErrorPage from "./pages/ErrorPage.jsx";
 import { useAuthContext } from "./hooks/useAuthContext";
 
@@ -30,11 +31,12 @@ function App() {
             {!user && <Route path="/Signup" element={<Signup />} />}
             <Route path="/" element={<LandingPage />} />
             <Route path="/Login" element={<Login />} />
-            <Route path="/ProposalsHome" element={<ProposalsHome />} />
+            <Route path="/ProposalsHome/" element={<ProposalsHome />} />
+            <Route path="/ProposalsHome/:id" element={<Proposal />} />
             <Route path="/Faq" element={<Faq />} />
             <Route path="/Column" element={<Column />} />
             {user && (
-              <Route path="/SubmitOpenQuestion" element={<SubmitOpenQ />} />
+              <Route path="/SubmitOpenQuestion/" element={<SubmitOpenQ />} />
             )}
             {user && (
               <Route path="/SubmitOpenMotion" element={<SubmitOpenM />} />
