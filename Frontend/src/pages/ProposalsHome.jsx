@@ -9,8 +9,7 @@ import { useCollection } from "../hooks/useCollection";
 import ProposalList from "../components/ProposalList";
 
 function ProposalsHome() {
-  const { docs, error } = useCollection('OpenQuestions');
-
+  const { docs, error } = useCollection("OpenQuestions");
 
   return (
     <div className="proposalsHomeContainer">
@@ -26,7 +25,7 @@ function ProposalsHome() {
         <section>
           <div>
             {error && <p>{error}</p>}
-            {docs && <ProposalList proposals={docs}/>}
+            {docs && <ProposalList proposals={docs} />}
           </div>
         </section>
       </section>

@@ -15,11 +15,16 @@
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   padding: 1.5% 3.5%;
   width: 100vh;
+  font-size: 1.25rem;
 }
 
 .faqQuestion {
   cursor: pointer;
   color: rgba(0, 0, 0, 0.75);
+}
+
+.faqAnswer {
+  margin-top: 0.7rem;
 }
 
 .faqPage {

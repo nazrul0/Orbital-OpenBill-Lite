@@ -8,8 +8,8 @@ function SubmitOpenQ() {
   const [questionTitle, setQuestionTitle] = useState("");
   const [questionContent, setQuestionContent] = useState("");
   const [questionCategory, setQuestionCategory] = useState("");
-  const { addDoc, state } = useCrud('OpenQuestions');
-  const { user } = useAuthContext();  // importing user to get access to uid field on the user object
+  const { addDoc, state } = useCrud("OpenQuestions");
+  const { user } = useAuthContext(); // importing user to get access to uid field on the user object
 
   const submitHandler = (event) => {
     event.preventDefault();
@@ -21,19 +21,19 @@ function SubmitOpenQ() {
     addDoc({
       Title: questionTitle,
       Content: questionContent,
-      Category: 'test',
-      OwnerID: id
-    })
-  }
+      Category: "test",
+      OwnerID: id,
+    });
+  };
 
   // refreshing form once submitted
-  useEffect(()=> {
-    if(state.success){
-      setQuestionTitle('');
-      setQuestionContent('');
+  useEffect(() => {
+    if (state.success) {
+      setQuestionTitle("");
+      setQuestionContent("");
+      alert("Submitted!");
     }
-  }, [state.success]) // will only fire when success property changes
-
+  }, [state.success]); // will only fire when success property changes
 
   return (
     <div>
@@ -42,7 +42,7 @@ function SubmitOpenQ() {
         <section className="questionSection">
           <div className="sectionContainer">
             <h3 className="questionHeader">OpenQuestion Title</h3>
-            {!state.isPending &&
+            {!state.isPending && (
               <textarea
                 className="questionTitleInput"
                 maxLength="200"
@@ -52,21 +52,18 @@ function SubmitOpenQ() {
                   setQuestionTitle(event.target.value);
                 }}
               ></textarea>
-            }
+            )}
 
-            {state.isPending &&
-              <textarea
-                className="questionTitleInput"
-                disabled
-              ></textarea>
-            }
+            {state.isPending && (
+              <textarea className="questionTitleInput" disabled></textarea>
+            )}
           </div>
         </section>
 
         <section className="questionSection">
           <div className="sectionContainer">
             <h3 className="questionHeader">Elaboration</h3>
-            {!state.isPending &&
+            {!state.isPending && (
               <textarea
                 className="questionContentInput"
                 maxLength="1000"
@@ -76,14 +73,11 @@ function SubmitOpenQ() {
                   setQuestionContent(event.target.value);
                 }}
               ></textarea>
-            }
+            )}
 
-            {state.isPending &&
-              <textarea
-                className="questionContentInput"
-                disabled
-              ></textarea>
-            }
+            {state.isPending && (
+              <textarea className="questionContentInput" disabled></textarea>
+            )}
           </div>
         </section>
 
@@ -92,11 +86,10 @@ function SubmitOpenQ() {
           className="submitQuestionTitle"
           onClick={submitHandler}
         >
-        Submit OpenQuestion
+          Submit OpenQuestion
         </button>
 
         <p className="text-3xl underline">TEST LOCATION</p>
-
       </div>
     </div>
   );
