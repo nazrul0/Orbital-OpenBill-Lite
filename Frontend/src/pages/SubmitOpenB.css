@@ -37,11 +37,13 @@ textarea {
 .billTitleInput {
   width: 100%;
   height: 7rem;
+  font-size: 1.5rem;
 }
 
 .billContentInput {
   width: 100%;
   height: 20rem;
+  font-size: 1.5rem;
 }
 
 .submitBillTitle {

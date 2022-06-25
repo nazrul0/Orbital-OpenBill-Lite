@@ -89,7 +89,7 @@ function SubmitOpenB() {
         </button>
       </div>
 
-      <div className="billTestArea">
+      {/* <div className="billTestArea">
         <p>TEST LOCATION</p>
         {bills.map((bill) => {
           return (
@@ -100,7 +100,7 @@ function SubmitOpenB() {
           );
         })}
         <p>TEST LOCATION</p>
-      </div>
+      </div> */}
     </div>
   );
 }

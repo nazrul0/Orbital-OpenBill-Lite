@@ -37,11 +37,13 @@ textarea {
 .motionTitleInput {
   width: 100%;
   height: 7rem;
+  font-size: 1.5rem;
 }
 
 .motionContentInput {
   width: 100%;
   height: 20rem;
+  font-size: 1.5rem;
 }
 
 .submitMotionTitle {

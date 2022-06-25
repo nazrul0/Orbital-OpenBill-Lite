@@ -42,6 +42,7 @@ textarea {
 .faqContentInput {
   width: 100%;
   height: 20rem;
+  font-size: 1.5rem;
 }
 
 .submitFaqContent {

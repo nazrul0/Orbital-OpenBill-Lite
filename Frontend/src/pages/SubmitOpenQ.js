@@ -89,7 +89,7 @@ function SubmitOpenQ() {
           Submit OpenQuestion
         </button>
 
-        <p className="text-3xl underline">TEST LOCATION</p>
+        {/* <p className="text-3xl underline">TEST LOCATION</p> */}
       </div>
     </div>
   );

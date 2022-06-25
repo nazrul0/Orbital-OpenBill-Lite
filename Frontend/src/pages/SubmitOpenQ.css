@@ -37,11 +37,13 @@ textarea {
 .questionTitleInput {
   width: 100%;
   height: 7rem;
+  font-size: 1.5rem;
 }
 
 .questionContentInput {
   width: 100%;
   height: 20rem;
+  font-size: 1.5rem;
 }
 
 .submitQuestionTitle {

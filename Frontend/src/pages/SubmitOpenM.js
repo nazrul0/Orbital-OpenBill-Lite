@@ -89,7 +89,7 @@ function SubmitOpenM() {
         </button>
       </div>
 
-      <div className="motionTestArea">
+      {/* <div className="motionTestArea">
         <p>TEST LOCATION</p>
         {motions.map((motion) => {
           return (
@@ -100,7 +100,7 @@ function SubmitOpenM() {
           );
         })}
         <p>TEST LOCATION</p>
-      </div>
+      </div> */}
     </div>
   );
 }

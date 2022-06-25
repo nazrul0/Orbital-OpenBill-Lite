@@ -1,32 +1,30 @@
 const Data = [
   {
     question: "What is OpenBill?",
-    answer: "This is the answer.",
+    answer:
+      "OpenBill lite is a platform that aims to bridge the gap in outcomes between the use of both informal social media platforms and formal government-affiliated platforms for active citizenship. On OpenBill, users will be able to submit three types of proposals. Besides making constructive proposals, users can also contribute self-written articles to share their thoughts on pertinent issues. This will foster discussion in the community and allow OpenBill to function as a place where ground-up sentiments can potentially transform into legislative initiatives.",
   },
   {
     question: "How do user submissions work on OpenBill?",
     answer:
-      "Ut suscipit aliquam rutrum. Ut vitae neque dictum, elementum eros tincidunt, luctus massa. Vestibulum auctor, nulla quis aliquam porta, sem nulla congue orci, at dictum elit ante quis lectus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eu molestie quam. Integer at mattis neque, sed eleifend ex. Sed sit amet neque turpis. Sed placerat at tortor at ullamcorper. Aliquam ligula lacus, vestibulum in tincidunt nec, lacinia a turpis.",
+      "Users may log in and go to Create, where they can choose to start working on an OpenBill, OpenQuestion or OpenMotion. Alternatively, they can also head to The Column to start contributing articles.",
   },
   {
     question: "What are the different types of proposals?",
     answer:
-      "Ut suscipit aliquam rutrum. Ut vitae neque dictum, elementum eros tincidunt, luctus massa. Vestibulum auctor, nulla quis aliquam porta, sem nulla congue orci, at dictum elit ante quis lectus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eu molestie quam. Integer at mattis neque, sed eleifend ex. Sed sit amet neque turpis. Sed placerat at tortor at ullamcorper. Aliquam ligula lacus, vestibulum in tincidunt nec, lacinia a turpis.",
+      "OpenBill: A submission similar in format to parliamentary bills for ease of perusal by Members of Parliament. For example, someone seeking to make amendments to Section 377A can submit a draft bill here.\nOpenMotion: A user who wants to foster parliamentary discussion on a particular topic can submit an OpenMotion for consideration.\nOpenQuestion: A user can submit an OpenQuestion for any simple queries for their representatives",
   },
   {
     question: "Are there any plans to implement new features?",
-    answer:
-      "Ut suscipit aliquam rutrum. Ut vitae neque dictum, elementum eros tincidunt, luctus massa. Vestibulum auctor, nulla quis aliquam porta, sem nulla congue orci, at dictum elit ante quis lectus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eu molestie quam. Integer at mattis neque, sed eleifend ex. Sed sit amet neque turpis. Sed placerat at tortor at ullamcorper. Aliquam ligula lacus, vestibulum in tincidunt nec, lacinia a turpis.",
+    answer: "Yes, to be updated soon!",
   },
   {
     question: "Who is the team behind OpenBill?",
-    answer:
-      "Ut suscipit aliquam rutrum. Ut vitae neque dictum, elementum eros tincidunt, luctus massa. Vestibulum auctor, nulla quis aliquam porta, sem nulla congue orci, at dictum elit ante quis lectus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eu molestie quam. Integer at mattis neque, sed eleifend ex. Sed sit amet neque turpis. Sed placerat at tortor at ullamcorper. Aliquam ligula lacus, vestibulum in tincidunt nec, lacinia a turpis.",
+    answer: "To be updated soon!",
   },
   {
     question: "Where can I contact the team for any further queries?",
-    answer:
-      "Ut suscipit aliquam rutrum. Ut vitae neque dictum, elementum eros tincidunt, luctus massa. Vestibulum auctor, nulla quis aliquam porta, sem nulla congue orci, at dictum elit ante quis lectus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eu molestie quam. Integer at mattis neque, sed eleifend ex. Sed sit amet neque turpis. Sed placerat at tortor at ullamcorper. Aliquam ligula lacus, vestibulum in tincidunt nec, lacinia a turpis.",
+    answer: "You may submit your question using the link below this section.",
   },
 ];
 

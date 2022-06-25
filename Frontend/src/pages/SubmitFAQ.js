@@ -69,7 +69,7 @@ function SubmitFAQ() {
         </button>
       </div>
 
-      <div className="faqbillTestArea">
+      {/* <div className="faqbillTestArea">
         <p>TEST LOCATION</p>
         {faqs.map((faq) => {
           return (
@@ -79,7 +79,7 @@ function SubmitFAQ() {
           );
         })}
         <p>TEST LOCATION</p>
-      </div>
+      </div> */}
     </div>
   );
 }
