@@ -15,7 +15,7 @@ function ArticleRect(props) {
           luctus massa. Vestibulum auctor, nulla quis aliquam porta, sem nulla
           congue orci, at dictum elit ante quis lectus.
         </p> */}
-        <h4 className="articlePreviewTitle">{props.title}</h4>
+        <h2 className="articlePreviewTitle">{props.title}</h2>
         <p className="articlePreviewBody">{props.content}</p>
         <img className="articleIcon" src={logo} alt="Article Icon" />
       </div>

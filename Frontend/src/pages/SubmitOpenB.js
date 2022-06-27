@@ -71,7 +71,7 @@ function SubmitOpenB() {
             <h3 className="billHeader">Elaboration</h3>
             <textarea
               className="billContentInput"
-              maxLength="1000"
+              maxLength="10000"
               placeholder=""
               onChange={(event) => {
                 setBillContent(event.target.value);

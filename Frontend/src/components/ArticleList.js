@@ -8,7 +8,7 @@ function ArticleList({ articles }) {
   // (!!) note- has to be proposals.Title (w caps) since we defined the field as Title: on firebase side
   return (
     <div className="article_list">
-      {articles.length === 0 && <p>no proposals found.</p>}
+      {articles.length === 0 && <p>no articles found.</p>}
       {articles.map((article) => (
         <ArticleRect
           title={article.Title}
