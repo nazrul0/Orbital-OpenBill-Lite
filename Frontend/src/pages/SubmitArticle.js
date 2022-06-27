@@ -50,48 +50,49 @@ function SubmitArticle() {
   return (
     <div>
       <PageTitle title="Submit an Article" />
-        <div className="submitArticleContainer">
-          {/* <section className="questionSection">Category?</section> */}
-          <section className="articleSection">
-            <div className="articleContainer">
-              <h3 className="articleHeader">Article Title</h3>
 
-              <textarea
-                className="articleTitleInput"
-                maxLength="200"
-                placeholder=""
-                onChange={(event) => {
-                  setArticleTitle(event.target.value);
-                }}
-                required
-              ></textarea>
-            </div>
-          </section>
+      <div className="submitArticleContainer">
+        {/* <section className="questionSection">Category?</section> */}
+        <section className="articleSection">
+          <div className="articleContainer">
+            <h3 className="articleHeader">Article Title</h3>
 
-          <section className="articleSection">
-            <div className="articleContainer">
-              <h3 className="articleHeader">Content</h3>
+            <textarea
+              className="articleTitleInput"
+              maxLength="200"
+              placeholder=""
+              onChange={(event) => {
+                setArticleTitle(event.target.value);
+              }}
+              required
+            ></textarea>
+          </div>
+        </section>
 
-              <textarea
-                className="articleContentInput"
-                maxLength="1000"
-                placeholder=""
-                onChange={(event) => {
-                  setArticleContent(event.target.value);
-                }}
-                required
-              ></textarea>
-            </div>
-          </section>
+        <section className="articleSection">
+          <div className="articleContainer">
+            <h3 className="articleHeader">Content</h3>
 
-          <button
-            type="submit"
-            className="submitArticleTitle"
-            onClick={createArticle}
-          >
-            Submit Article
-          </button>
-        </div>
+            <textarea
+              className="articleContentInput"
+              maxLength="1000"
+              placeholder=""
+              onChange={(event) => {
+                setArticleContent(event.target.value);
+              }}
+              required
+            ></textarea>
+          </div>
+        </section>
+
+        <button
+          type="submit"
+          className="submitArticleTitle"
+          onClick={createArticle}
+        >
+          Submit Article
+        </button>
+      </div>
 
       {/* <div className="articleTestArea">
         <p>TEST LOCATION</p>
