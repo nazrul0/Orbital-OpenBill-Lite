@@ -38,59 +38,63 @@ function SubmitOpenQ() {
   return (
     <div>
       <PageTitle title="Submit an OpenQuestion" />
-      <div className="submitQuestionContainer">
-        <section className="questionSection">
-          <div className="sectionContainer">
-            <h3 className="questionHeader">OpenQuestion Title</h3>
-            {!state.isPending && (
-              <textarea
-                className="questionTitleInput"
-                maxLength="200"
-                placeholder=""
-                value={questionTitle}
-                onChange={(event) => {
-                  setQuestionTitle(event.target.value);
-                }}
-              ></textarea>
-            )}
+      <form>
+        <div className="submitQuestionContainer">
+          <section className="questionSection">
+            <div className="sectionContainer">
+              <h3 className="questionHeader">OpenQuestion Title</h3>
+              {!state.isPending && (
+                <textarea
+                  className="questionTitleInput"
+                  maxLength="200"
+                  placeholder=""
+                  value={questionTitle}
+                  onChange={(event) => {
+                    setQuestionTitle(event.target.value);
+                  }}
+                  required
+                ></textarea>
+              )}
 
-            {state.isPending && (
-              <textarea className="questionTitleInput" disabled></textarea>
-            )}
-          </div>
-        </section>
+              {state.isPending && (
+                <textarea className="questionTitleInput" disabled></textarea>
+              )}
+            </div>
+          </section>
 
-        <section className="questionSection">
-          <div className="sectionContainer">
-            <h3 className="questionHeader">Elaboration</h3>
-            {!state.isPending && (
-              <textarea
-                className="questionContentInput"
-                maxLength="1000"
-                placeholder=""
-                value={questionContent}
-                onChange={(event) => {
-                  setQuestionContent(event.target.value);
-                }}
-              ></textarea>
-            )}
+          <section className="questionSection">
+            <div className="sectionContainer">
+              <h3 className="questionHeader">Elaboration</h3>
+              {!state.isPending && (
+                <textarea
+                  className="questionContentInput"
+                  maxLength="1000"
+                  placeholder=""
+                  value={questionContent}
+                  onChange={(event) => {
+                    setQuestionContent(event.target.value);
+                  }}
+                  required
+                ></textarea>
+              )}
 
-            {state.isPending && (
-              <textarea className="questionContentInput" disabled></textarea>
-            )}
-          </div>
-        </section>
+              {state.isPending && (
+                <textarea className="questionContentInput" disabled></textarea>
+              )}
+            </div>
+          </section>
 
-        <button
-          type="submit"
-          className="submitQuestionTitle"
-          onClick={submitHandler}
-        >
-          Submit OpenQuestion
-        </button>
+          <button
+            type="submit"
+            className="submitQuestionTitle"
+            onClick={submitHandler}
+          >
+            Submit OpenQuestion
+          </button>
 
-        {/* <p className="text-3xl underline">TEST LOCATION</p> */}
-      </div>
+          {/* <p className="text-3xl underline">TEST LOCATION</p> */}
+        </div>
+      </form>
     </div>
   );
 }

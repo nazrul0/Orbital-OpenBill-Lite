@@ -50,44 +50,52 @@ function SubmitOpenM() {
   return (
     <div>
       <PageTitle title="Submit an OpenMotion" />
-      <div className="submitMotionContainer">
-        {/* <section className="motionSection">Category?</section> */}
-        <section className="motionSection">
-          <div className="sectionContainer">
-            <h3 className="motionHeader">OpenMotion Title</h3>
-            <textarea
-              className="motionTitleInput"
-              maxLength="200"
-              placeholder=""
-              onChange={(event) => {
-                setMotionTitle(event.target.value);
-              }}
-            ></textarea>
-          </div>
-        </section>
+      <form>
+        <div className="submitMotionContainer">
+          {/* <section className="motionSection">Category?</section> */}
+          <section className="motionSection">
+            <div className="sectionContainer">
+              <h3 className="motionHeader">OpenMotion Title</h3>
+              <form>
+                <textarea
+                  className="motionTitleInput"
+                  maxLength="200"
+                  placeholder=""
+                  onChange={(event) => {
+                    setMotionTitle(event.target.value);
+                  }}
+                  required
+                ></textarea>
+              </form>
+            </div>
+          </section>
 
-        <section className="motionSection">
-          <div className="sectionContainer">
-            <h3 className="motionHeader">Elaboration</h3>
-            <textarea
-              className="motionContentInput"
-              maxLength="1000"
-              placeholder=""
-              onChange={(event) => {
-                setMotionContent(event.target.value);
-              }}
-            ></textarea>
-          </div>
-        </section>
+          <section className="motionSection">
+            <div className="sectionContainer">
+              <h3 className="motionHeader">Elaboration</h3>
+              <form>
+                <textarea
+                  className="motionContentInput"
+                  maxLength="1000"
+                  placeholder=""
+                  onChange={(event) => {
+                    setMotionContent(event.target.value);
+                  }}
+                  required
+                ></textarea>
+              </form>
+            </div>
+          </section>
 
-        <button
-          type="submit"
-          className="submitMotionTitle"
-          onClick={createOpenMotion}
-        >
-          Submit OpenMotion
-        </button>
-      </div>
+          <button
+            type="submit"
+            className="submitMotionTitle"
+            onClick={createOpenMotion}
+          >
+            Submit OpenMotion
+          </button>
+        </div>
+      </form>
 
       {/* <div className="motionTestArea">
         <p>TEST LOCATION</p>

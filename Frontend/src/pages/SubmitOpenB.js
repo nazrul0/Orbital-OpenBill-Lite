@@ -50,44 +50,52 @@ function SubmitOpenB() {
   return (
     <div>
       <PageTitle title="Submit an OpenBill" />
-      <div className="submitBillContainer">
-        {/* <section className="questionSection">Category?</section> */}
-        <section className="billSection">
-          <div className="billContainer">
-            <h3 className="billHeader">OpenBill Title</h3>
-            <textarea
-              className="billTitleInput"
-              maxLength="200"
-              placeholder=""
-              onChange={(event) => {
-                setBillTitle(event.target.value);
-              }}
-            ></textarea>
-          </div>
-        </section>
+      <form>
+        <div className="submitBillContainer">
+          {/* <section className="questionSection">Category?</section> */}
+          <section className="billSection">
+            <div className="billContainer">
+              <h3 className="billHeader">OpenBill Title</h3>
+              <form>
+                <textarea
+                  className="billTitleInput"
+                  maxLength="200"
+                  placeholder=""
+                  onChange={(event) => {
+                    setBillTitle(event.target.value);
+                  }}
+                  required
+                ></textarea>
+              </form>
+            </div>
+          </section>
 
-        <section className="billSection">
-          <div className="billContainer">
-            <h3 className="billHeader">Elaboration</h3>
-            <textarea
-              className="billContentInput"
-              maxLength="10000"
-              placeholder=""
-              onChange={(event) => {
-                setBillContent(event.target.value);
-              }}
-            ></textarea>
-          </div>
-        </section>
+          <section className="billSection">
+            <div className="billContainer">
+              <h3 className="billHeader">Elaboration</h3>
+              <form>
+                <textarea
+                  className="billContentInput"
+                  maxLength="10000"
+                  placeholder=""
+                  onChange={(event) => {
+                    setBillContent(event.target.value);
+                  }}
+                  required
+                ></textarea>
+              </form>
+            </div>
+          </section>
 
-        <button
-          type="submit"
-          className="submitBillTitle"
-          onClick={createOpenBill}
-        >
-          Submit OpenQuestion
-        </button>
-      </div>
+          <button
+            type="submit"
+            className="submitBillTitle"
+            onClick={createOpenBill}
+          >
+            Submit OpenQuestion
+          </button>
+        </div>
+      </form>
 
       {/* <div className="billTestArea">
         <p>TEST LOCATION</p>

@@ -53,14 +53,17 @@ function SubmitFAQ() {
         <section className="faqSection">
           <div className="faqContainer">
             <h3 className="faqHeader">What would you like to ask the team?</h3>
-            <textarea
-              className="faqContentInput"
-              maxLength="200"
-              placeholder=""
-              onChange={(event) => {
-                setFaqContent(event.target.value);
-              }}
-            ></textarea>
+            <form>
+              <textarea
+                className="faqContentInput"
+                maxLength="200"
+                placeholder=""
+                onChange={(event) => {
+                  setFaqContent(event.target.value);
+                }}
+                required
+              ></textarea>
+            </form>
           </div>
         </section>
 
