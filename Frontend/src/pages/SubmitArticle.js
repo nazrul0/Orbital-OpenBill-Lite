@@ -50,7 +50,6 @@ function SubmitArticle() {
   return (
     <div>
       <PageTitle title="Submit an Article" />
-      <form>
         <div className="submitArticleContainer">
           {/* <section className="questionSection">Category?</section> */}
           <section className="articleSection">
@@ -93,7 +92,6 @@ function SubmitArticle() {
             Submit Article
           </button>
         </div>
-      </form>
 
       {/* <div className="articleTestArea">
         <p>TEST LOCATION</p>
