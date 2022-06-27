@@ -45,6 +45,7 @@
   font-family: "Red Hat Text";
   font-weight: 400;
   color: white;
+  margin: 1rem;
 }
 
 h1 {
@@ -73,7 +74,6 @@ img {
 }
 
 #map {
-  margin-top: 0.5% 0;
   padding: 5% 10%;
 }
 

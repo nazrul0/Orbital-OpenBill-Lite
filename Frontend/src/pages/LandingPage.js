@@ -17,24 +17,22 @@ function LandingPage() {
 
           <div className="center">
             <h1 className="SpaceG">Legislative change that begins with you.</h1>
-            <div className="buttons">
+            <div>
               <button
                 onClick={() => {
                   navigate("/faq");
                 }}
                 type="button"
-                className="rounded-black-btn"
-              >
-                Learn how
+                className="m-2 pl-10 p-1 pr-10 bg-black text-white text-xs font-semibold uppercase rounded-md"
+              >Learn how
               </button>
               <button
                 onClick={() => {
                   navigate("/ProposalsHome");
                 }}
                 type="button"
-                className="rounded-black-btn"
-              >
-                See what's latest
+                className="m-2 pl-8 p-1 pr-8 bg-black text-white text-xs font-semibold uppercase rounded-md"
+              >See what's latest
               </button>
             </div>
           </div>
@@ -53,7 +51,7 @@ function LandingPage() {
           </div>
 
           <div className="col">
-            <p className="action-text">
+            <p className="action-text left">
               What if there was a way for your thoughts on social and policy
               issues to have a more real impact- as ideas contributing to policy
               discourse?
@@ -72,6 +70,7 @@ function LandingPage() {
                 navigate("/faq");
               }}
               type="button"
+              className="m-2 pl-8 p-1 pr-8 bg-white text-black text-xs font-semibold rounded-md"
             >
               Read the full FAQ
             </button>
@@ -80,6 +79,7 @@ function LandingPage() {
                 navigate("/Signup");
               }}
               type="button"
+              className="m-2 pl-10 p-1 pr-10 bg-white text-black text-xs font-semibold rounded-md"
             >
               Sign up
             </button>

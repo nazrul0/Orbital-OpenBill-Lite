@@ -1,6 +1,6 @@
 import React from "react";
 import PageTitle from "../components/PageTitle";
-import ProposalCard from "../components/ProposalCard";
+//import ProposalCard from "../components/ProposalCard";
 import SearchBar from "../components/SearchBar";
 import Button from "../components/Button";
 import "./ProposalHome.css";
