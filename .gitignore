@@ -9,7 +9,7 @@ node_modules/
 /coverage
 
 # firebase config info
-Frontend/src/config/connectionData.js
+# Frontend/src/config/connectionData.js
 Backend/adminsdk-svc-acct.json
 
 # production
