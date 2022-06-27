@@ -8,7 +8,7 @@ function LandingPage() {
   const navigate = useNavigate();
 
   return (
-    <div className="">
+    <div>
       <div className="containerFluid">
         {/* Landing Title
         Contains title, as well as the 2 carousels (proposals and articles) [todo] */}
@@ -16,7 +16,7 @@ function LandingPage() {
           <img src={constellation} alt="Openbill Constellation" />
 
           <div className="center">
-            <h1 className="SpaceG">Legislative change that begins with you.</h1>
+            <h1 className="pt-6 pb-6">Legislative change that begins with you.</h1>
             <div>
               <button
                 onClick={() => {
