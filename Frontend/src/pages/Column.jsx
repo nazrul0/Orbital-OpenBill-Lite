@@ -29,6 +29,7 @@ function Column() {
             {error && <p>{error}</p>}
             {docs && <ArticleList articles={docs} />}
           </div>
+
         </section>
       </section>
     </div>
