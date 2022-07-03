@@ -13,6 +13,7 @@ function ArticleList({ articles }) {
         <ArticleRect
           title={article.Title}
           content={article.Content}
+          category={article.Category}
           author="testuser"
         />
       ))}

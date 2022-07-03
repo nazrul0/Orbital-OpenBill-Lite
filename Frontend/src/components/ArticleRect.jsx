@@ -1,23 +1,59 @@
 import React from "react";
 import "./ArticleRect.css";
-import logo from "../imgs/plus.png";
+import treeImage from "../imgs/OB(tree).png";
+import educationImage from "../imgs/OB(education).png";
+import moneyImage from "../imgs/OB(money).png";
+import mailImage from "../imgs/OB(mail).png";
+import ringImage from "../imgs/OB(ring).png";
+import thumbprintImage from "../imgs/OB(thumbprint).png";
+import plusImage from "../imgs/OB(plus).png";
+import cityImage from "../imgs/OB(city).png";
+import busImage from "../imgs/OB(bus).png";
 
 function ArticleRect(props) {
+  let image;
+  switch (props.category) {
+    default:
+      break;
+    case "Environment":
+      image = treeImage;
+      break;
+    case "Education":
+      image = educationImage;
+      break;
+    case "Economic":
+      image = moneyImage;
+      break;
+    case "Financial":
+      image = moneyImage;
+      break;
+    case "Social Welfare":
+      image = mailImage;
+      break;
+    case "Gender":
+      image = ringImage;
+      break;
+    case "Privacy/Security":
+      image = thumbprintImage;
+      break;
+    case "Healthcare":
+      image = plusImage;
+      break;
+    case "Infrastructure":
+      image = cityImage;
+      break;
+    case "Transport":
+      image = busImage;
+      break;
+  }
+
   return (
     <div>
       <div className="articlePreviewContainer">
-        {/* Replace placeholder title and body using props when ready */}
-        {/* <h4 className="articlePreviewTitle">An article about something</h4>
-        <p className="articlePreviewBody">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nunc
-          augue, ultricies at bibendum at, vehicula nec nisl. Ut suscipit
-          aliquam rutrum. Ut vitae neque dictum, elementum eros tincidunt,
-          luctus massa. Vestibulum auctor, nulla quis aliquam porta, sem nulla
-          congue orci, at dictum elit ante quis lectus.
-        </p> */}
         <h2 className="articlePreviewTitle">{props.title}</h2>
+        <h3 className="articlePreviewCategory">{props.category}</h3>
         <p className="articlePreviewBody">{props.content}</p>
-        <img className="articleIcon" src={logo} alt="Article Icon" />
+        <img className="articleIcon" src={image} alt="Article Icon" />
       </div>
     </div>
   );

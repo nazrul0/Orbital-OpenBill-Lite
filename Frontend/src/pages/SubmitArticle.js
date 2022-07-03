@@ -16,6 +16,7 @@ import {
 function SubmitArticle() {
   const [articleTitle, setArticleTitle] = useState("");
   const [articleContent, setArticleContent] = useState("");
+  const [articleCategory, setArticleCategory] = useState("Environment");
   const [articles, setArticles] = useState([]);
   const articlesCollectionRef = collection(projFirestore, "Articles");
 
@@ -25,7 +26,7 @@ function SubmitArticle() {
       Title: articleTitle,
       Content: articleContent,
       OwnerID: "Test",
-      Category: "Test",
+      Category: articleCategory,
     });
     console.log("Created!");
     alert("Submitted!");
@@ -52,14 +53,41 @@ function SubmitArticle() {
       <PageTitle title="Submit an Article" />
 
       <div className="submitArticleContainer">
-        {/* <section className="questionSection">Category?</section> */}
+        <section className="categorySelect">
+          <h4>Choose a Category:</h4>
+          <div className="flex justify-center">
+            <div className="mb-3 xl:w-96">
+              <select
+                className="categoryMenu"
+                value={articleCategory}
+                onChange={(event) => {
+                  setArticleCategory(event.target.value);
+                  console.log(articleCategory);
+                }}
+                aria-label="Default select example"
+              >
+                <option value="Environment">Environment</option>
+                <option value="Education">Education</option>
+                <option value="Economic">Economic</option>
+                <option value="Financial">Financial</option>
+                <option value="Social Welfare">Social Welfare</option>
+                <option value="Gender">Gender</option>
+                <option value="Privacy/Security">Privacy/Security</option>
+                <option value="Healthcare">Healthcare</option>
+                <option value="Infrastructure">Infrastructure</option>
+                <option value="Transport">Transport</option>
+              </select>
+            </div>
+          </div>
+        </section>
+
         <section className="articleSection">
           <div className="articleContainer">
             <h3 className="articleHeader">Article Title</h3>
 
             <textarea
               className="articleTitleInput"
-              maxLength="200"
+              maxLength="100"
               placeholder=""
               onChange={(event) => {
                 setArticleTitle(event.target.value);
@@ -75,7 +103,7 @@ function SubmitArticle() {
 
             <textarea
               className="articleContentInput"
-              maxLength="1000"
+              maxLength="2000"
               placeholder=""
               onChange={(event) => {
                 setArticleContent(event.target.value);
