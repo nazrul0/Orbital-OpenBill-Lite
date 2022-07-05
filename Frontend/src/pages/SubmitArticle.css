@@ -26,7 +26,7 @@ textarea {
   display: flex;
   flex-direction: column;
   margin: 1.5rem;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 .articleHeader {
@@ -34,11 +34,11 @@ textarea {
   color: rgba(0, 0, 0, 0.75);
 }
 
-.articleTitleInput {
+/* .articleTitleInput {
   width: 100%;
   height: 7rem;
   font-size: 1.5rem;
-}
+} */
 
 .articleContentInput {
   width: 100%;
@@ -53,9 +53,14 @@ textarea {
   border-radius: 20px;
   background-color: aquamarine;
 }
+
 .categorySelect {
   display: flex;
   flex-direction: row;
   gap: 1rem;
   margin-bottom: -2rem;
+}
+
+.ql-editor {
+  min-height: 6rem;
 }

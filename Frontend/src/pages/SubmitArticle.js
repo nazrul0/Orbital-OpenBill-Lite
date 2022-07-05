@@ -12,6 +12,8 @@ import {
   getDocsFromServer,
   getDocsFromCache,
 } from "firebase/firestore";
+import QuillEditor from "../components/QuillEditor";
+import "react-quill/dist/quill.snow.css";
 
 function SubmitArticle() {
   const [articleTitle, setArticleTitle] = useState("");
@@ -39,7 +41,7 @@ function SubmitArticle() {
     .then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         articles.push({ Key: doc.id, Data: doc.data() });
-        console.log(doc.id, " => ", doc.data());
+        // console.log(doc.id, " => ", doc.data());
         // console.log("DATA: " + questions[0].Data.Category);
       });
     })
@@ -47,6 +49,10 @@ function SubmitArticle() {
       console.log("Error getting documents: ", error);
     });
   console.log(articles);
+
+  useEffect(() => {
+    console.log(articleTitle);
+  });
 
   return (
     <div>
@@ -62,7 +68,6 @@ function SubmitArticle() {
                 value={articleCategory}
                 onChange={(event) => {
                   setArticleCategory(event.target.value);
-                  console.log(articleCategory);
                 }}
                 aria-label="Default select example"
               >
@@ -85,7 +90,16 @@ function SubmitArticle() {
           <div className="articleContainer">
             <h3 className="articleHeader">Article Title</h3>
 
-            <textarea
+            <QuillEditor
+              value={articleTitle}
+              onChange={(event) => {
+                setArticleTitle(event.target.value);
+              }}
+              className="ql-editor"
+              theme="snow"
+            />
+
+            {/* <textarea
               className="articleTitleInput"
               maxLength="100"
               placeholder=""
@@ -93,7 +107,7 @@ function SubmitArticle() {
                 setArticleTitle(event.target.value);
               }}
               required
-            ></textarea>
+            ></textarea> */}
           </div>
         </section>
 
@@ -101,7 +115,16 @@ function SubmitArticle() {
           <div className="articleContainer">
             <h3 className="articleHeader">Content</h3>
 
-            <textarea
+            <QuillEditor
+              value={articleContent}
+              onChange={(event) => {
+                setArticleContent(event.target.value);
+              }}
+              className="ql-editor"
+              theme="snow"
+            />
+
+            {/* <textarea
               className="articleContentInput"
               maxLength="2000"
               placeholder=""
@@ -109,7 +132,7 @@ function SubmitArticle() {
                 setArticleContent(event.target.value);
               }}
               required
-            ></textarea>
+            ></textarea> */}
           </div>
         </section>
 
