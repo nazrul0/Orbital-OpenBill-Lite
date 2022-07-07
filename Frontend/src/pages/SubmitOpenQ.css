@@ -53,3 +53,10 @@ textarea {
   border-radius: 20px;
   background-color: aquamarine;
 }
+
+.categorySelect {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  margin-bottom: -2rem;
+}

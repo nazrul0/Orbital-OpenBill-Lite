@@ -24,9 +24,6 @@ function ArticleRect(props) {
     case "Economic":
       image = moneyImage;
       break;
-    case "Financial":
-      image = moneyImage;
-      break;
     case "Social Welfare":
       image = mailImage;
       break;
@@ -36,10 +33,10 @@ function ArticleRect(props) {
     case "Privacy/Security":
       image = thumbprintImage;
       break;
-    case "Healthcare":
+    case "Health":
       image = plusImage;
       break;
-    case "Infrastructure":
+    case "Housing":
       image = cityImage;
       break;
     case "Transport":

@@ -7,7 +7,7 @@ import { useAuthContext } from "../hooks/useAuthContext";
 function SubmitOpenQ() {
   const [questionTitle, setQuestionTitle] = useState("");
   const [questionContent, setQuestionContent] = useState("");
-  const [questionCategory, setQuestionCategory] = useState("");
+  const [questionCategory, setQuestionCategory] = useState("Environment");
   const { addDoc, state } = useCrud("OpenQuestions");
   const { user } = useAuthContext(); // importing user to get access to uid field on the user object
 
@@ -31,6 +31,7 @@ function SubmitOpenQ() {
     if (state.success) {
       setQuestionTitle("");
       setQuestionContent("");
+      setQuestionCategory("Environment");
       alert("Submitted!");
     }
   }, [state.success]); // will only fire when success property changes
