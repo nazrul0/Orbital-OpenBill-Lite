@@ -15,7 +15,7 @@ function SubmitOpenQ() {
     event.preventDefault();
     // getting the Owner id
     const id = user.uid;
-    const disp = user.displayName
+    const disp = user.displayName;
     // destructured addDoc hence can be directly used
     // by passing in the doc argument expected
     addDoc({
@@ -23,7 +23,8 @@ function SubmitOpenQ() {
       Content: questionContent,
       Category: questionCategory,
       OwnerID: id,
-      DisplayName: disp
+      DisplayName: disp,
+      ProposalType: "OpenQuestion",
     });
   };
 
@@ -67,10 +68,7 @@ function SubmitOpenQ() {
                   </select>
                 )}
 
-                {state.isPending && (
-                  <select disabled>
-                  </select>
-                )}
+                {state.isPending && <select disabled></select>}
               </div>
             </div>
           </section>

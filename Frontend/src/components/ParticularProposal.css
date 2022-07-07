@@ -1,0 +1,61 @@
+.mainProposalContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3rem;
+}
+
+.proposalContainer {
+  display: flex;
+  flex-direction: column;
+  width: 75vw;
+  align-items: center;
+  gap: 2rem;
+}
+
+.proposalHeader {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 20% 20% 20% 20% 20%;
+  grid-template-rows: 50% 50%;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 15px;
+  padding: 3% 3%;
+}
+
+.proposalTitle {
+  grid-column: 1/5;
+  grid-row: 1/2;
+}
+
+.proposalOwner {
+  grid-column: 1/5;
+  grid-row: 2/3;
+  align-self: end;
+}
+
+.categoryImage {
+  width: 30%;
+  grid-column: 5/6;
+  grid-row: 1/2;
+  place-self: center;
+}
+
+.proposalCategory {
+  grid-column: 5/6;
+  grid-row: 2/3;
+  justify-self: center;
+}
+
+.proposalContent {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 15px;
+  padding: 3% 3%;
+  gap: 1rem;
+}
+
+.proposalSubcontent {
+  margin-left: 3rem;
+}

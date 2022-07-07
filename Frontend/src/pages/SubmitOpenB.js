@@ -24,7 +24,8 @@ function SubmitOpenB() {
       Content: billContent,
       Category: billCategory,
       OwnerID: id,
-      DisplayName: disp
+      DisplayName: disp,
+      ProposalType: "OpenBill",
     });
   };
 
@@ -71,10 +72,7 @@ function SubmitOpenB() {
                   </select>
                 )}
 
-                {state.isPending && (
-                  <select disabled>
-                  </select>
-                )}
+                {state.isPending && <select disabled></select>}
               </div>
             </div>
           </section>

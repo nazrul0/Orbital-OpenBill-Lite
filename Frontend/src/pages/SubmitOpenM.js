@@ -24,7 +24,8 @@ function SubmitOpenM() {
       Content: motionContent,
       Category: motionCategory,
       OwnerID: id,
-      DisplayName: disp
+      DisplayName: disp,
+      ProposalType: "OpenMotion",
     });
   };
 
@@ -70,10 +71,7 @@ function SubmitOpenM() {
                   </select>
                 )}
 
-                {state.isPending && (
-                  <select disabled>
-                  </select>
-                )}
+                {state.isPending && <select disabled></select>}
               </div>
             </div>
           </section>
@@ -106,7 +104,7 @@ function SubmitOpenM() {
               {!state.isPending && (
                 <textarea
                   className="motionContentInput"
-                  maxLength="1000"
+                  maxLength="5000"
                   placeholder=""
                   onChange={(event) => {
                     setMotionContent(event.target.value);

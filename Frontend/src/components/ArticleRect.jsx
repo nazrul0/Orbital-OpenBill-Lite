@@ -9,11 +9,13 @@ import thumbprintImage from "../imgs/OB(thumbprint).png";
 import plusImage from "../imgs/OB(plus).png";
 import cityImage from "../imgs/OB(city).png";
 import busImage from "../imgs/OB(bus).png";
+import OB from "../imgs/OB(logo).png";
 
 function ArticleRect(props) {
   let image;
   switch (props.category) {
     default:
+      image = OB;
       break;
     case "Environment":
       image = treeImage;
