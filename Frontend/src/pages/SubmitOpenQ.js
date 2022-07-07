@@ -7,7 +7,7 @@ import { useAuthContext } from "../hooks/useAuthContext";
 function SubmitOpenQ() {
   const [questionTitle, setQuestionTitle] = useState("");
   const [questionContent, setQuestionContent] = useState("");
-  //const [questionCategory, setQuestionCategory] = useState("");
+  const [questionCategory, setQuestionCategory] = useState("Environment");
   const { addDoc, state } = useCrud("OpenQuestions");
   const { user } = useAuthContext(); // importing user to get access to uid field on the user object
 
@@ -21,7 +21,7 @@ function SubmitOpenQ() {
     addDoc({
       Title: questionTitle,
       Content: questionContent,
-      Category: "test",
+      Category: questionCategory,
       OwnerID: id,
     });
   };
@@ -31,6 +31,7 @@ function SubmitOpenQ() {
     if (state.success) {
       setQuestionTitle("");
       setQuestionContent("");
+      setQuestionCategory("Environment");
       alert("Submitted!");
     }
   }, [state.success]); // will only fire when success property changes
@@ -40,6 +41,31 @@ function SubmitOpenQ() {
       <PageTitle title="Submit an OpenQuestion" />
       <form>
         <div className="submitQuestionContainer">
+        <section className="categorySelect">
+          <h4>Choose a Category:</h4>
+          <div className="flex justify-center">
+            <div className="mb-3 xl:w-96">
+              <select
+                className="categoryMenu"
+                value={questionCategory}
+                onChange={(event) => {
+                  setQuestionCategory(event.target.value);
+                }}
+                aria-label="Default select example"
+              >
+                <option value="Environment">Environment</option>
+                <option value="Education">Education</option>
+                <option value="Economic">Economic</option>
+                <option value="Social Welfare">Social Welfare</option>
+                <option value="Gender">Gender</option>
+                <option value="Privacy/Security">Privacy/Security</option>
+                <option value="Health">Health</option>
+                <option value="Housing">Housing</option>
+                <option value="Transport">Transport</option>
+              </select>
+            </div>
+          </div>
+        </section>
           <section className="questionSection">
             <div className="sectionContainer">
               <h3 className="questionHeader">OpenQuestion Title</h3>
