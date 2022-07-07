@@ -57,28 +57,17 @@ function SubmitOpenQ() {
                     <option value="Environment">Environment</option>
                     <option value="Education">Education</option>
                     <option value="Economic">Economic</option>
-                    <option value="Financial">Financial</option>
                     <option value="Social Welfare">Social Welfare</option>
                     <option value="Gender">Gender</option>
                     <option value="Privacy/Security">Privacy/Security</option>
-                    <option value="Healthcare">Healthcare</option>
-                    <option value="Infrastructure">Infrastructure</option>
+                    <option value="Health">Health</option>
+                    <option value="Housing">Housing</option>
                     <option value="Transport">Transport</option>
                   </select>
                 )}
 
                 {state.isPending && (
                   <select disabled>
-                    <option value="Environment">Environment</option>
-                    <option value="Education">Education</option>
-                    <option value="Economic">Economic</option>
-                    <option value="Financial">Financial</option>
-                    <option value="Social Welfare">Social Welfare</option>
-                    <option value="Gender">Gender</option>
-                    <option value="Privacy/Security">Privacy/Security</option>
-                    <option value="Healthcare">Healthcare</option>
-                    <option value="Infrastructure">Infrastructure</option>
-                    <option value="Transport">Transport</option>
                   </select>
                 )}
               </div>

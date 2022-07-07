@@ -9,7 +9,7 @@ import { useCollection } from "../hooks/useCollection";
 import ProposalList from "../components/ProposalList";
 
 function ProposalsHome() {
-  const { docs, error } = useCollection("OpenMotions");
+  const { docs, error } = useCollection("OpenQuestions");
 
   return (
     <div className="proposalsHomeContainer">
