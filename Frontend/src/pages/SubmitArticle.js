@@ -19,7 +19,7 @@ function SubmitArticle() {
   const [articleTitle, setArticleTitle] = useState("");
   const [articleContent, setArticleContent] = useState("");
   const [articleCategory, setArticleCategory] = useState("Environment");
-  const [articles, setArticles] = useState([]);
+  // const [articles, setArticles] = useState([]);
   const articlesCollectionRef = collection(projFirestore, "Articles");
 
   // CREATE OpenQuestion document in database
@@ -35,20 +35,20 @@ function SubmitArticle() {
   };
 
   // READ all OpenQuestions from database
-  projFirestore
-    .collection("Articles")
-    .get()
-    .then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        articles.push({ Key: doc.id, Data: doc.data() });
-        // console.log(doc.id, " => ", doc.data());
-        // console.log("DATA: " + questions[0].Data.Category);
-      });
-    })
-    .catch((error) => {
-      console.log("Error getting documents: ", error);
-    });
-  console.log(articles);
+  // projFirestore
+  //   .collection("Articles")
+  //   .get()
+  //   .then((querySnapshot) => {
+  //     querySnapshot.forEach((doc) => {
+  //       articles.push({ Key: doc.id, Data: doc.data() });
+  //       // console.log(doc.id, " => ", doc.data());
+  //       // console.log("DATA: " + questions[0].Data.Category);
+  //     });
+  //   })
+  //   .catch((error) => {
+  //     console.log("Error getting documents: ", error);
+  //   });
+  // console.log(articles);
 
   useEffect(() => {
     console.log(articleTitle);
@@ -69,7 +69,7 @@ function SubmitArticle() {
                 onChange={(event) => {
                   setArticleCategory(event.target.value);
                 }}
-                aria-label="Default select example"
+                aria-label="Select Category"
               >
                 <option value="Environment">Environment</option>
                 <option value="Education">Education</option>

@@ -21,3 +21,8 @@
   width: 100px;
   align-self: center;
 }
+
+.proposalCategory {
+  align-self: center;
+  margin-bottom: -2rem;
+}
