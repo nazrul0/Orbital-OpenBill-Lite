@@ -1,51 +1,40 @@
 import React, { useState, useEffect } from "react";
 import PageTitle from "../components/PageTitle";
 import "./SubmitOpenB.css";
-import { projFirestore } from "../config/firebase";
-import {
-  collection,
-  getDocs,
-  addDoc,
-  updateDoc,
-  doc,
-  deleteDoc,
-  getDocsFromServer,
-  getDocsFromCache,
-} from "firebase/firestore";
+import { useCrud } from "../hooks/useCRUD";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 function SubmitOpenB() {
   const [billTitle, setBillTitle] = useState("");
   const [billContent, setBillContent] = useState("");
-  const [bills, setBills] = useState([]);
-  const billsCollectionRef = collection(projFirestore, "OpenBills");
+  //const [billCategory, setBillCategory] = useState("");
+  const { addDoc, state } = useCrud("OpenBills");
+  const { user } = useAuthContext(); // importing user to get access to uid field on the user object
 
-  // CREATE OpenQuestion document in database
-  const createOpenBill = async () => {
-    await addDoc(billsCollectionRef, {
+  const submitHandler = (event) => {
+    event.preventDefault();
+    // getting the Owner id
+    const id = user.uid;
+
+    // destructured addDoc hence can be directly used
+    // by passing in the doc argument expected
+    addDoc({
       Title: billTitle,
       Content: billContent,
-      OwnerID: "Test",
-      Category: "Test",
+      Category: "test",
+      OwnerID: id,
     });
-    console.log("Created!");
-    alert("Submitted!");
   };
 
-  // READ all OpenQuestions from database
-  projFirestore
-    .collection("OpenBills")
-    .get()
-    .then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        bills.push({ Key: doc.id, Data: doc.data() });
-        console.log(doc.id, " => ", doc.data());
-        // console.log("DATA: " + questions[0].Data.Category);
-      });
-    })
-    .catch((error) => {
-      console.log("Error getting documents: ", error);
-    });
-  console.log(bills);
+  // refreshing form once submitted
+  useEffect(() => {
+    if (state.success) {
+      setBillTitle("");
+      setBillContent("");
+      alert("Submitted!");
+    }
+  }, [state.success]); // will only fire when success property changes
+
 
   return (
     <div>
@@ -56,59 +45,56 @@ function SubmitOpenB() {
           <section className="billSection">
             <div className="billContainer">
               <h3 className="billHeader">OpenBill Title</h3>
-              <form>
+              {!state.isPending && (
                 <textarea
                   className="billTitleInput"
                   maxLength="200"
                   placeholder=""
+                  value={billTitle}
                   onChange={(event) => {
                     setBillTitle(event.target.value);
                   }}
                   required
                 ></textarea>
-              </form>
+              )}
+
+              {state.isPending && (
+                <textarea className="billTitleInput" disabled></textarea>
+              )}
             </div>
           </section>
 
           <section className="billSection">
             <div className="billContainer">
               <h3 className="billHeader">Elaboration</h3>
-              <form>
+              {!state.isPending && (
                 <textarea
                   className="billContentInput"
-                  maxLength="10000"
+                  maxLength="1000"
                   placeholder=""
+                  value={billContent}
                   onChange={(event) => {
                     setBillContent(event.target.value);
                   }}
                   required
                 ></textarea>
-              </form>
+              )}
+
+              {state.isPending && (
+                <textarea className="billContentInput" disabled></textarea>
+              )}
             </div>
           </section>
 
           <button
             type="submit"
             className="submitBillTitle"
-            onClick={createOpenBill}
+            onClick={submitHandler}
           >
-            Submit OpenQuestion
+            Submit OpenBill
           </button>
         </div>
       </form>
-
-      {/* <div className="billTestArea">
-        <p>TEST LOCATION</p>
-        {bills.map((bill) => {
-          return (
-            <div>
-              <p>Title: {bill.Data.Title}</p>
-              <p>Content: {bill.Data.Content}</p>
-            </div>
-          );
-        })}
-        <p>TEST LOCATION</p>
-      </div> */}
     </div>
   );
 }

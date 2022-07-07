@@ -52,7 +52,7 @@ export const useCrud = (collection) => {
     }
 
     const deleteDoc = async (doc) => {
-
+        // TBD
     }
 
     return {addDoc, deleteDoc, state}

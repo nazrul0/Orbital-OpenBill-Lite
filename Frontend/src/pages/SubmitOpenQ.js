@@ -7,7 +7,7 @@ import { useAuthContext } from "../hooks/useAuthContext";
 function SubmitOpenQ() {
   const [questionTitle, setQuestionTitle] = useState("");
   const [questionContent, setQuestionContent] = useState("");
-  const [questionCategory, setQuestionCategory] = useState("");
+  //const [questionCategory, setQuestionCategory] = useState("");
   const { addDoc, state } = useCrud("OpenQuestions");
   const { user } = useAuthContext(); // importing user to get access to uid field on the user object
 
@@ -17,7 +17,7 @@ function SubmitOpenQ() {
     const id = user.uid;
 
     // destructured addDoc hence can be directly used
-    // with passing in the document argument expected
+    // by passing in the doc argument expected
     addDoc({
       Title: questionTitle,
       Content: questionContent,

@@ -1,51 +1,40 @@
 import React, { useState, useEffect } from "react";
 import PageTitle from "../components/PageTitle";
 import "./SubmitOpenM.css";
-import { projFirestore } from "../config/firebase";
-import {
-  collection,
-  getDocs,
-  addDoc,
-  updateDoc,
-  doc,
-  deleteDoc,
-  getDocsFromServer,
-  getDocsFromCache,
-} from "firebase/firestore";
+import { useCrud } from "../hooks/useCRUD";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 function SubmitOpenM() {
   const [motionTitle, setMotionTitle] = useState("");
   const [motionContent, setMotionContent] = useState("");
-  const [motions, setMotions] = useState([]);
-  const motionsCollectionRef = collection(projFirestore, "OpenMotions");
+  //const [motionCategory, setMotionCategory] = useState("");
+  const { addDoc, state } = useCrud("OpenMotions");
+  const { user } = useAuthContext(); // importing user to get access to uid field on the user object
+  
+  const submitHandler = (event) => {
+    event.preventDefault();
+    // getting the Owner id
+    const id = user.uid;
 
-  // CREATE OpenQuestion document in database
-  const createOpenMotion = async () => {
-    await addDoc(motionsCollectionRef, {
+    // destructured addDoc hence can be directly used
+    // by passing in the doc argument that is expected
+    addDoc({
       Title: motionTitle,
       Content: motionContent,
-      OwnerID: "Test",
-      Category: "Test",
+      Category: "test",
+      OwnerID: id,
     });
-    console.log("Created!");
-    alert("Submitted!");
   };
 
-  // READ all OpenQuestions from database
-  projFirestore
-    .collection("OpenMotions")
-    .get()
-    .then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        motions.push({ Key: doc.id, Data: doc.data() });
-        console.log(doc.id, " => ", doc.data());
-        // console.log("DATA: " + questions[0].Data.Category);
-      });
-    })
-    .catch((error) => {
-      console.log("Error getting documents: ", error);
-    });
-  console.log(motions);
+  // refreshing form once submitted
+  useEffect(() => {
+    if (state.success) {
+      setMotionTitle("");
+      setMotionContent("");
+      alert("Submitted!");
+    }
+  }, [state.success]); // will only fire when success property changes
+  
 
   return (
     <div>
@@ -56,24 +45,29 @@ function SubmitOpenM() {
           <section className="motionSection">
             <div className="sectionContainer">
               <h3 className="motionHeader">OpenMotion Title</h3>
-              <form>
+              {!state.isPending && (
                 <textarea
                   className="motionTitleInput"
                   maxLength="200"
                   placeholder=""
+                  value={motionTitle}
                   onChange={(event) => {
                     setMotionTitle(event.target.value);
                   }}
                   required
                 ></textarea>
-              </form>
+              )}
+
+              {state.isPending && (
+                <textarea className="motionTitleInput" disabled></textarea>
+              )}
             </div>
           </section>
 
           <section className="motionSection">
             <div className="sectionContainer">
               <h3 className="motionHeader">Elaboration</h3>
-              <form>
+              {!state.isPending && (
                 <textarea
                   className="motionContentInput"
                   maxLength="1000"
@@ -83,32 +77,23 @@ function SubmitOpenM() {
                   }}
                   required
                 ></textarea>
-              </form>
+              )}
+
+              {state.isPending && (
+                <textarea className="motionContentInput" disabled></textarea>
+              )}
             </div>
           </section>
 
           <button
             type="submit"
             className="submitMotionTitle"
-            onClick={createOpenMotion}
+            onClick={submitHandler}
           >
             Submit OpenMotion
           </button>
         </div>
       </form>
-
-      {/* <div className="motionTestArea">
-        <p>TEST LOCATION</p>
-        {motions.map((motion) => {
-          return (
-            <div>
-              <p>Title: {motion.Data.Title}</p>
-              <p>Content: {motion.Data.Content}</p>
-            </div>
-          );
-        })}
-        <p>TEST LOCATION</p>
-      </div> */}
     </div>
   );
 }
