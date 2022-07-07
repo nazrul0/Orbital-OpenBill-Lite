@@ -13,7 +13,7 @@ function ProposalList({ proposals }) {
         <Link to={`/ProposalsHome/${proposal.id}`} key={proposal.id}>
           <ProposalCard
             title={proposal.Title}
-            author="user0"
+            author={proposal.DisplayName}
             category={proposal.Category}
           />
         </Link>
