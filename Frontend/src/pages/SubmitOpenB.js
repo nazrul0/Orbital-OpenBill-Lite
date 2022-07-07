@@ -15,6 +15,7 @@ function SubmitOpenB() {
     event.preventDefault();
     // getting the Owner id
     const id = user.uid;
+    const disp = user.displayName;
 
     // destructured addDoc hence can be directly used
     // by passing in the doc argument expected
@@ -23,6 +24,7 @@ function SubmitOpenB() {
       Content: billContent,
       Category: billCategory,
       OwnerID: id,
+      DisplayName: disp
     });
   };
 

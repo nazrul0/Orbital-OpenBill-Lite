@@ -15,6 +15,7 @@ function SubmitOpenM() {
     event.preventDefault();
     // getting the Owner id
     const id = user.uid;
+    const disp = user.displayName;
 
     // destructured addDoc hence can be directly used
     // by passing in the doc argument that is expected
@@ -23,6 +24,7 @@ function SubmitOpenM() {
       Content: motionContent,
       Category: motionCategory,
       OwnerID: id,
+      DisplayName: disp
     });
   };
 
