@@ -10,7 +10,7 @@ function ProposalList({ proposals }) {
     <div className="proposal_list">
       {proposals.length === 0 && <p>no proposals found.</p>}
       {proposals.map((proposal) => (
-        <Link to={`/ProposalsHome/${proposal.id}`} key={proposal.id}>
+        <Link to={`/ProposalsHome/${proposal.id}`}>
           <ProposalCard
             title={proposal.Title}
             author={proposal.OwnerID}
