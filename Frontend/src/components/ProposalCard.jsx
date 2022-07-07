@@ -9,11 +9,13 @@ import thumbprintImage from "../imgs/OB(thumbprint).png";
 import plusImage from "../imgs/OB(plus).png";
 import cityImage from "../imgs/OB(city).png";
 import busImage from "../imgs/OB(bus).png";
+import OB from "../imgs/OB(logo).png";
 
 function ProposalCard(props) {
   let image;
   switch (props.category) {
     default:
+      image = OB;
       break;
     case "Environment":
       image = treeImage;
@@ -22,9 +24,6 @@ function ProposalCard(props) {
       image = educationImage;
       break;
     case "Economic":
-      image = moneyImage;
-      break;
-    case "Financial":
       image = moneyImage;
       break;
     case "Social Welfare":
@@ -36,10 +35,10 @@ function ProposalCard(props) {
     case "Privacy/Security":
       image = thumbprintImage;
       break;
-    case "Healthcare":
+    case "Health":
       image = plusImage;
       break;
-    case "Infrastructure":
+    case "Housing":
       image = cityImage;
       break;
     case "Transport":
@@ -49,7 +48,6 @@ function ProposalCard(props) {
   return (
     <div className="cardContainer">
       <h6 className="author">By {props.author}</h6>
-      <h5 className="proposalCategory">{props.category}</h5>
       <img src={image} alt="Proposal Icon" />
       <h4 className="title">{props.title}</h4>
     </div>
