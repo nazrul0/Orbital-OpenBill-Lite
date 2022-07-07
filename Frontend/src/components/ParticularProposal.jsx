@@ -9,7 +9,7 @@ function Proposal(props) {
   return (
     <div>
       <h4>{curr.Title}</h4>
-      <h5>By {curr.displayName}</h5>
+      <h5>By {curr.DisplayName}</h5>
       <p>
         {curr.Content}
       </p>
