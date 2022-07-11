@@ -51,7 +51,7 @@ function ArticleRect(props) {
       <div className="articlePreviewContainer">
         <h2 className="articlePreviewTitle">{props.title}</h2>
         <h3 className="articlePreviewCategory">{props.category}</h3>
-        <p className="articlePreviewBody">{props.content}</p>
+        {/* <p className="articlePreviewBody">{props.content}</p> */}
         <img className="articleIcon" src={image} alt="Article Icon" />
       </div>
     </div>
