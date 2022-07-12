@@ -19,8 +19,12 @@ function SubmitArticle() {
     const id = user.uid;
     const disp = user.displayName;
 
-    // destructured addDoc hence can be directly used
-    // by passing in the doc argument expected
+    if(articleContent === "" || articleTitle === ""){
+      alert("All fields are required");
+      return;
+    }
+
+    // destructured addDoc hence it can be directly used
     addDoc({
       Title: articleTitle,
       Content: articleContent,
@@ -55,7 +59,7 @@ function SubmitArticle() {
   // };
 
   useEffect(() => {
-    console.log(articleTitle);
+    console.log(articleContent)
   });
 
   return (
@@ -119,7 +123,7 @@ function SubmitArticle() {
             <QuillEditor
               sendUp={setArticleContent}
               className="editor-style"
-              readMode={state.isPending}
+              readMode={false}
             />
           </div>
         </section>

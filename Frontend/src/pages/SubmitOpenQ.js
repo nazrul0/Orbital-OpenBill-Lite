@@ -20,8 +20,13 @@ function SubmitOpenQ() {
     // getting the Owner id
     const id = user.uid;
     const disp = user.displayName;
+
+    if(questionTitle === "" || questionContent === "" || questionBackground===""){
+      alert("All fields are required");
+      return;
+    }
+
     // destructured addDoc hence can be directly used
-    // by passing in the doc argument expected
     addDoc({
       Title: questionTitle,
       Content: questionContent,
@@ -110,7 +115,7 @@ function SubmitOpenQ() {
                 <QuillEditor
                   sendUp={setQuestionContent}
                   className="editor-style"
-                  readMode={state.isPending}
+                  readMode={false}
                 />
             </div>
           </section>
@@ -122,7 +127,7 @@ function SubmitOpenQ() {
                 <QuillEditor
                   sendUp={setQuestionBackground}
                   className="editor-style"
-                  readMode={state.isPending}
+                  readMode={false}
                 />
             </div>
           </section>
