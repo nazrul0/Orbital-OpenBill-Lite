@@ -21,7 +21,7 @@ function SubmitOpenQ() {
     const id = user.uid;
     const disp = user.displayName;
 
-    if(questionTitle === "" || questionContent === "" || questionBackground===""){
+    if(questionTitle === "" || questionContent === "" || questionBackground === ""){
       alert("All fields are required");
       return;
     }

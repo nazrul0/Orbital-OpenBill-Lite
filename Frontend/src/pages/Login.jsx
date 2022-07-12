@@ -62,8 +62,8 @@ function Login() {
             onChange={passwordChangeHandler}
           ></Input>
 
-          {!pending && <Button type="submit">Log in</Button>}
-          {pending && <Button disabled >Loading</Button>}
+          {!pending && <button type="submit" className="m-2 pl-5 pr-5 pt-1 pb-1 text-white rounded-full bg-indigo-500">Log in</button>}
+          {pending && <button disabled >Loading</button>}
           {error && <p>{error}</p>}
         </form>
       </div>

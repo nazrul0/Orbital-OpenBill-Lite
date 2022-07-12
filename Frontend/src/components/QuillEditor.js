@@ -12,7 +12,6 @@ function QuillEditor({sendUp, readMode, payload}) {
   // content here is DIFF from contents above
   // content is 1 of the 4 arguments expected by react-quill for a handler function
   function handleChange (content, delta, source, editor) {
-    
     // we set contents after we get a quill delta
     setContents(editor.getContents());
     // we send the contentS up to parent. Not content- that would be html string

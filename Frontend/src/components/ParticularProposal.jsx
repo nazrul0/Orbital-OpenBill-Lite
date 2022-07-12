@@ -64,7 +64,7 @@ function Proposal(props) {
               <h2 className="proposalTitle">{curr.Title}</h2>
               <h4 className="proposalOwner">By {curr.DisplayName}</h4>
               <img src={image} alt="Category" className="categoryImage" />
-              <h4 className="proposalCategory">{curr.Category}</h4>
+              <h5 className="proposalCategory ">{curr.Category}</h5>
             </section>
   
             <section className="proposalContent">
