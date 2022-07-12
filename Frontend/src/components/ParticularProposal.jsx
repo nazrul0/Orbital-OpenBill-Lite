@@ -70,7 +70,7 @@ function Proposal(props) {
             <section className="proposalContent">
               <h3>Question</h3>
               <QuillEditor
-                readMode="true"
+                readMode={true}
                 payload={JSON.parse(curr.Content)}
               /> 
             </section>
@@ -78,7 +78,7 @@ function Proposal(props) {
             <section className="proposalContent">
               <h3>Background</h3>
               <QuillEditor
-                readMode="true"
+                readMode={true}
                 payload={JSON.parse(curr.Background)}
               /> 
             </section>
@@ -89,9 +89,72 @@ function Proposal(props) {
   }
   else{
     return (
-      <h3>
-        An openbill- TBD
-      </h3>
+      <div>
+        <PageTitle title={curr.ProposalType} />
+  
+        <div className="mainProposalContainer">
+          <div className="proposalContainer">
+            <section className="proposalHeader">
+              <h2 className="proposalTitle">{curr.Title}</h2>
+              <h4 className="proposalOwner">By {curr.DisplayName}</h4>
+              <img src={image} alt="Category" className="categoryImage" />
+              <h5 className="proposalCategory ">{curr.Category}</h5>
+            </section>
+  
+            <section className="proposalContent">
+              <h3>Related Laws</h3>
+              <QuillEditor
+                readMode={true}
+                payload={JSON.parse(curr.RelatedLaws)}
+              /> 
+            </section>
+
+            <section className="proposalContent">
+              <h3>Current Problems</h3>
+              <QuillEditor
+                readMode={true}
+                payload={JSON.parse(curr.CurrentProblems)}
+              /> 
+            </section>
+
+            <section className="proposalContent">
+              <h3>Summary of Recommendations</h3>
+              <QuillEditor
+                readMode={true}
+                payload={JSON.parse(curr.Summary)}
+              /> 
+            </section>
+
+            <section className="proposalContent">
+              <h3>Elaboration: Part 1</h3>
+              <QuillEditor
+                readMode={true}
+                payload={JSON.parse(curr.Elaboration1)}
+              /> 
+            </section>
+
+            {!(curr.Elaboration2 === "") && (
+              <section className="proposalContent">
+                <h3>Elaboration: Part 2</h3>
+                <QuillEditor
+                  readMode={true}
+                  payload={JSON.parse(curr.Elaboration2)}
+                /> 
+              </section>
+            )}
+
+            {!(curr.Bibliography === "") && (
+              <section className="proposalContent">
+                <h3>Bibliography</h3>
+                <QuillEditor
+                  readMode={true}
+                  payload={JSON.parse(curr.Bibliography)}
+                /> 
+              </section>
+            )}
+          </div>
+        </div>
+      </div>
     );
   }
   
