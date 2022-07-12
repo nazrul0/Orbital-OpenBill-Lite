@@ -4,7 +4,13 @@ import "./Button.css";
 function Button(props) {
   return (
     <div>
-      <button className="customButton">{props.text}</button>
+      <button
+        className="customButton"
+        disabled={props.disabled}
+        onClick={props.onClick}
+      >
+        {props.text}
+      </button>
     </div>
   );
 }

@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
 import logo from "../imgs/logo.png";
-import {useLogout} from "../hooks/useLogout";
+import { useLogout } from "../hooks/useLogout";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { Fragment } from "react";
 
@@ -18,7 +18,8 @@ function Header() {
           className="siteName"
           style={{ textDecoration: "none", color: "black" }}
           to="/"
-        >OpenBill SG
+        >
+          OpenBill SG
         </Link>
       </div>
       <div className="navBar">
@@ -37,12 +38,15 @@ function Header() {
             <Link className="navItem" to="/Create">
               Create
             </Link>
+            <Link className="navItem" to={`/UserProfile/${user.uid}`}>
+              Profile
+            </Link>
             <Link className="navItem" to="ProposalsHome" onClick={logout}>
               Logout
             </Link>
           </Fragment>
         )}
-        
+
         {!user && (
           <Fragment>
             <Link className="navItem" to="/Login">
@@ -51,7 +55,7 @@ function Header() {
             <Link className="navItem" to="/Signup">
               Sign up
             </Link>
-        </Fragment>
+          </Fragment>
         )}
       </div>
     </div>

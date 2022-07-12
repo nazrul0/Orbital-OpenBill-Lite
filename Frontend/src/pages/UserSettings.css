@@ -1,0 +1,15 @@
+.settingsMainContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.userSettingsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 75vw;
+}
+
+.userDisplayName {
+  color: rgba(49, 16, 165, 0.75);
+}
