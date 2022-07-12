@@ -10,7 +10,6 @@ function Create() {
     <div>
       <PageTitle title="Create" />
       <div className="createContainer">
-        <h2>What would you like to propose today?</h2>
         <div className="createBody">
           {/* <CreateCard
             className="createType"

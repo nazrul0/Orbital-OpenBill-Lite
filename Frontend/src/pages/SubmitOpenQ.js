@@ -3,11 +3,15 @@ import PageTitle from "../components/PageTitle";
 import "./SubmitOpenQ.css";
 import { useCrud } from "../hooks/useCRUD";
 import { useAuthContext } from "../hooks/useAuthContext";
+import QuillEditor from "../components/QuillEditor";
+import "react-quill/dist/quill.snow.css";
 
 function SubmitOpenQ() {
   const [questionTitle, setQuestionTitle] = useState("");
-  const [questionContent, setQuestionContent] = useState("");
   const [questionCategory, setQuestionCategory] = useState("Environment");
+  const [questionContent, setQuestionContent] = useState("");
+  const [questionBackground, setQuestionBackground] = useState("");
+
   const { addDoc, state } = useCrud("OpenQuestions");
   const { user } = useAuthContext(); // importing user to get access to uid field on the user object
 
@@ -21,6 +25,7 @@ function SubmitOpenQ() {
     addDoc({
       Title: questionTitle,
       Content: questionContent,
+      Background: questionBackground,
       Category: questionCategory,
       OwnerID: id,
       DisplayName: disp,
@@ -33,14 +38,16 @@ function SubmitOpenQ() {
     if (state.success) {
       setQuestionTitle("");
       setQuestionContent("");
+      setQuestionBackground("");
       setQuestionCategory("Environment");
-      alert("Submitted!");
+      //alert("Submitted!");
+      window.location.reload(false);
     }
   }, [state.success]); // will only fire when success property changes
 
   return (
     <div>
-      <PageTitle title="Submit an OpenQuestion" />
+      <PageTitle title="Create an OpenQuestion" />
       <form>
         <div className="submitQuestionContainer">
           <section className="categorySelect">
@@ -75,7 +82,8 @@ function SubmitOpenQ() {
 
           <section className="questionSection">
             <div className="sectionContainer">
-              <h3 className="questionHeader">OpenQuestion Title</h3>
+              <h3 className="questionHeader">Title</h3>
+              <h5>Give a brief title</h5>
               {!state.isPending && (
                 <textarea
                   className="questionTitleInput"
@@ -97,37 +105,45 @@ function SubmitOpenQ() {
 
           <section className="questionSection">
             <div className="sectionContainer">
-              <h3 className="questionHeader">Elaboration</h3>
-              {!state.isPending && (
-                <textarea
-                  className="questionContentInput"
-                  maxLength="1000"
-                  placeholder=""
-                  value={questionContent}
-                  onChange={(event) => {
-                    setQuestionContent(event.target.value);
-                  }}
-                  required
-                ></textarea>
-              )}
-
-              {state.isPending && (
-                <textarea className="questionContentInput" disabled></textarea>
-              )}
+              <h3 className="questionHeader">Question content</h3>
+              <h5>Elucidate the Question here:</h5>
+                <QuillEditor
+                  sendUp={setQuestionContent}
+                  className="editor-style"
+                  readMode={state.isPending}
+                />
             </div>
           </section>
 
+          <section className="questionSection">
+            <div className="sectionContainer">
+              <h3 className="questionHeader">Background</h3>
+              <h5>What is the issue that the OpenQuestion highlights?</h5>
+                <QuillEditor
+                  sendUp={setQuestionBackground}
+                  className="editor-style"
+                  readMode={state.isPending}
+                />
+            </div>
+          </section>
+
+          <div className="center underline">
+            <a href="https://www.mof.gov.sg/news-publications/parliamentary-replies/response-to-parliamentary-questions-on-inflation-and-cost-of-living">
+            See a past Parliamentary Question
+            </a>
+          </div>
+
           <button
             type="submit"
-            className="submitQuestionTitle"
             onClick={submitHandler}
+            className="m-2 pl-8 p-1 pr-8 bg-indigo-500 text-white rounded-lg"
           >
-            Submit OpenQuestion
+            Publish OpenQuestion
           </button>
 
-          {/* <p className="text-3xl underline">TEST LOCATION</p> */}
         </div>
       </form>
+      
     </div>
   );
 }

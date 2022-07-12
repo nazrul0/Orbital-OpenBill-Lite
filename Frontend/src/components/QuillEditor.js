@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 
-// sendUp is the prop passed in from the parent. We pass a function,
-// hence we destructure sendUp to use associated function below
-function QuillEditor({sendUp}) {
+// props have been destructured
+// sendUp is the prop passed in from the parent- which is a function
+// payload prop is only used for readOnly case
+function QuillEditor({sendUp, readMode, payload}) {
   // we track the contents with local state
   const [contents, setContents] = useState("");
   
@@ -19,15 +20,29 @@ function QuillEditor({sendUp}) {
     sendUp(JSON.stringify(contents));
   }  
 
-  return (
-    <div>
-      <ReactQuill 
-        value={contents} 
-        onChange={handleChange} 
-        theme="snow"
-      />
-    </div>
-  );
+  if(readMode === false){
+    return (
+      <div>
+        <ReactQuill 
+          value={contents} 
+          onChange={handleChange} 
+          theme="snow"
+        />
+      </div>
+    );
+  }
+  else{
+    return(
+      <div>
+        <ReactQuill 
+          value={payload} 
+          theme="bubble"
+          readOnly="true"
+        />
+      </div>
+    )
+  }
+
 }
 
 export default QuillEditor;

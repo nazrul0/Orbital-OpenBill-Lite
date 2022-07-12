@@ -119,6 +119,7 @@ function SubmitArticle() {
             <QuillEditor
               sendUp={setArticleContent}
               className="editor-style"
+              readMode={state.isPending}
             />
           </div>
         </section>
