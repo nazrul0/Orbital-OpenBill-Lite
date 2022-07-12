@@ -41,11 +41,9 @@ function SubmitOpenB() {
 
   return (
     <div>
-      <PageTitle title="Submit an OpenBill" />
+      <PageTitle title="Create an OpenQuestion" />
       <form>
-        <div className="submitBillContainer">
-          {/* <section className="questionSection">Category?</section> */}
-
+        <div className="submitQuestionContainer">
           <section className="categorySelect">
             <h4>Choose a Category:</h4>
             <div className="flex justify-center">
@@ -53,16 +51,15 @@ function SubmitOpenB() {
                 {!state.isPending && (
                   <select
                     className="categoryMenu"
-                    value={billCategory}
+                    value={questionCategory}
                     onChange={(event) => {
-                      setBillCategory(event.target.value);
+                      setQuestionCategory(event.target.value);
                     }}
                     aria-label="Select Category"
                   >
                     <option value="Environment">Environment</option>
                     <option value="Education">Education</option>
                     <option value="Economic">Economic</option>
-                    <option value="Financial">Financial</option>
                     <option value="Social Welfare">Social Welfare</option>
                     <option value="Gender">Gender</option>
                     <option value="Privacy/Security">Privacy/Security</option>
@@ -77,59 +74,70 @@ function SubmitOpenB() {
             </div>
           </section>
 
-          <section className="billSection">
-            <div className="billContainer">
-              <h3 className="billHeader">OpenBill Title</h3>
+          <section className="questionSection">
+            <div className="sectionContainer">
+              <h3 className="questionHeader">Title</h3>
+              <h5>Give a brief title</h5>
               {!state.isPending && (
                 <textarea
-                  className="billTitleInput"
+                  className="questionTitleInput"
                   maxLength="200"
                   placeholder=""
-                  value={billTitle}
+                  value={questionTitle}
                   onChange={(event) => {
-                    setBillTitle(event.target.value);
+                    setQuestionTitle(event.target.value);
                   }}
                   required
                 ></textarea>
               )}
 
               {state.isPending && (
-                <textarea className="billTitleInput" disabled></textarea>
+                <textarea className="questionTitleInput" disabled></textarea>
               )}
             </div>
           </section>
 
-          <section className="billSection">
-            <div className="billContainer">
-              <h3 className="billHeader">Elaboration</h3>
-              {!state.isPending && (
-                <textarea
-                  className="billContentInput"
-                  maxLength="1000"
-                  placeholder=""
-                  value={billContent}
-                  onChange={(event) => {
-                    setBillContent(event.target.value);
-                  }}
-                  required
-                ></textarea>
-              )}
-
-              {state.isPending && (
-                <textarea className="billContentInput" disabled></textarea>
-              )}
+          <section className="questionSection">
+            <div className="sectionContainer">
+              <h3 className="questionHeader">Question content</h3>
+              <h5>Elucidate the Question here:</h5>
+                <QuillEditor
+                  sendUp={setQuestionContent}
+                  className="editor-style"
+                  readMode={false}
+                />
             </div>
           </section>
+
+          <section className="questionSection">
+            <div className="sectionContainer">
+              <h3 className="questionHeader">Background</h3>
+              <h5>What is the issue that the OpenQuestion highlights?</h5>
+                <QuillEditor
+                  sendUp={setQuestionBackground}
+                  className="editor-style"
+                  readMode={false}
+                />
+            </div>
+          </section>
+
+          <div className="center underline">
+            <a href="https://www.mof.gov.sg/news-publications/parliamentary-replies/response-to-parliamentary-questions-on-inflation-and-cost-of-living">
+            See a past Parliamentary Question
+            </a>
+          </div>
 
           <button
             type="submit"
-            className="submitBillTitle"
             onClick={submitHandler}
+            className="m-2 pl-8 p-1 pr-8 bg-indigo-500 text-white rounded-lg"
           >
-            Submit OpenBill
+            Publish OpenQuestion
           </button>
+
         </div>
       </form>
+      
     </div>
   );
 }
