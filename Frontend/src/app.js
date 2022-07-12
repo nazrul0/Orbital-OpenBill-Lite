@@ -38,9 +38,6 @@ function App() {
             {user && (
               <Route path="/SubmitOpenQuestion/" element={<SubmitOpenQ />} />
             )}
-            {user && (
-              <Route path="/SubmitOpenMotion" element={<SubmitOpenM />} />
-            )}
             {user && <Route path="/SubmitOpenBill" element={<SubmitOpenB />} />}
             {user && (
               <Route path="/SubmitArticle" element={<SubmitArticle />} />

@@ -31,14 +31,6 @@ function Create() {
             <div className="createCardIconContainer">
               <img className="createCardIcon" src={logo} alt="Option Icon" />
             </div>
-            <Link className="createType" to="/SubmitOpenMotion">
-              OpenMotion
-            </Link>
-          </div>
-          <div className="createCardContainer">
-            <div className="createCardIconContainer">
-              <img className="createCardIcon" src={logo} alt="Option Icon" />
-            </div>
             <Link className="createType" to="/SubmitOpenBill">
               OpenBill
             </Link>
