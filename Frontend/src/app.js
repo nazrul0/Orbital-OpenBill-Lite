@@ -16,6 +16,8 @@ import SubmitArticle from "./pages/SubmitArticle.js";
 import SubmitFAQ from "./pages/SubmitFAQ.js";
 import Proposal from "./components/ParticularProposal.jsx";
 //import ErrorPage from "./pages/ErrorPage.jsx";
+import UserProfile from "./pages/UserProfile.js";
+import UserSettings from "./pages/UserSettings.js";
 import { useAuthContext } from "./hooks/useAuthContext";
 
 function App() {
@@ -41,6 +43,15 @@ function App() {
             {user && <Route path="/SubmitOpenBill" element={<SubmitOpenB />} />}
             {user && (
               <Route path="/SubmitArticle" element={<SubmitArticle />} />
+            )}
+            {user && (
+              <Route path="/UserProfile/:id" element={<UserProfile />} />
+            )}
+            {user && (
+              <Route
+                path="/UserProfile/:id/Settings"
+                element={<UserSettings />}
+              />
             )}
             <Route
               path="*"

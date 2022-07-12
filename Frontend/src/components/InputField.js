@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
-import './InputField.css';
+import "./InputField.css";
 
-const Input = props => {
+const Input = (props) => {
   return (
     <div className="input">
       <label htmlFor={props.id}>{props.label}</label>
@@ -12,6 +12,7 @@ const Input = props => {
         id={props.id}
         value={props.value}
         onChange={props.onChange}
+        required={props.required}
       />
     </div>
   );
