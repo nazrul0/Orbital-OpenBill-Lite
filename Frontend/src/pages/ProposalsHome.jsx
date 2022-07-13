@@ -18,6 +18,9 @@ function ProposalsHome() {
         <Link id="shareLink" className="navItem" to="/Create">
           Have a proposal to share?
         </Link>
+      </div>
+
+      <div className="grid justify-center">
         <div className="flex flex-row">
           <SearchBar type="text" placeholder="Search Proposals or Users" />
           <Button text="Filter" />

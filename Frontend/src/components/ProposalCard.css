@@ -19,9 +19,10 @@
 }
 
 .cardContainer img {
-  height: 150px;
-  width: 150px;
+  height: 110px;
+  width: auto;
   align-self: center;
+  justify-self: center;
 }
 
 .proposalCategory {
