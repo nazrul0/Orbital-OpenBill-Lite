@@ -3,16 +3,18 @@
   gap: 1rem;
   justify-content: center;
 }
-
+/*
 .gridContainer {
   display: flex;
   justify-content: center;
 }
+*/
 
 .proposalsBody {
   margin-bottom: 4rem;
 }
 
+/* 
 .proposalGrid {
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;
@@ -23,11 +25,13 @@
   justify-items: center;
   margin-top: 3rem;
 }
+*/
 
 .proposalsHomeContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* background-color: aqua; */
 }
 
 #shareLink {

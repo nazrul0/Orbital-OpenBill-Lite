@@ -63,9 +63,9 @@ function SubmitOpenB() {
     }
   }, [state.success]); // will only fire when success property changes
 
-  useEffect(() => {
-    console.log(elabHow)
-  }, [elabHow])
+  // useEffect(() => {
+  //   console.log(elabHow)
+  // }, [elabHow])
 
   if(state.isPending === false){
     return (

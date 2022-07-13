@@ -3,7 +3,7 @@ import PageTitle from "../components/PageTitle";
 //import ProposalCard from "../components/ProposalCard";
 import SearchBar from "../components/SearchBar";
 import Button from "../components/Button";
-import "./ProposalHome.css";
+//import "./ProposalHome.css";
 import { Link } from "react-router-dom";
 import { useCollection } from "../hooks/useCollection";
 import ProposalList from "../components/ProposalList";
@@ -12,23 +12,22 @@ function ProposalsHome() {
   const { docs, error } = useCollection("OpenBills");
 
   return (
-    <div className="proposalsHomeContainer">
-      <PageTitle title="Proposals Home" />
-      <Link id="shareLink" className="navItem" to="/Create">
-        Have a proposal to share?
-      </Link>
-      <section className="proposalsBody">
-        <section className="searchSection">
+    <div className="flex flex-col container mx-auto">
+      <div className="grid justify-items-center">
+        <PageTitle title="Proposals Home" />
+        <Link id="shareLink" className="navItem" to="/Create">
+          Have a proposal to share?
+        </Link>
+        <div className="flex flex-row">
           <SearchBar type="text" placeholder="Search Proposals or Users" />
           <Button text="Filter" />
-        </section>
-        <section>
-          <div>
-            {error && <p>{error}</p>}
-            {docs && <ProposalList proposals={docs} />}
-          </div>
-        </section>
-      </section>
+        </div>
+      </div>
+      
+      <div className="ml-10 mr-10">
+        {docs && <ProposalList proposals={docs} />} 
+        {error && <p>{error}</p>}
+      </div>    
     </div>
   );
 }

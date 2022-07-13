@@ -48,8 +48,10 @@ function ProposalCard(props) {
   return (
     <div className="cardContainer">
       <h6 className="author">By {props.author}</h6>
+      <h6>HI</h6>
       <img src={image} alt="Proposal Icon" />
       <h4 className="title">{props.title}</h4>
+      
     </div>
   );
 }
