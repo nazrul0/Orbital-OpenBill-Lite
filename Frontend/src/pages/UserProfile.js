@@ -18,7 +18,7 @@ function UserProfile() {
 
   useEffect(() => {
     const unsub = projFirestore
-      .collection("OpenMotions")
+      .collection("OpenBills")
       .where("OwnerID", "==", id)
       .onSnapshot(
         (querySnapshot) => {
