@@ -44,6 +44,6 @@
   }
 
   .landingExplainer1{
-    @apply mx-48 py-4 px-24 font-main text-lg text-white font-medium text-center bg-black rounded-xl
+    @apply mx-48 py-4 px-24 font-main leading-loose text-lg text-white font-medium text-center bg-black rounded-xl
   }
 }

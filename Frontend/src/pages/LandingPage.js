@@ -30,13 +30,9 @@ function LandingPage() {
         <div className="mt-12 mb-6 mx-10 py-2 bg-black uppercase tracking-widest rounded-lg drop-shadow-2xl text-teal-300 center font-title">
           <h3 className="md:text-4xl">Yes- you can make a real impact.</h3>
         </div>
-        <div className="lg:landingExplainer1 text-white mx-20 mb-10 px-8 font-main font-medium text-center ">
+        <div className="lg:landingExplainer1 leading-loose text-white mx-20 mb-10 px-8 font-main font-medium text-center ">
           <p>
-            What if there was a way for your thoughts on social and policy
-            issues to have a more real impact- as ideas contributing to policy
-            discourse? That's the question we set out to answer- and by building the only
-            crowdsourced policy recommendation and feedback platform in
-            Singapore, we're hoping to empower you to do just that.
+            What if there existed a way, far more real than spreading awareness on social media, for you to constructively impact the social and policy issues that matter to you? What if there existed a platform to facilitate the expression of your ideas towards public discourse? These were, and remain, the central questions that undergirded the genesis of OpenBill. Today, by building the first crowdsourced policy recommendation and feedback platform in Singapore, we're hoping to answer those two questions- and empower you to do the same.
           </p>
           <p className="mt-8">Get creating on Openbill today.</p>
         </div>
