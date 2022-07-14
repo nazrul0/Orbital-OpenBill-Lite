@@ -42,4 +42,8 @@
       m-0
       focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none;
   }
+
+  .landingExplainer1{
+    @apply mx-48 py-4 px-24 font-main leading-loose text-lg text-white font-medium text-center bg-black rounded-xl
+  }
 }

@@ -1,34 +1,20 @@
 const Data = [
   {
-    question: "What is OpenBill?",
+    question: "What is OpenBill? How does it work?",
     answer:
-      "OpenBill lite is a platform that aims to bridge the gap in outcomes between the use of both informal social media platforms and formal government-affiliated platforms for active citizenship. On OpenBill, users will be able to submit three types of proposals. Besides making constructive proposals, users can also contribute self-written articles to share their thoughts on pertinent issues. This will foster discussion in the community and allow OpenBill to function as a place where ground-up sentiments can potentially transform into legislative initiatives.",
-  },
-  {
-    question: "What can I do on OpenBill?",
-    answer:
-      "At Proposals Home, you can view or submit proposals. If you wish to share or browse user articles, head over to The Column.",
-  },
-  {
-    question: "How do user submissions work on OpenBill?",
-    answer:
-      "Users may log in and go to Create, where they can choose to start working on an OpenBill, OpenQuestion or OpenMotion. Alternatively, they can also head to The Column to start contributing articles.",
+      "OpenBill SG is a platform that aims to bridge the gap between the ineffectiveness associated with the use of informal social media platform for active citizenship and the lack of accessibility associated with formal government platforms. As an independently-produced product, OpenBill lets users submit two types of carefully structured proposals (OpenQuestions and OpenBills) to facilitate the expression of their ideas. The format of these propsals echo documents or instruments used in Parliament, and were made following consultation with MP teams' experience. These proposals can then be viewed by MP teams or policymaking departments. Aside from the creation of Proposals, OpenBill also hosts writing in the form of articles, striving to create a rich, self-sustaining community of thinkers.",
   },
   {
     question: "What are the different types of proposals?",
     answer:
-      "OpenBill: A submission similar in format to parliamentary bills for ease of perusal by Members of Parliament. For example, someone seeking to make amendments to Section 377A can submit a draft bill here.\nOpenMotion: A user who wants to foster parliamentary discussion on a particular topic can submit an OpenMotion for consideration.\nOpenQuestion: A user can submit an OpenQuestion for any simple queries for their representatives",
-  },
-  {
-    question: "Are there any plans to implement new features?",
-    answer: "Yes, to be updated soon!",
+      "OpenBill SG offers proposals in two flavours: OpenQuestions and the namesake, OpenBills. An OpenQuestion is a more accessible format, modelled after Parliamentary Questions. This lets individuals zero in on a single thread of a topic. For those with more knowledge, experience, or simply more thoughts, there exists OpenBill. Modelled after parliamentary Bills, white papers and reports presented to parliament, it offers the structure for one to present cohesive and detailed arguments, explanations or recommendations on a extensive variety of issues.",
   },
   {
     question: "Who is the team behind OpenBill?",
     answer: "To be updated soon!",
   },
   {
-    question: "Where can I contact the team for any further queries?",
+    question: "Where can I contact the team for any further queries or feature requests?",
     answer: "You may submit your question using the link below this section.",
   },
 ];

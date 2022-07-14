@@ -11,7 +11,7 @@ import Column from "./pages/Column";
 import Create from "./pages/Create";
 import SubmitOpenQ from "./pages/SubmitOpenQ.js";
 import SubmitOpenB from "./pages/SubmitOpenB.js";
-import SubmitOpenM from "./pages/SubmitOpenM.js";
+//import SubmitOpenM from "./pages/SubmitOpenM.js";
 import SubmitArticle from "./pages/SubmitArticle.js";
 import SubmitFAQ from "./pages/SubmitFAQ.js";
 import Proposal from "./components/ParticularProposal.jsx";

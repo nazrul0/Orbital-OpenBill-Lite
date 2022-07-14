@@ -37,7 +37,7 @@ function Login() {
 
   // the element to return
   return (
-    <div className="">
+    <div className="bg-slate-100">
       <PageTitle title="Login or Sign Up" />
       <div className="login_box">
         <form onSubmit={submitHandler}>

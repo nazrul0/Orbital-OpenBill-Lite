@@ -69,7 +69,7 @@ function SubmitOpenB() {
 
   if(state.isPending === false){
     return (
-      <div>
+      <div className="bg-slate-100 font-main">
         <PageTitle title="Create an OpenBill" />
         <form>
           <div className="submitQuestionContainer">
@@ -103,7 +103,7 @@ function SubmitOpenB() {
               </div>
             </section>
   
-            <section className="questionSection">
+            <section className="questionSection bg-white">
               <div className="sectionContainer">
                 <h3 className="questionHeader">Title</h3>
                 <h5>Write a brief title</h5>
@@ -126,7 +126,7 @@ function SubmitOpenB() {
               </div>
             </section>
   
-            <section className="questionSection">
+            <section className="questionSection bg-white">
               <div className="sectionContainer">
                 <h3 className="questionHeader">Related laws</h3>
                 <h5>Which acts/policies/laws are likely to be affected?</h5>
@@ -138,7 +138,7 @@ function SubmitOpenB() {
               </div>
             </section>
   
-            <section className="questionSection">
+            <section className="questionSection bg-white">
               <div className="sectionContainer">
                 <h3 className="questionHeader">Current Problems</h3>
                 <h5>What’s wrong? How are current policies insufficient/ ineffective?</h5>
@@ -150,7 +150,7 @@ function SubmitOpenB() {
               </div>
             </section>
   
-            <section className="questionSection">
+            <section className="questionSection bg-white">
               <div className="sectionContainer">
                 <h3 className="questionHeader">Summary of Recommendations</h3>
                 <h5>First summarise your recommendations, ideally in less than 50 words per point :)</h5>
@@ -162,7 +162,7 @@ function SubmitOpenB() {
               </div>
             </section>
   
-            <section className="questionSection">
+            <section className="questionSection bg-white">
               <div className="sectionContainer">
                 <h3 className="questionHeader">Elaboration: Part 1</h3>
                 <h5>Now provide details on how these recommendations would be implemented</h5>
@@ -174,7 +174,7 @@ function SubmitOpenB() {
               </div>
             </section>
   
-            <section className="questionSection">
+            <section className="questionSection bg-white">
               <div className="sectionContainer">
                 <h3 className="questionHeader">Elaboration: Part 2</h3>
                 <h5>Why do these measures work? If you have theoretical explanations/ supporting data, present these arguments here (Optional)</h5>
@@ -186,7 +186,7 @@ function SubmitOpenB() {
               </div>
             </section>
   
-            <section className="questionSection">
+            <section className="questionSection bg-white">
               <div className="sectionContainer">
                 <h3 className="questionHeader">Bibliography</h3>
                 <h5>Optional, but highly recommended!</h5>

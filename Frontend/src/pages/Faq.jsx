@@ -16,12 +16,12 @@ function Faq() {
   };
 
   return (
-    <div className="faqPage">
+    <div className="faqPage bg-slate-100">
       <PageTitle title="Frequently Asked Questions" />
       <div className="accordionContainer">
         {Data.map((item, index) => {
           return (
-            <div className="questionSet">
+            <div className="questionSet bg-white">
               <div
                 className="faqQuestion"
                 onClick={() => toggle(index)}

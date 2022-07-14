@@ -24,19 +24,19 @@ module.exports = {
         },
 
         env_pop: {
-          100: "#4CE6B7"
+          100: "#3FEBB7"
         },
 
         econ_pop: {
-          100: "#5360F5"
+          100: "#6268EE"
         },
 
         edu_pop: {
-          100: "#A057FF"
+          100: "#AC70F1"
         },
 
         social_pop: {
-          100: "#0CDBEE"
+          100: "#35E3E6"
         },
 
         gender_pop: {
@@ -44,11 +44,11 @@ module.exports = {
         },
 
         transport_pop: {
-          100: "#E8BA29"
+          100: "#7B75ED"
         },
 
         health_pop: {
-          100: "#7D5DFD"
+          100: "#7873EA"
         },
 
         housing_pop: {
