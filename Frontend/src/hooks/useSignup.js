@@ -2,12 +2,14 @@ import { useState } from "react";
 import { projAuth } from "../config/firebase";
 import { useAuthContext } from "./useAuthContext";
 import { useEffect } from "react";
+import { useCrud } from "./useCRUD";
 
 export const useSignup= () => {
     const [isCancelled, setCancelled] = useState(false);
     const [error, setError] = useState(null);
     const [pending, setPending] = useState(false);
     const { dispatch } = useAuthContext();
+    const { addDoc } = useCrud("UserData");
 
     // the 3 properties are determined by firebase
     const signup = async (email, password, displayName) => {
@@ -19,7 +21,7 @@ export const useSignup= () => {
         try{
             // async function hence await
             const res= await projAuth.createUserWithEmailAndPassword(email, password);
-            console.log(res.user);
+            //console.log(res.user.uid);
 
             if(!res){
                 throw new Error("could not complete signup");
@@ -27,6 +29,12 @@ export const useSignup= () => {
 
             // firebase only allows to set displayname after user is created
             await res.user.updateProfile({ displayName });
+            
+            // attaching an array to every new created user (for upvotes tracking)
+            addDoc({
+                Uid: res.user.uid,
+                UpvotedOn: []
+              });
 
             // dispatching the login action
             dispatch( {type: 'LOGIN', payload: res.user} );
