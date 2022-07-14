@@ -11,7 +11,7 @@ function Header() {
   const { logout } = useLogout();
 
   return (
-    <div className="header navbar-expand-md navbar-light bg-light">
+    <div className="header backdrop-blur-sm">
       <div className="siteBrand">
         <img className="mainLogo" src={logo} alt="openbill logo" />
         <Link
