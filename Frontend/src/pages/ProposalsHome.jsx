@@ -12,25 +12,26 @@ function ProposalsHome() {
   const { docs, error } = useCollection("OpenBills");
 
   return (
-    <div className="flex flex-col container mx-auto">
-      <div className="grid justify-items-center">
-        <PageTitle title="Proposals Home" />
-        <Link id="shareLink" className="navItem" to="/Create">
-          Have a proposal to share?
-        </Link>
-      </div>
-
-      <div className="grid justify-center">
-        <div className="flex flex-row">
-          <SearchBar type="text" placeholder="Search Proposals or Users" />
-          <Button text="Filter" />
+    <div className="bg-slate-50">
+      <div className="flex flex-col container mx-auto">
+        <div className="grid justify-items-center">
+          <PageTitle title="Proposals Home" />
+          <Link id="shareLink" className="navItem" to="/Create">
+            Have a proposal to share?
+          </Link>
         </div>
+
+        <div className="grid justify-center">
+          <div className="flex flex-row">
+            <SearchBar type="text" placeholder="Search Proposals or Users" />
+            <Button text="Filter" />
+          </div>
+        </div>
+        <div className="mx-11">
+          {docs && <ProposalList proposals={docs} />} 
+          {error && <p>{error}</p>}
+        </div>    
       </div>
-      
-      <div className="mx-11">
-        {docs && <ProposalList proposals={docs} />} 
-        {error && <p>{error}</p>}
-      </div>    
     </div>
   );
 }

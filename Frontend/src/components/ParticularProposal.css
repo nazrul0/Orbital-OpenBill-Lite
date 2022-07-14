@@ -1,7 +1,6 @@
 .mainProposalContainer {
   display: flex;
   justify-content: center;
-  margin-bottom: 3rem;
 }
 
 .proposalContainer {
@@ -18,7 +17,7 @@
   grid-template-columns: 20% 20% 20% 20% 20%;
   grid-template-rows: 50% 50%;
   border-radius: 10px;
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 15px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 15px; 
   padding: 3% 3%;
 }
 
@@ -54,6 +53,7 @@
   box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 15px;
   padding: 3% 3%;
   gap: 1rem;
+  background-color: white;
 }
 
 .proposalSubcontent {

@@ -28,7 +28,7 @@ module.exports = {
         },
 
         econ_pop: {
-          100: "#5360F5"
+          100: "#6174E5"
         },
 
         edu_pop: {
@@ -44,7 +44,7 @@ module.exports = {
         },
 
         transport_pop: {
-          100: "#E8BA29"
+          100: "#7A7B92"
         },
 
         health_pop: {

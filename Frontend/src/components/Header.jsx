@@ -11,52 +11,54 @@ function Header() {
   const { logout } = useLogout();
 
   return (
-    <div className="header backdrop-blur-sm">
-      <div className="siteBrand">
-        <img className="mainLogo" src={logo} alt="openbill logo" />
-        <Link
-          className="siteName"
-          style={{ textDecoration: "none", color: "black" }}
-          to="/"
-        >
-          OpenBill SG
-        </Link>
-      </div>
-      <div className="navBar">
-        <Link className="navItem" to="/ProposalsHome">
-          Proposals Home
-        </Link>
-        <Link className="navItem" to="/Column">
-          The Column
-        </Link>
-        <Link className="navItem" to="/Faq">
-          FAQ
-        </Link>
+    <div className="bg-slate-50">
+      <div className="header backdrop-blur-sm">
+        <div className="siteBrand">
+          <img className="mainLogo" src={logo} alt="openbill logo" />
+          <Link
+            className="siteName"
+            style={{ textDecoration: "none", color: "black" }}
+            to="/"
+          >
+            OpenBill SG
+          </Link>
+        </div>
+        <div className="navBar">
+          <Link className="navItem" to="/ProposalsHome">
+            Proposals Home
+          </Link>
+          <Link className="navItem" to="/Column">
+            The Column
+          </Link>
+          <Link className="navItem" to="/Faq">
+            FAQ
+          </Link>
 
-        {user && (
-          <Fragment>
-            <Link className="navItem" to="/Create">
-              Create
-            </Link>
-            <Link className="navItem" to={`/UserProfile/${user.uid}`}>
-              Profile
-            </Link>
-            <Link className="navItem" to="ProposalsHome" onClick={logout}>
-              Logout
-            </Link>
-          </Fragment>
-        )}
+          {user && (
+            <Fragment>
+              <Link className="navItem" to="/Create">
+                Create
+              </Link>
+              <Link className="navItem" to={`/UserProfile/${user.uid}`}>
+                Profile
+              </Link>
+              <Link className="navItem" to="ProposalsHome" onClick={logout}>
+                Logout
+              </Link>
+            </Fragment>
+          )}
 
-        {!user && (
-          <Fragment>
-            <Link className="navItem" to="/Login">
-              Login
-            </Link>
-            <Link className="navItem" to="/Signup">
-              Sign up
-            </Link>
-          </Fragment>
-        )}
+          {!user && (
+            <Fragment>
+              <Link className="navItem" to="/Login">
+                Login
+              </Link>
+              <Link className="navItem" to="/Signup">
+                Sign up
+              </Link>
+            </Fragment>
+          )}
+        </div>
       </div>
     </div>
   );

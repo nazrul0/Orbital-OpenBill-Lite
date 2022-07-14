@@ -8,7 +8,7 @@ function LandingPage() {
   const navigate = useNavigate();
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center bg-slate-50">
       <div className="md:w-2/3 w-10/12 my-6">
         <img src={constellation} alt="Openbill Constellation" className="mb-4"/>  
         <h2 className="pt-8 font-title center md:text-6xl mb-10">Legislative change that begins with you.</h2>

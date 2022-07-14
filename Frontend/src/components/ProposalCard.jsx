@@ -24,7 +24,7 @@ function ProposalCard(props) {
       break;
     case "Education":
       image = educationImage;
-      color = "bg-edu_pop-100";
+      color = "bg-purple-400";
       break;
     case "Economic":
       image = moneyImage;
@@ -32,11 +32,11 @@ function ProposalCard(props) {
       break;
     case "Social Welfare":
       image = socialImage;
-      color = "bg-social_pop-100";
+      color = "bg-cyan-300";
       break;
     case "Gender":
       image = ringImage;
-      color = "bg-gender_pop-100";
+      color = "bg-violet-500";
       break;
     case "Privacy/Security":
       image = thumbprintImage;
@@ -44,7 +44,7 @@ function ProposalCard(props) {
       break;
     case "Health":
       image = plusImage;
-      color = "bg-health_pop-100";
+      color = "bg-indigo-400";
       break;
     case "Housing":
       image = cityImage;
@@ -56,12 +56,12 @@ function ProposalCard(props) {
       break;
   }
   return (
-    <div className={`cardContainer ${color}`}>
+    <div className={`cardContainer rounded-xl ${color}`}>
       <div className="grid grid-cols-2">
         <h6 className="text-white">By {props.author}</h6>
         <h6 className="justify-self-end">Up</h6>
       </div>
-      <img src={image} alt="Proposal Icon" className="drop-shadow-md mt-1"/>
+      <img src={image} alt="Proposal Icon" className=" mt-1"/>
       <h5 className="lg:text-base text-white text-center">{props.title}</h5>
       
     </div>
