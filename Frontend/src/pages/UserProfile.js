@@ -13,12 +13,11 @@ function UserProfile() {
   const id = user.uid;
   const disp = user.displayName;
 
-  const [userDocs, setDocs] = useState(null);
-  const [error, setError] = useState(null);
+  const [userProposals, setUserProposals] = useState(null);
 
   useEffect(() => {
     const unsub = projFirestore
-      .collection("OpenMotions")
+      .collection("OpenQuestions")
       .where("OwnerID", "==", id)
       .onSnapshot(
         (querySnapshot) => {
@@ -26,7 +25,7 @@ function UserProfile() {
           querySnapshot.forEach((doc) => {
             results.push({ ...doc.data(), id: doc.id });
           });
-          setDocs(results);
+          setUserProposals(results);
         },
         (error) => {
           console.log("Could not fetch.");
@@ -34,24 +33,7 @@ function UserProfile() {
       );
 
     return () => unsub();
-  });
-
-  // projFirestore
-  //   .collection("OpenMotions")
-  //   .where("OwnerID", "==", id)
-  //   .get()
-  //   .then((querySnapshot) => {
-  //     let results = [];
-  //     querySnapshot.forEach((doc) => {
-  //       results.push({ ...doc.data(), id: doc.id });
-  //     });
-  //     setDocs(results);
-  //   })
-  //   .catch((error) => {
-  //     console.log("Could not fetch.");
-  //   });
-
-  console.log(userDocs);
+  }, []);
 
   return (
     <div className="profileMainContainer">
@@ -69,7 +51,14 @@ function UserProfile() {
 
         <section>
           <h2 className="profileSectionHeader">Proposals</h2>
-          {userDocs && <ProposalList proposals={userDocs} />}
+          {userProposals && <ProposalList proposals={userProposals} />}
+          {!userProposals && <p>This user has not submitted any proposals.</p>}
+        </section>
+
+        <section>
+          <h2 className="profileSectionHeader">Articles</h2>
+          {/* {userProposals && <ProposalList proposals={userProposals} />}
+          {!userProposals && <p>This user has not submitted any proposals.</p>} */}
         </section>
       </div>
     </div>

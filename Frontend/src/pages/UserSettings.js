@@ -3,20 +3,18 @@ import "./UserSettings.css";
 import PageTitle from "../components/PageTitle";
 import { EmailAuthProvider, reauthenticateWithCredential } from "firebase/auth";
 import { useAuthContext } from "../hooks/useAuthContext";
-import { projFirestore, projAuth } from "../config/firebase";
 import Input from "../components/InputField";
 import Button from "../components/Button";
 
 function UserSettings() {
   const { user } = useAuthContext(); // importing user
-  const id = user.uid;
   const disp = user.displayName;
 
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
-  function isFilled() {
+  function passwordIsFilled() {
     if (oldPassword !== "" && newPassword !== "" && confirmPassword !== "") {
       return true;
     } else {
@@ -41,7 +39,6 @@ function UserSettings() {
       reauthenticateWithCredential(user, credential)
         .then((result) => {
           user.updatePassword(newPassword);
-          console.log("updated");
 
           setOldPassword("");
           setNewPassword("");
@@ -61,14 +58,53 @@ function UserSettings() {
     }
   }
 
+  const [namePassword, setNamePassword] = useState("");
+  const [newDisplayName, setNewDisplayName] = useState("");
+
+  function nameIsFilled() {
+    if (namePassword !== "" && newDisplayName !== "") {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  function submitNameHandler(event) {
+    event.preventDefault();
+
+    const credential = EmailAuthProvider.credential(user.email, namePassword);
+
+    reauthenticateWithCredential(user, credential)
+      .then((result) => {
+        user.updateProfile({
+          displayName: newDisplayName,
+        });
+        console.log("updated");
+
+        setNamePassword("");
+        setNewDisplayName("");
+
+        alert("Your display name has been updated!");
+
+        window.location.reload(false);
+      })
+      .catch((error) => {
+        console.log("Error: " + error.message);
+        if (error.code === "auth/wrong-password") {
+          alert("Password is not correct or does not exist.");
+        }
+      });
+  }
+
   return (
     <div className="settingsMainContainer">
       <div className="userSettingsContainer">
         <PageTitle title="Profile Settings" />
-        <h1 className="userDisplayName">{disp}</h1>
+        <h2 className="userDisplayName">{disp}</h2>
 
-        <section className="passwordSettings">
-          <form>
+        <section className="settingsSubContainer">
+          <h3 className="settingsSectionHeader">Reset Password</h3>
+          <form className="changeForm">
             <Input
               className="oldPassword"
               type="password"
@@ -77,8 +113,6 @@ function UserSettings() {
               required
               onChange={(event) => {
                 setOldPassword(event.target.value);
-                console.log(event.target.value);
-                console.log(oldPassword);
               }}
             ></Input>
 
@@ -104,12 +138,48 @@ function UserSettings() {
               }}
             ></Input>
 
-            {!isFilled() && <Button text="Confirm" />}
-            {isFilled() && (
+            {!passwordIsFilled() && <Button text="Confirm" />}
+            {passwordIsFilled() && (
               <Button
                 text="Confirm"
                 type="submit"
                 onClick={submitPasswordHandler}
+              />
+            )}
+          </form>
+        </section>
+
+        <section className="settingsSubContainer">
+          <h3 className="settingsSectionHeader">Change Display Name</h3>
+          <form className="changeForm">
+            <Input
+              className="password"
+              type="password"
+              label="Password"
+              value={namePassword}
+              required
+              onChange={(event) => {
+                setNamePassword(event.target.value);
+              }}
+            ></Input>
+
+            <Input
+              className="newDisplayName"
+              type="text"
+              label="New Display Name"
+              value={newDisplayName}
+              required
+              onChange={(event) => {
+                setNewDisplayName(event.target.value);
+              }}
+            ></Input>
+
+            {!nameIsFilled() && <Button text="Confirm" />}
+            {nameIsFilled() && (
+              <Button
+                text="Confirm"
+                type="submit"
+                onClick={submitNameHandler}
               />
             )}
           </form>
