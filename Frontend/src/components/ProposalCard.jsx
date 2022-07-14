@@ -61,9 +61,8 @@ function ProposalCard(props) {
         <h6 className="">By {props.author}</h6>
         <h6 className="justify-self-end">Up</h6>
       </div>
-      <img src={image} alt="Proposal Icon" className="drop-shadow-md"/>
+      <img src={image} alt="Proposal Icon" className="drop-shadow-md" />
       <h4 className="title text-white">{props.title}</h4>
-      
     </div>
   );
 }

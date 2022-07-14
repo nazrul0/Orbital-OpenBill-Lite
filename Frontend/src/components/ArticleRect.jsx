@@ -10,6 +10,7 @@ import plusImage from "../imgs/OB(plus).png";
 import cityImage from "../imgs/OB(city).png";
 import busImage from "../imgs/OB(bus).png";
 import OB from "../imgs/OB(logo).png";
+import QuillEditor from "./QuillEditor";
 
 function ArticleRect(props) {
   let image;
@@ -46,12 +47,19 @@ function ArticleRect(props) {
       break;
   }
 
+  console.log(props.content);
+
   return (
     <div>
       <div className="articlePreviewContainer">
         <h2 className="articlePreviewTitle">{props.title}</h2>
-        <h3 className="articlePreviewCategory">{props.category}</h3>
+        {/* <h3 className="articlePreviewCategory">{props.category}</h3> */}
         {/* <p className="articlePreviewBody">{props.content}</p> */}
+        {/* <QuillEditor
+          className="articlePreviewBody"
+          readMode={true}
+          payload={JSON.parse(props.content)}
+        /> */}
         <img className="articleIcon" src={image} alt="Article Icon" />
       </div>
     </div>

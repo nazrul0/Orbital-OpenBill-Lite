@@ -18,6 +18,7 @@ import Proposal from "./components/ParticularProposal.jsx";
 //import ErrorPage from "./pages/ErrorPage.jsx";
 import UserProfile from "./pages/UserProfile.js";
 import UserSettings from "./pages/UserSettings.js";
+import ParticularArticle from "./components/ParticularArticle.js";
 import { useAuthContext } from "./hooks/useAuthContext";
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
             {user && (
               <Route path="/SubmitArticle" element={<SubmitArticle />} />
             )}
+            <Route path="/Column/:id" element={<ParticularArticle />} />
             {user && (
               <Route path="/UserProfile/:id" element={<UserProfile />} />
             )}

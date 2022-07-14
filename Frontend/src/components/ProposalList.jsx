@@ -13,7 +13,7 @@ function ProposalList({ proposals }) {
   // subsequently will be able to access the respective fields eg curr.Title, curr.Content
   return (
     <div className="proposal_list">
-      {proposals.length === 0 && <p>no proposals found.</p>}
+      {/* {proposals.length === 0 && <p>No proposals found.</p>} */}
       {proposals.map((proposal) => (
         <Link
           to={`/ProposalsHome/${proposal.id}`}

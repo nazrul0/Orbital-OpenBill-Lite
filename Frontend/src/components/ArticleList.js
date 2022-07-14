@@ -1,5 +1,5 @@
 import React from "react";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./ArticleList.css";
 import ArticleRect from "./ArticleRect";
 
@@ -8,14 +8,20 @@ function ArticleList({ articles }) {
   // (!!) note- has to be proposals.Title (w caps) since we defined the field as Title: on firebase side
   return (
     <div className="article_list">
-      {articles.length === 0 && <p>no articles found.</p>}
+      {/* {articles.length === 0 && <p>no articles found.</p>} */}
       {articles.map((article) => (
-        <ArticleRect
-          title={article.Title}
-          content={article.Content}
-          category={article.Category}
-          author="testuser"
-        />
+        <Link
+          to={`/Column/${article.id}`}
+          key={article.id}
+          state={{ curr: article }}
+        >
+          <ArticleRect
+            title={article.Title}
+            content={article.Content}
+            // category={article.Category}
+            author="testuser"
+          />
+        </Link>
       ))}
     </div>
   );
