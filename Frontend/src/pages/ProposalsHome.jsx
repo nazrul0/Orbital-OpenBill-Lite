@@ -27,7 +27,7 @@ function ProposalsHome() {
         </div>
       </div>
       
-      <div className="ml-10 mr-10">
+      <div className="ml-12 mr-12">
         {docs && <ProposalList proposals={docs} />} 
         {error && <p>{error}</p>}
       </div>    

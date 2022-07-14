@@ -110,7 +110,7 @@ function SubmitOpenB() {
                 {!state.isPending && (
                   <textarea
                     className="questionTitleInput"
-                    maxLength="200"
+                    maxLength="80"
                     placeholder=""
                     value={billTitle}
                     onChange={(event) => {
