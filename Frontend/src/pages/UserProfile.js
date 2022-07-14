@@ -54,7 +54,7 @@ function UserProfile() {
   console.log(userDocs);
 
   return (
-    <div className="profileMainContainer">
+    <div className="profileMainContainer bg-slate-100">
       <div className="profileSubContainer">
         <PageTitle title="Profile" />
         <h1 className="userDisplayName">{disp}</h1>

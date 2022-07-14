@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 function Create() {
   return (
-    <div>
+    <div className="bg-slate-100">
       <PageTitle title="Create" />
       <div className="createContainer">
         <div className="createBody">

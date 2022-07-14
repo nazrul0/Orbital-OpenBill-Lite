@@ -12,7 +12,7 @@ function ProposalsHome() {
   const { docs, error } = useCollection("OpenBills");
 
   return (
-    <div className="bg-slate-50">
+    <div className="bg-slate-100">
       <div className="flex flex-col container mx-auto">
         <div className="grid justify-items-center">
           <PageTitle title="Proposals Home" />

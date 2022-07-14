@@ -9,9 +9,9 @@ function Column() {
   const { docs, error } = useCollection("Articles");
 
   return (
-    <div>
+    <div className="bg-slate-100">
       <PageTitle title="The Column" />
-      <section className="columnBody">
+      <section className="columnBody pb-8">
         <h2 className="columnSubTitle">Latest in Articles</h2>
         <Link id="shareLink" className="navItem" to="/SubmitArticle">
           Have an article to share?

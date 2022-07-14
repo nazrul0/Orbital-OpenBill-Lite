@@ -55,12 +55,12 @@ function Proposal(props) {
   if(curr.ProposalType === "OpenQuestion")
   {
     return (
-      <div>
+      <div className="font-main bg-slate-100">
         <PageTitle title={curr.ProposalType} />
   
-        <div className="mainProposalContainer">
+        <div className="mainProposalContainer py-10">
           <div className="proposalContainer">
-            <section className="proposalHeader">
+            <section className="proposalHeader bg-black text-white">
               <h2 className="proposalTitle">{curr.Title}</h2>
               <h4 className="proposalOwner">By {curr.DisplayName}</h4>
               <img src={image} alt="Category" className="categoryImage" />

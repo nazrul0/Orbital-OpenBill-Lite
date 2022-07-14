@@ -24,7 +24,7 @@ function ProposalCard(props) {
       break;
     case "Education":
       image = educationImage;
-      color = "bg-purple-400";
+      color = "bg-edu_pop-100";
       break;
     case "Economic":
       image = moneyImage;
@@ -32,7 +32,7 @@ function ProposalCard(props) {
       break;
     case "Social Welfare":
       image = socialImage;
-      color = "bg-cyan-300";
+      color = "bg-social_pop-100";
       break;
     case "Gender":
       image = ringImage;
@@ -44,7 +44,7 @@ function ProposalCard(props) {
       break;
     case "Health":
       image = plusImage;
-      color = "bg-indigo-400";
+      color = "bg-health_pop-100";
       break;
     case "Housing":
       image = cityImage;

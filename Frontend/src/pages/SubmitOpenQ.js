@@ -51,7 +51,7 @@ function SubmitOpenQ() {
   }, [state.success]); // will only fire when success property changes
 
   return (
-    <div>
+    <div className="bg-slate-100">
       <PageTitle title="Create an OpenQuestion" />
       <form>
         <div className="submitQuestionContainer">
@@ -85,7 +85,7 @@ function SubmitOpenQ() {
             </div>
           </section>
 
-          <section className="questionSection">
+          <section className="questionSection bg-white">
             <div className="sectionContainer">
               <h3 className="questionHeader">Title</h3>
               <h5>Give a brief title</h5>
@@ -108,7 +108,7 @@ function SubmitOpenQ() {
             </div>
           </section>
 
-          <section className="questionSection">
+          <section className="questionSection bg-white">
             <div className="sectionContainer">
               <h3 className="questionHeader">Question content</h3>
               <h5>Elucidate the Question here:</h5>
@@ -120,7 +120,7 @@ function SubmitOpenQ() {
             </div>
           </section>
 
-          <section className="questionSection">
+          <section className="questionSection bg-white">
             <div className="sectionContainer">
               <h3 className="questionHeader">Background</h3>
               <h5>What is the issue that the OpenQuestion highlights?</h5>
