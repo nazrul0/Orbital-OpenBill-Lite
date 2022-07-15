@@ -57,9 +57,9 @@ function SubmitArticle() {
   //   alert("Submitted!");
   // };
 
-  useEffect(() => {
-    console.log(articleContent);
-  });
+  // useEffect(() => {
+  //   console.log(articleContent);
+  // });
 
   return (
     <div>

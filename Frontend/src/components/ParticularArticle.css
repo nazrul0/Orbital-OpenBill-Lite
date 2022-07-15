@@ -4,7 +4,7 @@
   margin-bottom: 3rem;
 }
 
-.articleContainer {
+.particularArticleContainer {
   display: flex;
   flex-direction: column;
   width: 75vw;
@@ -12,7 +12,7 @@
   gap: 2rem;
 }
 
-.articleHeader {
+.particularArticleHeader {
   display: grid;
   width: 100%;
   grid-template-columns: 20% 20% 20% 20% 20%;
@@ -22,18 +22,18 @@
   padding: 3% 3%;
 }
 
-.articleTitle {
+.particularArticleTitle {
   grid-column: 1/5;
   grid-row: 1/2;
 }
 
-.articleOwner {
+.particularArticleOwner {
   grid-column: 1/5;
   grid-row: 2/3;
   align-self: end;
 }
 
-.articleContent {
+.particularArticleContent {
   display: flex;
   flex-direction: column;
   width: 100%;

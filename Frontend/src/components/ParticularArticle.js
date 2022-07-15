@@ -12,13 +12,13 @@ function ParticularArticle() {
     <div>
       <PageTitle title="Article" />
       <div className="mainArticleContainer">
-        <div className="articleContainer">
-          <section className="articleHeader">
-            <h2 className="articleTitle">{curr.Title}</h2>
-            <h4 className="articleOwner">By {curr.DisplayName}</h4>
+        <div className="particularArticleContainer">
+          <section className="particularArticleHeader">
+            <h2 className="particularArticleTitle">{curr.Title}</h2>
+            <h4 className="particularArticleOwner">By {curr.DisplayName}</h4>
           </section>
 
-          <section className="articleContent">
+          <section className="particularArticleContent">
             <h3>Header for article content</h3>
             <QuillEditor readMode={true} payload={JSON.parse(curr.Content)} />
           </section>
