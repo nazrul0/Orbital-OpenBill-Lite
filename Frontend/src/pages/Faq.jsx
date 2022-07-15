@@ -39,7 +39,7 @@ function Faq() {
         })}
       </div>
       <Link id="shareLink" className="navItem" to="/SubmitFAQ">
-        Have a question for the OpenBill team?
+        Have further queries for the OpenBill team?
       </Link>
     </div>
   );
