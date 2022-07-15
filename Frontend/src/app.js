@@ -21,7 +21,7 @@ import UserSettings from "./pages/UserSettings.js";
 import { useAuthContext } from "./hooks/useAuthContext";
 
 function App() {
-  const { authIsReady, user } = useAuthContext();
+  const { authIsReady, user, privileged } = useAuthContext();
 
   return (
     <React.Fragment>
@@ -41,9 +41,9 @@ function App() {
               <Route path="/SubmitOpenQuestion/" element={<SubmitOpenQ />} />
             )}
             {user && <Route path="/SubmitOpenBill" element={<SubmitOpenB />} />}
-            {user && (
+            {user && (privileged && (
               <Route path="/SubmitArticle" element={<SubmitArticle />} />
-            )}
+            ))}
             {user && (
               <Route path="/UserProfile/:id" element={<UserProfile />} />
             )}

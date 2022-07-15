@@ -8,6 +8,7 @@ export const authReducer = (state, action) => {
     switch(action.type){
         // firebase returns a user object when login
         case 'LOGIN':
+            //console.log(state)
             return { ...state, user: action.payload }
         
         case 'LOGOUT':
@@ -16,6 +17,9 @@ export const authReducer = (state, action) => {
         // only make auth ready true after you get something from firebase
         case 'AUTH_IS_READY':
             return { ...state, user: action.payload, authIsReady: true}
+        
+        case 'ADMIN_LOGIN':
+            return { ...state, user: action.payload, privileged: true }
 
         default:
             return state;
@@ -26,7 +30,8 @@ export const AuthContextProvider = ({children}) => {
     
     const [state, dispatch] = useReducer(authReducer, {
         user: null,
-        authIsReady: false
+        authIsReady: false,
+        privileged: false
     });
 
     // checks whether a user is logged in before rendering anything

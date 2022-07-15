@@ -33,7 +33,8 @@ export const useSignup= () => {
             // attaching an array to every new created user (for upvotes tracking)
             addDoc({
                 Uid: res.user.uid,
-                UpvotedOn: []
+                UpvotedOn: [],
+                Privileged: false
               });
 
             // dispatching the login action
