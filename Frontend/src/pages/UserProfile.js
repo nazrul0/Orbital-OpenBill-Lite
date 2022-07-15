@@ -3,7 +3,7 @@ import "./UserProfile.css";
 import PageTitle from "../components/PageTitle";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { projFirestore } from "../config/firebase";
-import ProposalList from "../components/ProposalList";
+import ProfileProposalList from "../components/ProfileProposalList";
 import SearchBar from "../components/SearchBar";
 import Button from "../components/Button";
 import { Link } from "react-router-dom";
@@ -92,24 +92,36 @@ function UserProfile() {
           <h2 className="profileSectionHeader">Proposals</h2>
           <div className="proposalSubDivision">
             <h3 className="proposalTypeHeader">OpenBills</h3>
-            {userBills.length > 0 && <ProposalList proposals={userBills} />}
-            {userBills.length === 0 && (
-              <p>This user has not submitted any OpenBills.</p>
-            )}
+            <div className="proposalDisplayContainer">
+              {userBills.length > 0 && (
+                <ProfileProposalList proposals={userBills} />
+              )}
+              {userBills.length === 0 && (
+                <p>This user has not submitted any OpenBills.</p>
+              )}
+            </div>
           </div>
           <div className="proposalSubDivision">
             <h3 className="proposalTypeHeader">OpenQuestions</h3>
-            {userQuestions && <ProposalList proposals={userQuestions} />}
-            {!userQuestions && (
-              <p>This user has not submitted any OpenQuestions.</p>
-            )}
+            <div className="proposalDisplayContainer">
+              {userQuestions && (
+                <ProfileProposalList proposals={userQuestions} />
+              )}
+              {!userQuestions && (
+                <p>This user has not submitted any OpenQuestions.</p>
+              )}
+            </div>
           </div>
         </section>
 
         <section className="subSection">
-          <h2 className="profileSectionHeader">Articles</h2>
-          {userArticles && <ArticleList articles={userArticles} />}
-          {!userArticles && <p>This user has not submitted any articles.</p>}
+          <h2 className="profileSectionHeader" id="articlesSectionHeader">
+            Articles
+          </h2>
+          <div className="articleDisplayContainer">
+            {userArticles && <ArticleList articles={userArticles} />}
+            {!userArticles && <p>This user has not submitted any articles.</p>}
+          </div>
         </section>
       </div>
     </div>
