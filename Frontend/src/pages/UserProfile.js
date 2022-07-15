@@ -57,7 +57,7 @@ function UserProfile() {
     <div className="profileMainContainer bg-slate-100">
       <div className="profileSubContainer">
         <PageTitle title="Profile" />
-        <h1 className="userDisplayName">{disp}</h1>
+        <h2 className="userDisplayName">{disp}</h2>
 
         <section className="searchSection">
           <SearchBar type="text" placeholder="Search My Profile" />

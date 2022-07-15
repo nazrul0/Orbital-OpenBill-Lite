@@ -4,7 +4,7 @@ import "./PageTitle.css";
 function PageTitle(props) {
   return (
     <div>
-      <h1 className="titleHeader">{props.title}</h1>
+      <h2 className="sm:text-5xl font-bold font-title titleHeader">{props.title}</h2>
     </div>
   );
 }

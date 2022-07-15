@@ -17,8 +17,8 @@ function Faq() {
 
   return (
     <div className="faqPage bg-slate-100">
-      <PageTitle title="Frequently Asked Questions" />
-      <div className="accordionContainer">
+      <PageTitle title="Frequently asked questions" />
+      <div className="accordionContainer mt-4">
         {Data.map((item, index) => {
           return (
             <div className="questionSet bg-white">

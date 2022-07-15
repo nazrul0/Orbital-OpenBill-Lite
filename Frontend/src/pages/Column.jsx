@@ -12,7 +12,7 @@ function Column() {
     <div className="bg-slate-100">
       <PageTitle title="The Column" />
       <section className="columnBody pb-8">
-        <h2 className="columnSubTitle">Latest in Articles</h2>
+        <h3 className="columnSubTitle">Latest in Articles</h3>
         <Link id="shareLink" className="navItem" to="/SubmitArticle">
           Have an article to share?
         </Link>
