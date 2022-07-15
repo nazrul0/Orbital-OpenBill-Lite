@@ -1,6 +1,7 @@
 .settingsMainContainer {
   display: flex;
   justify-content: center;
+  margin-bottom: 3rem;
 }
 
 .userSettingsContainer {
@@ -8,8 +9,31 @@
   flex-direction: column;
   align-items: center;
   width: 75vw;
+  gap: 2rem;
 }
 
 .userDisplayName {
   color: rgba(49, 16, 165, 0.75);
+  align-self: flex-start;
+  padding-left: 2rem;
+}
+
+.settingsSubContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 3% 3%;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  width: 100%;
+}
+
+.changeForm {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  align-self: center;
+}
+
+.settingsSectionHeader {
+  color: rgba(0, 0, 0, 0.75);
 }

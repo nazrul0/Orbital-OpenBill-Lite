@@ -61,9 +61,8 @@ function ProposalCard(props) {
         <h6 className="text-white">By {props.author}</h6>
         <h6 className="justify-self-end">Up</h6>
       </div>
-      <img src={image} alt="Proposal Icon" className=" mt-1"/>
+      <img src={image} alt="Proposal Icon" className=" mt-1" />
       <h5 className="lg:text-base text-white text-center">{props.title}</h5>
-      
     </div>
   );
 }

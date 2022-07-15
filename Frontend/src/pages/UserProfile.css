@@ -1,15 +1,15 @@
 .profileMainContainer {
   display: flex;
   justify-content: center;
+  padding-bottom: 3rem;
 }
 
 .profileSubContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 75vw;
+  width: 75%;
   gap: 2rem;
-  margin-bottom: 3rem;
 }
 
 .userDisplayName {
@@ -18,10 +18,27 @@
 
 .profileSectionHeader {
   color: rgba(0, 0, 0, 0.7);
+  margin-bottom: 1.5rem;
 }
 
 .searchSection {
   display: flex;
   gap: 1rem;
   justify-content: center;
+}
+
+.subSection {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.proposalSubDivision {
+  display: flex;
+  flex-direction: column;
+}
+
+.proposalTypeHeader {
+  align-self: center;
+  color: rgba(0, 0, 0, 0.8);
 }

@@ -7,17 +7,19 @@ import ProposalList from "../components/ProposalList";
 import SearchBar from "../components/SearchBar";
 import Button from "../components/Button";
 import { Link } from "react-router-dom";
+import ArticleList from "../components/ArticleList";
 
 function UserProfile() {
   const { user } = useAuthContext(); // importing user
   const id = user.uid;
   const disp = user.displayName;
 
-  const [userDocs, setDocs] = useState(null);
-  const [error, setError] = useState(null);
+  const [userBills, setUserBills] = useState([]);
+  const [userQuestions, setUserQuestions] = useState([]);
+  const [userArticles, setUserArticles] = useState([]);
 
   useEffect(() => {
-    const unsub = projFirestore
+    const unsubBills = projFirestore
       .collection("OpenBills")
       .where("OwnerID", "==", id)
       .onSnapshot(
@@ -26,32 +28,51 @@ function UserProfile() {
           querySnapshot.forEach((doc) => {
             results.push({ ...doc.data(), id: doc.id });
           });
-          setDocs(results);
+          setUserBills(results);
         },
         (error) => {
           console.log("Could not fetch.");
         }
       );
 
-    return () => unsub();
-  });
+    const unsubQuestions = projFirestore
+      .collection("OpenQuestions")
+      .where("OwnerID", "==", id)
+      .onSnapshot(
+        (querySnapshot) => {
+          let results = [];
+          querySnapshot.forEach((doc) => {
+            results.push({ ...doc.data(), id: doc.id });
+          });
+          setUserQuestions(results);
+        },
+        (error) => {
+          console.log("Could not fetch.");
+        }
+      );
 
-  // projFirestore
-  //   .collection("OpenMotions")
-  //   .where("OwnerID", "==", id)
-  //   .get()
-  //   .then((querySnapshot) => {
-  //     let results = [];
-  //     querySnapshot.forEach((doc) => {
-  //       results.push({ ...doc.data(), id: doc.id });
-  //     });
-  //     setDocs(results);
-  //   })
-  //   .catch((error) => {
-  //     console.log("Could not fetch.");
-  //   });
+    const unsubArticles = projFirestore
+      .collection("Articles")
+      .where("OwnerID", "==", id)
+      .onSnapshot(
+        (querySnapshot) => {
+          let results = [];
+          querySnapshot.forEach((doc) => {
+            results.push({ ...doc.data(), id: doc.id });
+          });
+          setUserArticles(results);
+        },
+        (error) => {
+          console.log("Could not fetch.");
+        }
+      );
 
-  console.log(userDocs);
+    return () => {
+      unsubBills();
+      unsubQuestions();
+      unsubArticles();
+    };
+  }, []);
 
   return (
     <div className="profileMainContainer bg-slate-100">
@@ -67,9 +88,28 @@ function UserProfile() {
           </Link>
         </section>
 
-        <section>
+        <section className="subSection">
           <h2 className="profileSectionHeader">Proposals</h2>
-          {userDocs && <ProposalList proposals={userDocs} />}
+          <div className="proposalSubDivision">
+            <h3 className="proposalTypeHeader">OpenBills</h3>
+            {userBills.length > 0 && <ProposalList proposals={userBills} />}
+            {userBills.length === 0 && (
+              <p>This user has not submitted any OpenBills.</p>
+            )}
+          </div>
+          <div className="proposalSubDivision">
+            <h3 className="proposalTypeHeader">OpenQuestions</h3>
+            {userQuestions && <ProposalList proposals={userQuestions} />}
+            {!userQuestions && (
+              <p>This user has not submitted any OpenQuestions.</p>
+            )}
+          </div>
+        </section>
+
+        <section className="subSection">
+          <h2 className="profileSectionHeader">Articles</h2>
+          {userArticles && <ArticleList articles={userArticles} />}
+          {!userArticles && <p>This user has not submitted any articles.</p>}
         </section>
       </div>
     </div>

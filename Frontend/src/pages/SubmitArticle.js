@@ -9,7 +9,7 @@ import { useAuthContext } from "../hooks/useAuthContext";
 function SubmitArticle() {
   const [articleTitle, setArticleTitle] = useState("");
   const [articleContent, setArticleContent] = useState("");
- // const [articleCategory, setArticleCategory] = useState("Environment");
+  // const [articleCategory, setArticleCategory] = useState("Environment");
   const { addDoc, state } = useCrud("Articles");
   const { user } = useAuthContext();
 
@@ -19,7 +19,7 @@ function SubmitArticle() {
     const id = user.uid;
     const disp = user.displayName;
 
-    if(articleContent === "" || articleTitle === ""){
+    if (articleContent === "" || articleTitle === "") {
       alert("All fields are required");
       return;
     }
@@ -45,7 +45,6 @@ function SubmitArticle() {
     }
   }, [state.success]); // will only fire when success property changes
 
-
   // // CREATE OpenQuestion document in database
   // const createArticle = async () => {
   //   await addDoc(articlesCollectionRef, {
@@ -59,7 +58,7 @@ function SubmitArticle() {
   // };
 
   useEffect(() => {
-    console.log(articleContent)
+    console.log(articleContent);
   });
 
   return (
@@ -99,21 +98,21 @@ function SubmitArticle() {
           <div className="articleContainer">
             <h3 className="articleHeader">Article Title</h3>
             {!state.isPending && (
-                <textarea
-                  className="articleTitleInput"
-                  maxLength="100"
-                  placeholder=""
-                  value={articleTitle}
-                  onChange={(event) => {
-                    setArticleTitle(event.target.value);
-                  }}
-                  required
-                ></textarea>
-              )}
+              <textarea
+                className="articleTitleInput"
+                maxLength="100"
+                placeholder=""
+                value={articleTitle}
+                onChange={(event) => {
+                  setArticleTitle(event.target.value);
+                }}
+                required
+              ></textarea>
+            )}
 
-              {state.isPending && (
-                <textarea className="articleTitleInput" disabled></textarea>
-              )}
+            {state.isPending && (
+              <textarea className="articleTitleInput" disabled></textarea>
+            )}
           </div>
         </section>
 
