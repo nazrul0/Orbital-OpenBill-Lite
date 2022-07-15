@@ -3,7 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 import PageTitle from "../components/PageTitle";
 import "./Login.css";
 import Input from "../components/InputField";
-//import Button from "../components/SubmitButton";
 import { VALIDATOR_EMAIL } from "../util/validators.js";
 import { useLogin } from "../hooks/useLogin";
 

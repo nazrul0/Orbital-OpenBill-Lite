@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import PageTitle from "../components/PageTitle";
 import "./Login.css";
 import Input from "../components/InputField";
-import Button from "../components/SubmitButton";
 import { useSignup } from "../hooks/useSignup";
 import { useNavigate } from "react-router-dom";
 
@@ -73,8 +72,8 @@ function Signup() {
             onChange={displayNameChangeHandler}
           ></Input>
           
-          {!pending && <Button type="submit">Sign up</Button>}
-          {pending && <Button disabled >Loading</Button>}
+          {!pending && <button type="submit">Sign up</button>}
+          {pending && <button disabled >Loading</button>}
           {error && <p>{error}</p>}
 
         </form>

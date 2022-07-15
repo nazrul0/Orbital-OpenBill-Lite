@@ -11,7 +11,6 @@ import Column from "./pages/Column";
 import Create from "./pages/Create";
 import SubmitOpenQ from "./pages/SubmitOpenQ.js";
 import SubmitOpenB from "./pages/SubmitOpenB.js";
-//import SubmitOpenM from "./pages/SubmitOpenM.js";
 import SubmitArticle from "./pages/SubmitArticle.js";
 import SubmitFAQ from "./pages/SubmitFAQ.js";
 import Proposal from "./components/ParticularProposal.jsx";
@@ -20,6 +19,7 @@ import UserProfile from "./pages/UserProfile.js";
 import UserSettings from "./pages/UserSettings.js";
 import ParticularArticle from "./components/ParticularArticle.js";
 import { useAuthContext } from "./hooks/useAuthContext";
+import EditProposal from "./components/EditProposal.jsx";
 
 function App() {
   const { authIsReady, user, privileged } = useAuthContext();
@@ -36,6 +36,7 @@ function App() {
             <Route path="/Login" element={<Login />} />
             <Route path="/ProposalsHome/" element={<ProposalsHome />} />
             <Route path="/ProposalsHome/:id" element={<Proposal />} />
+            {user && <Route path="/ProposalsHome/:id/edit" element={<EditProposal />} />}
             <Route path="/Faq" element={<Faq />} />
             <Route path="/Column" element={<Column />} />
             {user && (

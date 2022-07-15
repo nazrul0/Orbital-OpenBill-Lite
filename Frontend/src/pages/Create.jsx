@@ -1,6 +1,5 @@
 import React from "react";
 import PageTitle from "../components/PageTitle";
-import CreateCard from "../components/CreateCard";
 import logo from "../imgs/plus.png";
 import "./Create.css";
 import { Link } from "react-router-dom";
