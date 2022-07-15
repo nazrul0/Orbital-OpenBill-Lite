@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useEffect } from "react";
-import { projAuth } from "../config/firebase";
+import { projAuth, projFirestore } from "../config/firebase";
 import { useAuthContext } from "./useAuthContext";
 
 export const useLogin = () => {
@@ -16,8 +16,20 @@ export const useLogin = () => {
         // try signin
         try {
             const res= await projAuth.signInWithEmailAndPassword(email, password);
-
-            // updating the state
+            let ref = projFirestore.collection("UserData");
+            const snapshot = await ref.where('Uid', '==', res.user.uid).get();
+            if(!snapshot.empty){
+                snapshot.forEach( doc => {
+                    if(doc.get("Privileged"))
+                    {
+                        // casting off a login for privileged user
+                        dispatch( {type: 'ADMIN_LOGIN', payload: res.user})
+                        return;
+                    }
+                })
+            }
+            
+            // if snapshot is empty, or if doc.Privileged is false, means normal user.
             dispatch( {type: 'LOGIN', payload: res.user} );
 
             if (!isCancelled)
