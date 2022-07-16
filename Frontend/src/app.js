@@ -19,7 +19,6 @@ import UserProfile from "./pages/UserProfile.js";
 import UserSettings from "./pages/UserSettings.js";
 import ParticularArticle from "./components/ParticularArticle.js";
 import { useAuthContext } from "./hooks/useAuthContext";
-import EditProposal from "./components/EditProposal.jsx";
 import EditProposalB from "./components/EditProposalB.jsx";
 import EditProposalQ from "./components/EditProposalQ.jsx";
 
