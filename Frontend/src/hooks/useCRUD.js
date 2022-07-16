@@ -14,8 +14,19 @@ const crudReducer = (state, action) => {
         case 'ADDED_DOC':
             // make pending false, and save the document we got to the state
             return {isPending: false, document: action.payload, success: true};
+        
+        case 'DELETED_DOC':
+            return {isPending: false, document: null, success: true, error: null};
+            
+        case 'UPDATED_DOC':
+            return {isPending: false, document: action.payload, success: true, error: null};
+            
+        case 'READ_SINGLE':
+            return {isPending: false, document: action.payload, success: true, error: null};
+        
         case 'ERROR':
             return {...state, isPending: false, document: null, success: false, error: action.payload};
+    
 
         default:
             return state;
@@ -51,9 +62,42 @@ export const useCrud = (collection) => {
         }
     }
 
-    const deleteDoc = async (doc) => {
-        // TBD
+    const deleteDoc = async (id) => {
+        
+        dispatch( {type: 'IS_PENDING'} ); // no payload, since simply changing a status
+
+        try {
+            await ref.doc(id).delete();
+            
+            dispatch({type: 'DELETED_DOC'});
+        }
+        catch (err) {
+            dispatch({type: 'ERROR', payload: err.message});
+        }
+
     }
 
-    return {addDoc, deleteDoc, state}
+    const updateDoc = async (id, updates) => {
+        
+        dispatch( {type: 'IS_PENDING'} ); // no payload, since simply changing a status
+
+        try {
+            const updatedDoc = await ref.doc(id).update(updates);
+            dispatch({ type: 'UPDATED_DOC', payload: updatedDoc });
+            
+        }
+        catch (err) {
+            dispatch({type: 'ERROR', payload: err.message});
+            
+        }
+
+    }
+
+    /* 
+        Note: ReadSingleDoc and reading collection can't be in this file as
+        they involve useEffect and involve exporting a state that must change when the db values change
+        see useDoc hook instead.
+    */
+
+    return {addDoc, deleteDoc, updateDoc, state}
 }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 
@@ -7,7 +7,7 @@ import "react-quill/dist/quill.snow.css";
 // payload prop is only used for readOnly case
 function QuillEditor({sendUp, readMode, payload}) {
   // we track the contents with local state
-  const [contents, setContents] = useState("");
+  const [contents, setContents] = useState(payload);
   
   // content here is DIFF from contents above
   // content is 1 of the 4 arguments expected by react-quill for a handler function
@@ -36,7 +36,7 @@ function QuillEditor({sendUp, readMode, payload}) {
         <ReactQuill 
           value={payload} 
           theme="bubble"
-          readOnly="true"
+          readOnly={true}
         />
       </div>
     )

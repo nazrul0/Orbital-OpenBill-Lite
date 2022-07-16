@@ -1,4 +1,5 @@
 import React from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./ParticularProposal.css";
 import treeImage from "../imgs/OB(tree).png";
 import educationImage from "../imgs/OB(education).png";
@@ -12,30 +13,89 @@ import busImage from "../imgs/OB(bus).png";
 import OB from "../imgs/OB(logo).png";
 import PageTitle from "./PageTitle";
 import QuillEditor from "./QuillEditor";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useAuthContext } from "../hooks/useAuthContext";
-import { useCrud } from "../hooks/useCRUD";
 import { useDoc } from "../hooks/useDoc";
-import { Link } from "react-router-dom";
+import { useCrud } from "../hooks/useCRUD";
+import { useState } from "react";
+import { useEffect } from "react";
 
-function Proposal(props) {
+function EditProposalB(props) {
   const { id, type } = useParams();
   const { user } = useAuthContext();
-  const { deleteDoc, state } = useCrud(`${type}s`);
   const { currDoc } = useDoc(`${type}s`, id);
+  const { updateDoc } = useCrud(`${type}s`);
   const nav = useNavigate();
 
+  // STATE OF ALL THE OPENB FIELDS
+  const [relatedLaws, setRelatedLaws] = useState("");
+  const [currentProbs, setCurrentProbs] = useState("");
+  const [summary, setSummary] = useState("");
+  const [elabHow, setElabHow] = useState("");
+  const [elabWhy, setElabWhy] = useState("");
+  const [bibliography, setBibliography] = useState("");
+
+  // Update Handler Function
+  const updateHandlerB = () => {
+    
+    if(relatedLaws === ""){
+      alert("Related laws is a required field");
+      return;
+    }
+
+    if(currentProbs === ""){
+      alert("currentProb is a required field");
+      return;
+    }
+
+    if(summary === ""){
+      alert("summary is a required field");
+      return;
+    }
+
+    if(elabHow === ""){
+      alert("Elaboration part 1 is a required field");
+      return;
+    }
+
+    //console.log(relatedLaws);
+    updateDoc(id, {
+      RelatedLaws: relatedLaws,
+      CurrentProblems: currentProbs,
+      Summary: summary,
+      Elaboration1: elabHow,
+      Elaboration2: elabWhy,
+      Bibliography: bibliography
+    })
+    
+    nav(-1);
+  };
+
+  // run at start to initialise the states
+  useEffect(() => {
+    if(currDoc !== null){
+      setRelatedLaws(currDoc.RelatedLaws);
+      setCurrentProbs(currDoc.CurrentProblems);
+      setSummary(currDoc.Summary);
+      setElabHow(currDoc.Elaboration1);
+      setElabWhy(currDoc.Elaboration2);
+      setBibliography(currDoc.Bibliography);
+    }
+  }, [currDoc]);
+
+  // testing relic
+  // useEffect(() => {
+  //   console.log(relatedLaws);
+  // }, [relatedLaws]);
+
+
+  // ------------------------------------------
   // only render anything when currDoc not null
   if(currDoc !== null){
-    
+
+    // Declaring the colours
     let image;
     let colour;
-    const isOwner = Boolean(currDoc.OwnerID === user.uid)
-    
-    const deleteHandler = (event) => {
-      deleteDoc(currDoc.id);
-      nav("/ProposalsHome");
-    };
 
     switch (currDoc.Category) {
       default:
@@ -79,12 +139,11 @@ function Proposal(props) {
         break;
     }
 
-    if(currDoc.ProposalType === "OpenQuestion")
-    {
+    // block non-owners of proposal from accessing route
+    if (currDoc.OwnerID === user.uid) {
       return (
         <div className="font-main bg-slate-100">
           <PageTitle title={currDoc.ProposalType} />
-    
           <div className="mainProposalContainer py-10">
             <div className="proposalContainer">
               <section className="proposalHeader bg-black text-white">
@@ -94,112 +153,84 @@ function Proposal(props) {
                 <h5 className="proposalCategory ">{currDoc.Category}</h5>
               </section>
 
-              {user && (isOwner && (
-                <div className="flex place-self-end mt-2 font-semibold">
-                  <button className={`py-1 px-6 mx-1 rounded-full bg-${colour}`} onClick={deleteHandler}>Delete</button>
-                  <Link 
-                    to={`/ProposalsHome/OpenQuestion/${id}/editQ`}
-                    key={currDoc.id}
-                  >
-                    <button className={`py-1 px-8 mx-1 rounded-full bg-${colour}`}>Edit</button>
-                  </Link>
-                </div>
-              ))}
-    
-              <section className="proposalContent">
-                <h3>Question</h3>
-                <QuillEditor
-                  readMode={true}
-                  payload={JSON.parse(currDoc.Content)}
-                /> 
-              </section>
-
-              <section className="proposalContent">
-                <h3>Background</h3>
-                <QuillEditor
-                  readMode={true}
-                  payload={JSON.parse(currDoc.Background)}
-                /> 
-              </section>
-            </div>
-          </div>
-        </div>
-      );
-    }
-    else{
-      return (
-        <div className="font-main bg-slate-100">
-          <PageTitle title={currDoc.ProposalType} />
-    
-          <div className="mainProposalContainer py-10">
-            <div className="proposalContainer">
-              <section className="proposalHeader bg-black text-white">
-                <h2 className="proposalTitle">{currDoc.Title}</h2>
-                <h4 className="proposalOwner">By {currDoc.DisplayName}</h4>
-                <img src={image} alt="Category" className="categoryImage" />
-                <h5 className="proposalCategory ">{currDoc.Category}</h5>
-              </section>
-
-              {user && (isOwner && (
-                <div className="flex place-self-end mt-2 font-semibold">
-                  <button className={`py-1 px-6 mx-1 rounded-full bg-${colour}`} onClick={deleteHandler}>Delete</button>
-                  <Link 
-                    to={`/ProposalsHome/OpenBill/${id}/editB`}
-                    key={currDoc.id}
-                  >
-                    <button className={`py-1 px-8 mx-1 rounded-full bg-${colour}`}>Edit</button>
-                  </Link>
-                </div>
-              ))}
-    
+              <button className={`py-1 px-6 mx-1 text-black rounded-full place-self-end bg-${colour}`} onClick={updateHandlerB}>Update</button>
+                  
               <section className="proposalContent">
                 <h3>Related Laws</h3>
                 <QuillEditor
-                  readMode={true}
+                  readMode={false}
                   payload={JSON.parse(currDoc.RelatedLaws)}
+                  sendUp={setRelatedLaws}
                 /> 
               </section>
-
+    
               <section className="proposalContent">
                 <h3>Current Problems</h3>
                 <QuillEditor
-                  readMode={true}
+                  readMode={false}
                   payload={JSON.parse(currDoc.CurrentProblems)}
+                  sendUp={setCurrentProbs}
                 /> 
               </section>
-
+    
               <section className="proposalContent">
                 <h3>Summary of Recommendations</h3>
                 <QuillEditor
-                  readMode={true}
+                  readMode={false}
                   payload={JSON.parse(currDoc.Summary)}
+                  sendUp={setSummary}
                 /> 
               </section>
-
+    
               <section className="proposalContent">
                 <h3>Elaboration: Implementation</h3>
                 <QuillEditor
-                  readMode={true}
+                  readMode={false}
                   payload={JSON.parse(currDoc.Elaboration1)}
+                  sendUp={setElabHow}
                 /> 
               </section>
-
-              {!(currDoc.Elaboration2 === "") && (
+    
+              {currDoc.Elaboration2 !== "" && (
                 <section className="proposalContent">
                   <h3>Elaboration: Part 2</h3>
                   <QuillEditor
-                    readMode={true}
+                    readMode={false}
                     payload={JSON.parse(currDoc.Elaboration2)}
+                    sendUp={setElabWhy}
                   /> 
                 </section>
               )}
-
-              {!(currDoc.Bibliography === "") && (
+    
+              {currDoc.Elaboration2 === "" && (
+                <section className="proposalContent">
+                  <h3>Elaboration: Part 2</h3>
+                  <QuillEditor
+                    readMode={false}
+                    payload={""}
+                    sendUp={setElabWhy}
+                  /> 
+                </section>
+              )}
+    
+              {currDoc.Bibliography !== "" && (
                 <section className="proposalContent">
                   <h3>Bibliography</h3>
                   <QuillEditor
-                    readMode={true}
-                    payload={JSON.parse(currDoc.Bibliography)}
+                    readMode={false}
+                    payload={JSON.parse(currDoc.Elaboration2)}
+                    sendUp={setBibliography}
+                  /> 
+                </section>
+              )}
+    
+              {currDoc.Bibliography === "" && (
+                <section className="proposalContent">
+                  <h3>Bibliography</h3>
+                  <QuillEditor
+                    readMode={false}
+                    payload={""}
+                    sendUp={setBibliography}
                   /> 
                 </section>
               )}
@@ -208,7 +239,13 @@ function Proposal(props) {
         </div>
       );
     }
-    
+    else {
+      return (
+        <div className="py-20 text-center bg-slate-100 font-title">
+          <h3>Unauthorised.</h3>
+        </div>
+      );
+    }
   }
   else{
     return(
@@ -217,7 +254,6 @@ function Proposal(props) {
       </div>
     )
   }
-
+  
 }
-
-export default Proposal;
+export default EditProposalB;

@@ -16,7 +16,7 @@ function ProposalList({ proposals }) {
       {/* {proposals.length === 0 && <p>No proposals found.</p>} */}
       {proposals.map((proposal) => (
         <Link
-          to={`/ProposalsHome/${proposal.id}`}
+          to={`/ProposalsHome/${proposal.ProposalType}/${proposal.id}`}
           key={proposal.id}
           state={{ curr: proposal }}
         >
