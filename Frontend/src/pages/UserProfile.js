@@ -104,10 +104,10 @@ function UserProfile() {
           <div className="proposalSubDivision">
             <h3 className="proposalTypeHeader">OpenQuestions</h3>
             <div className="proposalDisplayContainer">
-              {userQuestions && (
+              {userQuestions.length > 0 && (
                 <ProfileProposalList proposals={userQuestions} />
               )}
-              {!userQuestions && (
+              {userQuestions.length === 0 && (
                 <p>This user has not submitted any OpenQuestions.</p>
               )}
             </div>
@@ -119,8 +119,10 @@ function UserProfile() {
             Articles
           </h2>
           <div className="articleDisplayContainer">
-            {userArticles && <ArticleList articles={userArticles} />}
-            {!userArticles && <p>This user has not submitted any articles.</p>}
+            {userArticles.length > 0 && <ArticleList articles={userArticles} />}
+            {userArticles.length === 0 && (
+              <p>This user has not submitted any articles.</p>
+            )}
           </div>
         </section>
       </div>
