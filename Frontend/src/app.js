@@ -13,13 +13,14 @@ import SubmitOpenQ from "./pages/SubmitOpenQ.js";
 import SubmitOpenB from "./pages/SubmitOpenB.js";
 import SubmitArticle from "./pages/SubmitArticle.js";
 import SubmitFAQ from "./pages/SubmitFAQ.js";
-import Proposal from "./components/ParticularProposal.jsx";
+import ParticularProposal from "./components/ParticularProposal.jsx";
 //import ErrorPage from "./pages/ErrorPage.jsx";
 import UserProfile from "./pages/UserProfile.js";
 import UserSettings from "./pages/UserSettings.js";
 import ParticularArticle from "./components/ParticularArticle.js";
 import { useAuthContext } from "./hooks/useAuthContext";
-import EditProposal from "./components/EditProposal.jsx";
+import EditProposalB from "./components/EditProposalB.jsx";
+import EditProposalQ from "./components/EditProposalQ.jsx";
 
 function App() {
   const { authIsReady, user, privileged } = useAuthContext();
@@ -35,8 +36,9 @@ function App() {
             <Route path="/" element={<LandingPage />} />
             <Route path="/Login" element={<Login />} />
             <Route path="/ProposalsHome/" element={<ProposalsHome />} />
-            <Route path="/ProposalsHome/:id" element={<Proposal />} />
-            {user && <Route path="/ProposalsHome/:id/edit" element={<EditProposal />} />}
+            <Route path="/ProposalsHome/:type/:id" element={<ParticularProposal />} />
+            {user && <Route path="/ProposalsHome/:id/editB" element={<EditProposalB />} />}
+            {user && <Route path="/ProposalsHome/:id/editQ" element={<EditProposalQ />} />}
             <Route path="/Faq" element={<Faq />} />
             <Route path="/Column" element={<Column />} />
             {user && (
