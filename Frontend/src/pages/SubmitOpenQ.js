@@ -5,6 +5,7 @@ import { useCrud } from "../hooks/useCRUD";
 import { useAuthContext } from "../hooks/useAuthContext";
 import QuillEditor from "../components/QuillEditor";
 import "react-quill/dist/quill.snow.css";
+import { timestamp } from "../config/firebase";
 
 function SubmitOpenQ() {
   const [questionTitle, setQuestionTitle] = useState("");
@@ -21,7 +22,11 @@ function SubmitOpenQ() {
     const id = user.uid;
     const disp = user.displayName;
 
-    if(questionTitle === "" || questionContent === "" || questionBackground === ""){
+    if (
+      questionTitle === "" ||
+      questionContent === "" ||
+      questionBackground === ""
+    ) {
       alert("All fields are required");
       return;
     }
@@ -35,6 +40,7 @@ function SubmitOpenQ() {
       OwnerID: id,
       DisplayName: disp,
       ProposalType: "OpenQuestion",
+      CreatedAt: timestamp.now().toDate(),
     });
   };
 
@@ -112,11 +118,11 @@ function SubmitOpenQ() {
             <div className="sectionContainer">
               <h3 className="questionHeader">Question content</h3>
               <h5>Elucidate the Question here:</h5>
-                <QuillEditor
-                  sendUp={setQuestionContent}
-                  className="editor-style"
-                  readMode={false}
-                />
+              <QuillEditor
+                sendUp={setQuestionContent}
+                className="editor-style"
+                readMode={false}
+              />
             </div>
           </section>
 
@@ -124,17 +130,17 @@ function SubmitOpenQ() {
             <div className="sectionContainer">
               <h3 className="questionHeader">Background</h3>
               <h5>What is the issue that the OpenQuestion highlights?</h5>
-                <QuillEditor
-                  sendUp={setQuestionBackground}
-                  className="editor-style"
-                  readMode={false}
-                />
+              <QuillEditor
+                sendUp={setQuestionBackground}
+                className="editor-style"
+                readMode={false}
+              />
             </div>
           </section>
 
           <div className="center underline">
             <a href="https://www.mof.gov.sg/news-publications/parliamentary-replies/response-to-parliamentary-questions-on-inflation-and-cost-of-living">
-            See a past Parliamentary Question
+              See a past Parliamentary Question
             </a>
           </div>
 
@@ -145,10 +151,8 @@ function SubmitOpenQ() {
           >
             Publish OpenQuestion
           </button>
-
         </div>
       </form>
-      
     </div>
   );
 }
