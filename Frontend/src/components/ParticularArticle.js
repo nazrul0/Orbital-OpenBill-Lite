@@ -9,16 +9,16 @@ function ParticularArticle() {
   const { curr } = location.state;
 
   return (
-    <div>
+    <div className="bg-slate-100">
       <PageTitle title="Article" />
       <div className="mainArticleContainer">
         <div className="particularArticleContainer">
-          <section className="particularArticleHeader">
+          <section className="particularArticleHeader bg-white">
             <h2 className="particularArticleTitle">{curr.Title}</h2>
             <h4 className="particularArticleOwner">By {curr.DisplayName}</h4>
           </section>
 
-          <section className="particularArticleContent">
+          <section className="particularArticleContent bg-white">
             <h3>Header for article content</h3>
             <QuillEditor readMode={true} payload={JSON.parse(curr.Content)} />
           </section>

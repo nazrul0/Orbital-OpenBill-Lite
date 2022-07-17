@@ -1,7 +1,7 @@
 .mainArticleContainer {
   display: flex;
   justify-content: center;
-  margin-bottom: 3rem;
+  padding-bottom: 3rem;
 }
 
 .particularArticleContainer {

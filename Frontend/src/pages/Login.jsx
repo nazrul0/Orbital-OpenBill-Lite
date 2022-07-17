@@ -5,6 +5,7 @@ import "./Login.css";
 import Input from "../components/InputField";
 import { VALIDATOR_EMAIL } from "../util/validators.js";
 import { useLogin } from "../hooks/useLogin";
+import constellation from "../imgs/constellation.png";
 
 function Login() {
   // destructuring the standard returns of useState- 1.the latest state 2. function to update the state
@@ -36,42 +37,50 @@ function Login() {
 
   // the element to return
   return (
-    <div className="bg-slate-100">
-      <PageTitle title="Login or Sign Up" />
-      <div className="login_box">
-        <form onSubmit={submitHandler}>
-          <Input
-            element="input"
-            id="email"
-            type="email"
-            label="E-mail"
-            value={enteredEmail}
-            validators={[VALIDATOR_EMAIL()]}
-            errortext="Please enter a valid email address"
-            onChange={emailChangeHandler}
-          ></Input>
+    <div className="bg-slate-100 h-screen pt-10">
+      
+      <div className="grid grid-cols-5 ">
 
-          <Input
-            element="input"
-            id="password"
-            type="password"
-            label="Password"
-            value={enteredPassword}
-            errortext="Please enter a valid password"
-            onChange={passwordChangeHandler}
-          ></Input>
+        <img src={constellation} alt="Openbill Constellation" className="col-start-3 col-span-4 w-full pl-16"/>  
+        
+        <div className="login_box -mt-12 bg-indigo-500 text-white col-start-2 col-span-3 z-50">
+          <PageTitle title="Log in" />
+          <form onSubmit={submitHandler}>
+            <Input
+              element="input"
+              id="email"
+              type="email"
+              label="E-mail"
+              value={enteredEmail}
+              errortext="Please enter a valid email address"
+              onChange={emailChangeHandler}
+            ></Input>
 
-          {!pending && <button type="submit" className="m-2 pl-5 pr-5 pt-1 pb-1 text-white rounded-full bg-indigo-500">Log in</button>}
-          {pending && <button disabled >Loading</button>}
-          {error && <p>{error}</p>}
-        </form>
+            <Input
+              element="input"
+              id="password"
+              type="password"
+              label="Password"
+              value={enteredPassword}
+              errortext="Please enter a valid password"
+              onChange={passwordChangeHandler}
+            ></Input>
+            
+            {!pending && <button type="submit" className="my-4 bg-black text-white py-1 px-8 rounded-full font-title font-bold">Log in</button>}
+            {pending && <button disabled >Loading</button>}
+            {error && <p>{error}</p>}
+          
+          </form>
+        </div>
+        
+        <img src={constellation} alt="Openbill Constellation" className="col-start-1 col-span-3 w-full -mt-16 -ml-16"/>  
       </div>
-
-      <div className="text-center pb-8">
-          <p>Don't have an account?</p>
-          <Link className="navItem" to="/Signup">
-            Sign up
-          </Link>
+    
+      <div className="text-center pb-8 font-main font-semibold">
+        <p>Don't have an account?</p>
+        <Link className="navItem" to="/Signup">
+          Sign up
+        </Link>
       </div>
     
     </div>
