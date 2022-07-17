@@ -27,7 +27,7 @@ function LandingPage() {
         </div>
       </div>
       <div className="bg-black w-full -mt-24 drop-shadow-2xl">
-        <div className="mt-12 mb-6 mx-10 py-2 bg-black uppercase tracking-widest rounded-lg drop-shadow-2xl text-teal-300 center font-title">
+        <div className="mt-12 mb-6 mx-10 py-2 bg-black uppercase tracking-widest rounded-lg drop-shadow-2xl text-teal-300 text-center font-title">
           <h3 className="md:text-4xl">Yes- you can make a real impact.</h3>
         </div>
         <div className="lg:landingExplainer1 leading-loose text-white mx-20 mb-10 px-8 font-main font-medium text-center ">
@@ -36,7 +36,7 @@ function LandingPage() {
           </p>
           <p className="mt-8">Get creating on Openbill today.</p>
         </div>
-        <div className="center">
+        <div className="text-center">
           <button
             onClick={() => {
               navigate("/faq");

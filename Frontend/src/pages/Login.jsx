@@ -67,7 +67,7 @@ function Login() {
         </form>
       </div>
 
-      <div className="center">
+      <div className="text-center pb-8">
           <p>Don't have an account?</p>
           <Link className="navItem" to="/Signup">
             Sign up

@@ -7,12 +7,14 @@
   background: white;
   width: 90%;
   max-width: 25rem;
-  margin: 7rem auto;
+  margin: auto;
   text-align: center;
 }
 
+/*
 .center{
   text-align: center;
   font-family: 'Red Hat Text';
   margin-bottom: 5rem;
 }
+*/
