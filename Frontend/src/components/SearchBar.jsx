@@ -2,12 +2,14 @@ import React from "react";
 import "./SearchBar.css";
 
 function SearchBar(props) {
+  
   return (
-    <div>
+    <div className="mx-5">
       <input
-        className="proposalSearch"
+        className="proposalSearch bg-slate-200 rounded-full sm_width md: lg_width"
         type={props.type}
         placeholder={props.placeholder}
+        onChange={props.sendUp}
       />
     </div>
   );

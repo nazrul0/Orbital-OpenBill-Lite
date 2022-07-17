@@ -11,9 +11,26 @@ import Switch from "../components/Switch";
 
 function ProposalsHome() {
   const { docs: docsBills, error: errorBills } = useCollection("OpenBills");
-  const { docs: docsMotions, error: errorMotions } =
-    useCollection("OpenQuestions");
+  const { docs: docsMotions, error: errorMotions } = useCollection("OpenQuestions");
   const [isToggled, setIsToggled] = useState(false);
+
+  // search filtering state
+  const [inputText, setInputText] = useState("");
+  const [isInput, setIsInput] = useState(false);
+
+  const searchInputHandler = (e) => {
+    setInputText(e.target.value);
+  };
+
+  // logging inputText HAS to be outside the onChange handler since console.log would execute first
+  useEffect(() => {
+    console.log(inputText);
+    if(inputText !== ""){
+      setIsInput(true);
+    }else{
+      setIsInput(false);
+    }
+  }, [inputText]);
 
   return (
     <div className="bg-slate-100">
@@ -27,9 +44,7 @@ function ProposalsHome() {
 
         <div className="grid justify-center">
           <div className="flex flex-row">
-            <SearchBar type="text" placeholder="Search Proposals or Users" />
-            <Button text="Filter" />
-
+            <SearchBar type="text" placeholder="Search by Proposal title, user or category" sendUp={searchInputHandler} />
             <div className=" flex justify-center items-center gap-2">
               <Switch
                 rounded={true}
@@ -47,14 +62,14 @@ function ProposalsHome() {
 
         {!isToggled && (
           <div className="mx-11">
-            {docsBills && <ProposalList proposals={docsBills} />}
+            {docsBills && <ProposalList proposals={docsBills} filterOn={isInput} searchText={inputText} />}
             {errorBills && <p>{errorBills}</p>}
           </div>
         )}
 
         {isToggled && (
           <div className="mx-11">
-            {docsMotions && <ProposalList proposals={docsMotions} />}
+            {docsMotions && <ProposalList proposals={docsMotions} filterOn={isInput} searchText={inputText} />}
             {errorMotions && <p>{errorMotions}</p>}
           </div>
         )}
