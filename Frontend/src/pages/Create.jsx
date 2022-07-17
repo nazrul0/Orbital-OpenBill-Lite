@@ -1,6 +1,8 @@
 import React from "react";
 import PageTitle from "../components/PageTitle";
 import logo from "../imgs/plus.png";
+import gavel from "../imgs/OB(gavel).png";
+import mic from "../imgs/OB(mic).png";
 import "./Create.css";
 import { Link } from "react-router-dom";
 
@@ -17,20 +19,18 @@ function Create() {
           />
           <CreateCard className="createType" type="OpenMotion" />
           <CreateCard className="createType" type="OpenBill" /> */}
-          <div className="createCardContainer">
-            <div className="createCardIconContainer">
-              <img className="createCardIcon" src={logo} alt="Option Icon" />
-            </div>
-            <Link className="createType" to="/SubmitOpenQuestion">
-              OpenQuestion
+
+          <div>
+            <Link className="createCardContainer" to="/SubmitOpenQuestion">
+              <h3 className="createType">OpenQuestion</h3>
+              <img className="createCardIcon" src={mic} alt="Option Icon" />
             </Link>
           </div>
-          <div className="createCardContainer">
-            <div className="createCardIconContainer">
-              <img className="createCardIcon" src={logo} alt="Option Icon" />
-            </div>
-            <Link className="createType" to="/SubmitOpenBill">
-              OpenBill
+
+          <div>
+            <Link className="createCardContainer" to="/SubmitOpenBill">
+              <h3 className="createType">OpenBill</h3>
+              <img className="createCardIcon" src={gavel} alt="Option Icon" />
             </Link>
           </div>
         </div>

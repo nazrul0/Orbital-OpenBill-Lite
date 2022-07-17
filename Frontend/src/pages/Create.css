@@ -2,50 +2,39 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* background-color: red; */
 }
 
 .createBody {
   display: flex;
-  gap: 6rem;
-  width: 100vh;
+  gap: 10rem;
+  /* width: 100vh; */
   height: 50vh;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 4rem;
+  /* background-color: blue; */
 }
 
 .createCardContainer {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  height: 320px;
+  width: 250px;
+  grid-template-rows: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
   align-items: center;
-  gap: 2rem;
-}
-
-.createCardIconContainer {
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  border-radius: 50px;
-  cursor: pointer;
+  background-color: #5a67d8;
+  border-radius: 15px;
 }
 
 .createCardIcon {
-  border-radius: 50%;
-  padding: 8% 8%;
+  filter: invert(100%);
+  grid-row: 5/10;
 }
 
 .createType {
-  background-color: rgb(111, 38, 228);
+  align-self: center;
+  justify-self: center;
+  grid-row: 2/5;
   color: white;
-  font-family: "Red Hat Text";
-  font-size: 1.5rem;
-  height: 3rem;
-  width: 15rem;
-  border-style: none;
-  border-radius: 20px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
 }
 
 .createType:active {
