@@ -7,7 +7,7 @@ import "react-quill/dist/quill.snow.css";
 // payload prop is only used for readOnly case
 function QuillEditor({sendUp, readMode, payload}) {
   // we track the contents with local state
-  const [contents, setContents] = useState(payload);
+  const [contents, setContents] = useState();
   
   // content here is DIFF from contents above
   // content is 1 of the 4 arguments expected by react-quill for a handler function
@@ -23,7 +23,6 @@ function QuillEditor({sendUp, readMode, payload}) {
     return (
       <div>
         <ReactQuill 
-          value={contents} 
           onChange={handleChange} 
           theme="snow"
         />
