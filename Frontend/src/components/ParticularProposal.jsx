@@ -21,7 +21,7 @@ import { Link } from "react-router-dom";
 function Proposal(props) {
   const { id, type } = useParams();
   const { user } = useAuthContext();
-  const { deleteDoc, state } = useCrud(`${type}s`);
+  const { deleteDoc } = useCrud(`${type}s`);
   const { currDoc } = useDoc(`${type}s`, id);
   const nav = useNavigate();
 

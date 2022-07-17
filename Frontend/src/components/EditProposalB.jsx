@@ -1,5 +1,5 @@
 import React from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./ParticularProposal.css";
 import treeImage from "../imgs/OB(tree).png";
 import educationImage from "../imgs/OB(education).png";

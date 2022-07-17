@@ -1,16 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import PageTitle from "../components/PageTitle";
 import "./SubmitFAQ.css";
 import { projFirestore } from "../config/firebase";
 import {
   collection,
-  getDocs,
   addDoc,
-  updateDoc,
-  doc,
-  deleteDoc,
-  getDocsFromServer,
-  getDocsFromCache,
 } from "firebase/firestore";
 
 function SubmitFAQ() {
