@@ -23,6 +23,7 @@ function QuillEditor({sendUp, readMode, payload}) {
     return (
       <div>
         <ReactQuill 
+          defaultValue= {payload}
           onChange={handleChange} 
           theme="snow"
         />
