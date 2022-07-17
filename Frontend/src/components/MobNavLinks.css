@@ -1,0 +1,29 @@
+.mobNavBar {
+  position: absolute;
+  top: 80px;
+  right: 0;
+  width: 100%;
+  padding: 3% 3%;
+  transition: 0.4s;
+  background-color: #e9ecf0;
+}
+
+.mobNavItem {
+  font-family: "Red Hat Text";
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+  font-size: small;
+  color: rgba(0, 0, 0, 0.55);
+}
+
+.mobNavItem:hover {
+  color: black;
+}
+
+.mobLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 135px;
+}

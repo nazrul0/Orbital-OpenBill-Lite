@@ -1,0 +1,53 @@
+.mobile_header {
+  display: flex;
+  justify-content: space-between;
+  padding: 30px 50px;
+  height: 80px;
+  max-height: 80px;
+  align-items: center;
+  text-decoration: none;
+
+  background-color: rgba(var(--bs-light-rgb), var(--bs-bg-opacity)) !important;
+}
+
+.siteName {
+  font-family: "Barlow";
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 20px;
+}
+
+.navBar {
+  display: flex;
+  gap: 20px;
+}
+
+.navItem {
+  font-family: "Red Hat Text";
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+  font-size: small;
+  color: rgba(0, 0, 0, 0.55);
+}
+
+.mainLogo {
+  max-height: 55px;
+}
+
+.siteBrand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.hamburgerMenu {
+  display: flex;
+  /* flex-direction: column; */
+}
+
+.hamburgerIcon {
+  align-self: flex-end;
+  cursor: pointer;
+}

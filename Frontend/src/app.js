@@ -21,15 +21,19 @@ import ParticularArticle from "./components/ParticularArticle.js";
 import { useAuthContext } from "./hooks/useAuthContext";
 import EditProposalB from "./components/EditProposalB.jsx";
 import EditProposalQ from "./components/EditProposalQ.jsx";
+import { useViewport } from "./hooks/useViewport";
+import MobileHeader from "./components/MobileHeader.js";
 
 function App() {
   const { authIsReady, user, privileged } = useAuthContext();
+  const { width } = useViewport();
+  const headerBreakpoint = 1000;
 
   return (
     <React.Fragment>
       {authIsReady && (
         <BrowserRouter>
-          <Header />
+          {width > headerBreakpoint ? <Header /> : <MobileHeader />}
           <Routes>
             {user && <Route path="/Create" element={<Create />} />}
             {!user && <Route path="/Signup" element={<Signup />} />}
@@ -37,17 +41,27 @@ function App() {
             <Route path="/Login" element={<Login />} />
             <Route path="/ProposalsHome/" element={<ProposalsHome />} />
             <Route path="/ProposalsHome/:type/:id" element={<Proposal />} />
-            {user && <Route path="/ProposalsHome/:type/:id/editB" element={<EditProposalB />} />}
-            {user && <Route path="/ProposalsHome/:type/:id/editQ" element={<EditProposalQ />} />}
+            {user && (
+              <Route
+                path="/ProposalsHome/:type/:id/editB"
+                element={<EditProposalB />}
+              />
+            )}
+            {user && (
+              <Route
+                path="/ProposalsHome/:type/:id/editQ"
+                element={<EditProposalQ />}
+              />
+            )}
             <Route path="/Faq" element={<Faq />} />
             <Route path="/Column" element={<Column />} />
             {user && (
               <Route path="/SubmitOpenQuestion/" element={<SubmitOpenQ />} />
             )}
             {user && <Route path="/SubmitOpenBill" element={<SubmitOpenB />} />}
-            {user && (privileged && (
+            {user && privileged && (
               <Route path="/SubmitArticle" element={<SubmitArticle />} />
-            ))}
+            )}
             <Route path="/Column/:id" element={<ParticularArticle />} />
             {user && (
               <Route path="/UserProfile/:id" element={<UserProfile />} />
