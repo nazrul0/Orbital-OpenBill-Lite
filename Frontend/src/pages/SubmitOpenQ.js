@@ -5,7 +5,6 @@ import { useCrud } from "../hooks/useCRUD";
 import { useAuthContext } from "../hooks/useAuthContext";
 import QuillEditor from "../components/QuillEditor";
 import "react-quill/dist/quill.snow.css";
-import { timestamp } from "../config/firebase";
 
 function SubmitOpenQ() {
   const [questionTitle, setQuestionTitle] = useState("");

@@ -7,7 +7,7 @@ export const useCollection = (collection) => {
 
   // a subscription to a firestore collection hence useEffect
   useEffect(() => {
-    let ref = projFirestore.collection(collection).orderBy("createdAt", "desc");
+    let ref = projFirestore.collection(collection).orderBy("CreatedAt", "desc");
 
     // snapshot function takes 2 funcs as callbacks
     // second one is error func- hence try/catch not needed
