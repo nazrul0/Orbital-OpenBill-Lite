@@ -17,8 +17,8 @@ import { useAuthContext } from "../hooks/useAuthContext";
 import { useCrud } from "../hooks/useCRUD";
 import { useDoc } from "../hooks/useDoc";
 import { Link } from "react-router-dom";
-import constellation from "../imgs/constellation.png";
 import map from "../imgs/map.png";
+import { projFirestore } from "../config/firebase";
 
 function Proposal(props) {
   const { id, type } = useParams();
@@ -35,8 +35,32 @@ function Proposal(props) {
       let colour;
       const isOwner = Boolean(currDoc.OwnerID === user.uid)
       
-      const deleteHandler = (event) => {
+      const deleteHandler = async () => {
         deleteDoc(currDoc.id);
+
+        // Cleanup: deleting particular doc's entry from user's UpvotedOn array, if exists
+        let ref = projFirestore.collection("UserData");
+        const snapshot = await ref.where('Uid', '==', user.uid).get();
+        
+        if(!snapshot.empty){
+          snapshot.forEach( obtainedDoc => {
+            const arr = obtainedDoc.get("UpvotedOn");
+            
+            if(arr.includes(id)){
+              // javascript's filter() which runs a check function on each element and returns new arr
+              // removes the current proposal
+              const new_arr = arr.filter( (oneElement) => {
+                return oneElement !== id;
+              })
+              
+              ref.doc(obtainedDoc.id).update({
+                UpvotedOn: new_arr
+              })
+            }
+          })
+        }
+        
+        // nav back
         nav("/ProposalsHome");
       };
   
