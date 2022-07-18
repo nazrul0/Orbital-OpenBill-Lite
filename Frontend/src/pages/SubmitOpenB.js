@@ -53,6 +53,7 @@ function SubmitOpenB() {
       ProposalType: "OpenBill",
       OwnerID: id,
       DisplayName: disp,
+      Upvotes: 0
     });
   };
 

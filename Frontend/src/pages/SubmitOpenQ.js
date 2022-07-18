@@ -40,6 +40,7 @@ function SubmitOpenQ() {
       OwnerID: id,
       DisplayName: disp,
       ProposalType: "OpenQuestion",
+      Upvotes: 0
     });
   };
 

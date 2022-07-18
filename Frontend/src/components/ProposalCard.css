@@ -28,3 +28,8 @@
   align-self: center;
   margin-bottom: -2rem;
 }
+
+.upvotesContainer img {
+  height: 18px;
+  width: auto;
+}

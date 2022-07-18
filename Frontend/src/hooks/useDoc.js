@@ -10,7 +10,7 @@ export const useDoc = (collection, id) => {
     let docRef = projFirestore.collection(collection).doc(id);
 
     const unsub = docRef.onSnapshot( (doc) => {
-      console.log(doc.data());
+      //console.log(doc.data());
       setCurrDocs(doc.data());
     });
   
