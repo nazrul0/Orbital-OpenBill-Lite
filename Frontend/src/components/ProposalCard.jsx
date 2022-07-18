@@ -10,8 +10,19 @@ import plusImage from "../imgs/white-health.png";
 import cityImage from "../imgs/white-housing.png";
 import busImage from "../imgs/white-transport.png";
 import OB from "../imgs/OB(logo).png";
+import upvote from "../imgs/upvote.png";
 
 function ProposalCard(props) {
+  const isNonZero = Boolean(props.upvotes !== 0)
+
+  const upvoteHandler = (e) => {
+    // prevents default redirect to viewing proposal when upvote button clicked
+    e.preventDefault()
+    console.log("i was clicked")
+
+
+  }
+  
   let image;
   let color;
   switch (props.category) {
@@ -59,9 +70,18 @@ function ProposalCard(props) {
     <div className={`cardContainer rounded-xl ${color}`}>
       <div className="grid grid-cols-2">
         <h6 className="text-white">By {props.author}</h6>
-        <h6 className="justify-self-end">Up</h6>
+        <div className="place-self-end">
+          <div className="upvotesContainer flex flex-row p-0 mx-0">
+            {isNonZero && (
+              <h6 className="mr-1 text-white">{props.upvotes}</h6>
+            )}
+            <button onClick={upvoteHandler} className="hover:bg-black rounded-md p-1 ">
+              <img src={upvote} alt="Upvote Icon" />
+            </button>
+          </div>
+        </div>
       </div>
-      <img src={image} alt="Proposal Icon" className=" mt-1" />
+      <img src={image} alt="Proposal Icon" />
       <h5 className="lg:text-base text-white text-center">{props.title}</h5>
     </div>
   );

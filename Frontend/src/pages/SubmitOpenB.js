@@ -43,7 +43,8 @@ function SubmitOpenB() {
       Bibliography: bibliography,
       ProposalType: "OpenBill",
       OwnerID: id,
-      DisplayName: disp
+      DisplayName: disp,
+      Upvotes: 0
     });
   };
 
