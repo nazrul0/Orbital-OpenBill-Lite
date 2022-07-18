@@ -5,6 +5,7 @@ import QuillEditor from "../components/QuillEditor";
 import "react-quill/dist/quill.snow.css";
 import { useCrud } from "../hooks/useCRUD";
 import { useAuthContext } from "../hooks/useAuthContext";
+import { timestamp } from "../config/firebase";
 
 function SubmitArticle() {
   const [articleTitle, setArticleTitle] = useState("");
@@ -31,6 +32,7 @@ function SubmitArticle() {
       //Category: articleCategory,
       OwnerID: id,
       DisplayName: disp,
+      CreatedAt: timestamp.now().toDate(),
     });
   };
 
