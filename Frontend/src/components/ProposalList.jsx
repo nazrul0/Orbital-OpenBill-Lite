@@ -35,6 +35,9 @@ function ProposalList({ proposals, filterOn, searchText}) {
               title={proposal.Title}
               author={proposal.DisplayName}
               category={proposal.Category}
+              proposal_id={proposal.id}
+              type={proposal.ProposalType}
+              curr_upvotes={proposal.Upvotes}
             />
           </Link>
         ))}
