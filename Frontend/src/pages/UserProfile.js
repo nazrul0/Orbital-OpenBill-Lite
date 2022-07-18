@@ -21,7 +21,6 @@ function UserProfile() {
   useEffect(() => {
     const unsubBills = projFirestore
       .collection("OpenBills")
-      .orderBy("CreatedAt", "desc")
       .where("OwnerID", "==", id)
       .onSnapshot(
         (querySnapshot) => {
@@ -38,7 +37,6 @@ function UserProfile() {
 
     const unsubQuestions = projFirestore
       .collection("OpenQuestions")
-      .orderBy("CreatedAt", "desc")
       .where("OwnerID", "==", id)
       .onSnapshot(
         (querySnapshot) => {
@@ -55,7 +53,6 @@ function UserProfile() {
 
     const unsubArticles = projFirestore
       .collection("Articles")
-      .orderBy("CreatedAt", "desc")
       .where("OwnerID", "==", id)
       .onSnapshot(
         (querySnapshot) => {
