@@ -40,7 +40,6 @@ function SubmitOpenQ() {
       OwnerID: id,
       DisplayName: disp,
       ProposalType: "OpenQuestion",
-      CreatedAt: timestamp.now().toDate(),
     });
   };
 

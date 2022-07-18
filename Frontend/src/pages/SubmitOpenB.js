@@ -53,7 +53,6 @@ function SubmitOpenB() {
       ProposalType: "OpenBill",
       OwnerID: id,
       DisplayName: disp,
-      CreatedAt: timestamp.now().toDate(),
     });
   };
 

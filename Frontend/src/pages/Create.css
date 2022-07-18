@@ -37,6 +37,6 @@
   color: white;
 }
 
-.createType:active {
+.createCardContainer:active {
   transform: scale(0.97);
 }
