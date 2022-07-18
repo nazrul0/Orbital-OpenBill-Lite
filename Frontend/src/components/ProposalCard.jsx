@@ -163,7 +163,7 @@ function ProposalCard(props) {
           <h6 className="text-white">By {props.author}</h6>
           <div className="place-self-end">
             <div className="upvotesContainer flex flex-row p-0 mx-0">
-              <h6 className="mr-1 text-white py-1 -mt-1">{currDoc.Upvotes}</h6>
+              <h6 className="mr-1 text-white py-1 -mt-1">{props.curr_upvotes}</h6>
               {user && (!isUpvoted && (
                 <button onClick={addUpvote} className="hover:bg-slate-700 rounded-md p-1 -mt-1 -mr-1">
                   <img src={upvote} alt="Upvote Icon" />
@@ -183,7 +183,7 @@ function ProposalCard(props) {
           </div>
         </div>
         <img src={image} alt="Proposal Icon" />
-        <h5 className="lg:text-base text-white text-center">{currDoc.Title}</h5>
+        <h5 className="lg:text-base text-white text-center">{props.title}</h5>
       </div>
     );
   } else {
