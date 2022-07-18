@@ -15,13 +15,14 @@
   /* background-color: blue; */
 }
 
+
 .createCardContainer {
   display: grid;
   height: 320px;
   width: 250px;
   grid-template-rows: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
   align-items: center;
-  background-color: #5a67d8;
+  background-color: black;
   border-radius: 15px;
 }
 

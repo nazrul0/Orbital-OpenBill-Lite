@@ -188,8 +188,8 @@ function ProposalCard(props) {
     );
   } else {
     return(
-      <div className="py-20 w-full text-center bg-slate-100 font-title">
-        <h3>Retrieving data</h3>
+      <div className="py-20 w-full text-center bg-slate-100 font-main">
+        <h4>Retrieving data</h4>
       </div>
     )
   }

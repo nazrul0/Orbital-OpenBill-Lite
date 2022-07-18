@@ -220,7 +220,7 @@ function SubmitOpenB() {
               </div>
             </section>
 
-            <div className="center">
+            <div className="text-center">
               <p>See a past bill or report considered in Parliament</p>
               <a
                 href="https://sso.agc.gov.sg/Act/CPA2018?ProvIds=P18-#pr45-"
@@ -248,7 +248,7 @@ function SubmitOpenB() {
       </div>
     );
   } else {
-    return <h4 className="center m-9">Publishing...</h4>;
+    return <h4 className="text-center m-9">Publishing...</h4>;
   }
 }
 export default SubmitOpenB;
