@@ -96,9 +96,11 @@ function SubmitArticle() {
           </div>
         </section>
 
-        <section className="articleSection">
+        <section className="articleSection bg-white w-5/6 sm:w-4/5 md:w-3/4 lg:w-2/3 xl:w-1/2">
           <div className="articleContainer">
-            <h3 className="articleHeader">Article Title</h3>
+            <h3 className="articleHeader text-3xl md:text-4xl">
+              Article Title
+            </h3>
             {!state.isPending && (
               <textarea
                 className="articleTitleInput"
@@ -118,9 +120,9 @@ function SubmitArticle() {
           </div>
         </section>
 
-        <section className="articleSection">
+        <section className="articleSection bg-white w-5/6 sm:w-4/5 md:w-3/4 lg:w-2/3 xl:w-1/2">
           <div className="articleContainer">
-            <h3 className="articleHeader">Content</h3>
+            <h3 className="articleHeader text-3xl md:text-4xl">Content</h3>
             <QuillEditor
               sendUp={setArticleContent}
               className="editor-style"

@@ -8,11 +8,15 @@ import { Link } from "react-router-dom";
 import { useCollection } from "../hooks/useCollection";
 import ProposalList from "../components/ProposalList";
 import Switch from "../components/Switch";
+import { useViewport } from "../hooks/useViewport";
 
 function ProposalsHome() {
   const { docs: docsBills, error: errorBills } = useCollection("OpenBills");
-  const { docs: docsMotions, error: errorMotions } = useCollection("OpenQuestions");
+  const { docs: docsMotions, error: errorMotions } =
+    useCollection("OpenQuestions");
   const [isToggled, setIsToggled] = useState(false);
+
+  const { width } = useViewport();
 
   // search filtering state
   const [inputText, setInputText] = useState("");
@@ -25,9 +29,9 @@ function ProposalsHome() {
   // logging inputText HAS to be outside the onChange handler since console.log would execute first
   useEffect(() => {
     console.log(inputText);
-    if(inputText !== ""){
+    if (inputText !== "") {
       setIsInput(true);
-    }else{
+    } else {
       setIsInput(false);
     }
   }, [inputText]);
@@ -43,8 +47,16 @@ function ProposalsHome() {
         </div>
 
         <div className="grid justify-center">
-          <div className="flex flex-row">
-            <SearchBar type="text" placeholder="Search by Proposal title, user or category" sendUp={searchInputHandler} />
+          <div className="flex flex-row justify-center w-screen">
+            <SearchBar
+              type="text"
+              placeholder={
+                width > 1000
+                  ? "Search by Proposal title, user or category"
+                  : "Search"
+              }
+              sendUp={searchInputHandler}
+            />
             <div className=" flex justify-center items-center gap-2">
               <Switch
                 rounded={true}
@@ -62,14 +74,26 @@ function ProposalsHome() {
 
         {!isToggled && (
           <div className="mx-11">
-            {docsBills && <ProposalList proposals={docsBills} filterOn={isInput} searchText={inputText} />}
+            {docsBills && (
+              <ProposalList
+                proposals={docsBills}
+                filterOn={isInput}
+                searchText={inputText}
+              />
+            )}
             {errorBills && <p>{errorBills}</p>}
           </div>
         )}
 
         {isToggled && (
           <div className="mx-11">
-            {docsMotions && <ProposalList proposals={docsMotions} filterOn={isInput} searchText={inputText} />}
+            {docsMotions && (
+              <ProposalList
+                proposals={docsMotions}
+                filterOn={isInput}
+                searchText={inputText}
+              />
+            )}
             {errorMotions && <p>{errorMotions}</p>}
           </div>
         )}

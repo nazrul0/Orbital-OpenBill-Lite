@@ -17,21 +17,23 @@ function Faq() {
 
   return (
     <div className="faqPage bg-slate-100">
-      <PageTitle title="Frequently asked questions" />
-      <div className="accordionContainer mt-4">
+      <PageTitle title="Frequently asked questions " className="text-center" />
+      <div className="accordionContainer w-screen mt-4">
         {Data.map((item, index) => {
           return (
-            <div className="questionSet bg-white">
+            <div className="questionSet bg-white w-4/5 md:w-3/4 lg:w-2/3 ">
               <div
-                className="faqQuestion"
+                className="faqQuestion "
                 onClick={() => toggle(index)}
                 key={index}
               >
-                <h3>{item.question}</h3>
+                <h3 className="text-xl md:text-2xl">{item.question}</h3>
               </div>
               {clicked === index ? (
-                <div className="faqAnswer">
-                  <p>{item.answer}</p>
+                <div className="faqAnswer ">
+                  <p className="text-base md:text-lg lg:text-xl">
+                    {item.answer}
+                  </p>
                 </div>
               ) : null}
             </div>

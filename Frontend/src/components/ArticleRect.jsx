@@ -50,20 +50,22 @@ function ArticleRect(props) {
   console.log(props.content);
 
   return (
-    <div>
-      <div className="articlePreviewContainer">
-        <h2 className="articlePreviewTitle">{props.title}</h2>
-        {/* <h3 className="articlePreviewCategory">{props.category}</h3> */}
-        {/* <p className="articlePreviewBody">{props.content}</p> */}
-        {/* <QuillEditor
-          className="articlePreviewBody"
-          readMode={true}
-          payload={JSON.parse(props.content)}
-        /> */}
-        <img className="articleIcon" src={image} alt="Article Icon" />
+    <div className="flex justify-center w-screen">
+      <div className="articlePreviewContainer w-4/5 md:w-3/4 lg:w-2/3 flex items-center justify-between">
+        <h2 className="articlePreviewTitle text-lg md:text-xl lg:text-2xl">
+          {props.title}
+        </h2>
+
+        <img
+          className="w-16 md:w-20 lg:w-24 rounded-full "
+          src={image}
+          alt="Article Icon"
+        />
       </div>
     </div>
   );
 }
 
 export default ArticleRect;
+
+//

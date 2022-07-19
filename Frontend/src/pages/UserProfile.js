@@ -8,11 +8,14 @@ import SearchBar from "../components/SearchBar";
 import Button from "../components/Button";
 import { Link } from "react-router-dom";
 import ArticleList from "../components/ArticleList";
+import { useViewport } from "../hooks/useViewport";
 
 function UserProfile() {
   const { user } = useAuthContext(); // importing user
   const id = user.uid;
   const disp = user.displayName;
+
+  const { width } = useViewport();
 
   const [userBills, setUserBills] = useState([]);
   const [userQuestions, setUserQuestions] = useState([]);
@@ -81,8 +84,11 @@ function UserProfile() {
         <h2 className="userDisplayName">{disp}</h2>
 
         <section className="searchSection">
-          <SearchBar type="text" placeholder="Search My Profile" />
-          <Button text="Filter" />
+          <SearchBar
+            type="text"
+            placeholder={width > 1000 ? "Search My Profile" : "Search"}
+          />
+          {/* <Button text="Filter" /> */}
           <Link className="navItem" to={`/UserProfile/${user.uid}/Settings`}>
             <Button text="Settings >" />
           </Link>

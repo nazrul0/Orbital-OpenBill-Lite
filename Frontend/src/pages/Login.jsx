@@ -7,16 +7,16 @@ import { VALIDATOR_EMAIL } from "../util/validators.js";
 import { useLogin } from "../hooks/useLogin";
 import constellation from "../imgs/constellation.png";
 
-function Login() {
+function Login(props) {
   // destructuring the standard returns of useState- 1.the latest state 2. function to update the state
   // inside the useState call specify the initialisation state
   const [enteredEmail, updateEnteredEmail] = useState("");
   const [enteredPassword, updateEnteredPassword] = useState("");
   // simply importing does not work, need to destructure
-  const {login, error, pending} = useLogin();
+  const { login, error, pending } = useLogin();
 
   const nav = useNavigate();
-  
+
   const emailChangeHandler = (event) => {
     updateEnteredEmail(event.target.value);
     //console.log(enteredEmail);
@@ -38,12 +38,22 @@ function Login() {
   // the element to return
   return (
     <div className="bg-slate-100 h-screen pt-10">
-      
       <div className="grid grid-cols-5 ">
+        <img
+          src={constellation}
+          alt="Openbill Constellation"
+          className="col-start-3 col-span-4 w-full pl-16"
+        />
 
-        <img src={constellation} alt="Openbill Constellation" className="col-start-3 col-span-4 w-full pl-16"/>  
-        
-        <div className="login_box -mt-12 bg-indigo-500 text-white col-start-2 col-span-3 z-50">
+        <div className="mt-32 sm:mt-28 md:mt-20 lg:mt-0" />
+
+        <img
+          src={constellation}
+          alt="Openbill Constellation"
+          className="col-start-1 col-span-3 w-full mt-48"
+        />
+
+        <div className="login_box -mt-96 bg-indigo-500 text-white col-start-2 col-span-3 ">
           <PageTitle title="Log in" />
           <form onSubmit={submitHandler}>
             <Input
@@ -65,26 +75,35 @@ function Login() {
               errortext="Please enter a valid password"
               onChange={passwordChangeHandler}
             ></Input>
-            
-            {!pending && <button type="submit" className="my-4 bg-black text-white py-1 px-8 rounded-full font-title font-bold">Log in</button>}
-            {pending && <button disabled >Loading</button>}
+
+            {!pending && (
+              <button
+                type="submit"
+                className="my-4 bg-black text-white py-1 px-8 rounded-full font-title font-bold"
+              >
+                Log in
+              </button>
+            )}
+            {pending && <button disabled>Loading</button>}
             {error && <p>{error}</p>}
-          
           </form>
         </div>
-        
-        <img src={constellation} alt="Openbill Constellation" className="col-start-1 col-span-3 w-full -mt-16 -ml-16"/>  
+
+        {/* <img
+          src={constellation}
+          alt="Openbill Constellation"
+          className="col-start-1 col-span-3 w-full -mt-16 -ml-16 z-10"
+        /> */}
       </div>
-    
-      <div className="text-center pb-8 font-main font-semibold">
+
+      <div className="text-center pb-8 mt-20 font-main font-semibold ">
         <p>Don't have an account?</p>
         <Link className="navItem" to="/Signup">
           Sign up
         </Link>
       </div>
-    
     </div>
   );
-} 
+}
 
 export default Login;

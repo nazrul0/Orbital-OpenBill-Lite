@@ -10,6 +10,8 @@ function Header() {
   const { user } = useAuthContext();
   const { logout } = useLogout();
 
+  const menuOpen = false;
+
   return (
     <div className="bg-slate-50">
       <div className="header backdrop-blur-sm">
@@ -50,10 +52,10 @@ function Header() {
 
           {!user && (
             <Fragment>
-              <Link className="navItem" to="/Login">
+              <Link className="navItem" to="/Login" menuOpen={menuOpen}>
                 Login
               </Link>
-              <Link className="navItem" to="/Signup">
+              <Link className="navItem" to="/Signup" menuOpen={menuOpen}>
                 Sign up
               </Link>
             </Fragment>

@@ -112,10 +112,10 @@ function SubmitOpenB() {
               </div>
             </section>
 
-            <section className="questionSection bg-white">
+            <section className="questionSection bg-white w-5/6 sm:w-4/5 md:w-3/4 lg:w-2/3 xl:w-1/2">
               <div className="sectionContainer">
-                <h3 className="questionHeader">Title</h3>
-                <h5>Write a brief title</h5>
+                <h3 className="questionHeader text-3xl md:text-4xl">Title</h3>
+                <h5 className="md:text-xl">Write a brief title</h5>
                 {!state.isPending && (
                   <textarea
                     className="questionTitleInput"
@@ -135,10 +135,14 @@ function SubmitOpenB() {
               </div>
             </section>
 
-            <section className="questionSection bg-white">
+            <section className="questionSection bg-white w-5/6 sm:w-4/5 md:w-3/4 lg:w-2/3 xl:w-1/2">
               <div className="sectionContainer">
-                <h3 className="questionHeader">Related laws</h3>
-                <h5>Which acts/policies/laws are likely to be affected?</h5>
+                <h3 className="questionHeader text-3xl md:text-4xl">
+                  Related laws
+                </h3>
+                <h5 className="md:text-xl">
+                  Which acts/policies/laws are likely to be affected?
+                </h5>
                 <QuillEditor
                   sendUp={setRelatedLaws}
                   className="editor-style"
@@ -147,10 +151,12 @@ function SubmitOpenB() {
               </div>
             </section>
 
-            <section className="questionSection bg-white">
+            <section className="questionSection bg-white w-5/6 sm:w-4/5 md:w-3/4 lg:w-2/3 xl:w-1/2">
               <div className="sectionContainer">
-                <h3 className="questionHeader">Current Problems</h3>
-                <h5>
+                <h3 className="questionHeader text-3xl md:text-4xl">
+                  Current Problems
+                </h3>
+                <h5 className="md:text-xl">
                   What’s wrong? How are current policies insufficient/
                   ineffective?
                 </h5>
@@ -162,10 +168,12 @@ function SubmitOpenB() {
               </div>
             </section>
 
-            <section className="questionSection bg-white">
+            <section className="questionSection bg-white w-5/6 sm:w-4/5 md:w-3/4 lg:w-2/3 xl:w-1/2">
               <div className="sectionContainer">
-                <h3 className="questionHeader">Summary of Recommendations</h3>
-                <h5>
+                <h3 className="questionHeader text-3xl md:text-4xl">
+                  Summary of Recommendations
+                </h3>
+                <h5 className="md:text-xl">
                   First summarise your recommendations, ideally in less than 50
                   words per point :)
                 </h5>
@@ -177,10 +185,12 @@ function SubmitOpenB() {
               </div>
             </section>
 
-            <section className="questionSection bg-white">
+            <section className="questionSection bg-white w-5/6 sm:w-4/5 md:w-3/4 lg:w-2/3 xl:w-1/2">
               <div className="sectionContainer">
-                <h3 className="questionHeader">Elaboration: Part 1</h3>
-                <h5>
+                <h3 className="questionHeader text-3xl md:text-4xl">
+                  Elaboration: Part 1
+                </h3>
+                <h5 className="md:text-xl">
                   Now provide details on how these recommendations would be
                   implemented
                 </h5>
@@ -192,10 +202,12 @@ function SubmitOpenB() {
               </div>
             </section>
 
-            <section className="questionSection bg-white">
+            <section className="questionSection bg-white w-5/6 sm:w-4/5 md:w-3/4 lg:w-2/3 xl:w-1/2">
               <div className="sectionContainer">
-                <h3 className="questionHeader">Elaboration: Part 2</h3>
-                <h5>
+                <h3 className="questionHeader text-3xl md:text-4xl">
+                  Elaboration: Part 2
+                </h3>
+                <h5 className="md:text-xl">
                   Why do these measures work? If you have theoretical
                   explanations/ supporting data, present these arguments here
                   (Optional)
@@ -208,10 +220,14 @@ function SubmitOpenB() {
               </div>
             </section>
 
-            <section className="questionSection bg-white">
+            <section className="questionSection bg-white w-5/6 sm:w-4/5 md:w-3/4 lg:w-2/3 xl:w-1/2">
               <div className="sectionContainer">
-                <h3 className="questionHeader">Bibliography</h3>
-                <h5>Optional, but highly recommended!</h5>
+                <h3 className="questionHeader text-3xl md:text-4xl">
+                  Bibliography
+                </h3>
+                <h5 className="md:text-xl">
+                  Optional, but highly recommended!
+                </h5>
                 <QuillEditor
                   sendUp={setBibliography}
                   className="editor-style"

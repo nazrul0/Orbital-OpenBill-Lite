@@ -53,6 +53,7 @@
 .articleDisplayContainer {
   max-height: 38rem;
   overflow-y: scroll;
+  overflow-x: clip;
 }
 
 #articlesSectionHeader {

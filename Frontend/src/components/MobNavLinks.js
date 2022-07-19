@@ -80,10 +80,24 @@ const MobNavLinks = (props) => {
 
           {!user && (
             <Fragment>
-              <Link className="mobNavItem" to="/Login">
+              <Link
+                className="mobNavItem"
+                to="/Login"
+                onClick={() => {
+                  handleMobileLinkClick();
+                }}
+                state={{ curr: this }}
+              >
                 Login
               </Link>
-              <Link className="mobNavItem" to="/Signup">
+              <Link
+                className="mobNavItem"
+                to="/Signup"
+                onClick={() => {
+                  handleMobileLinkClick();
+                }}
+                state={{ curr: this }}
+              >
                 Sign up
               </Link>
             </Fragment>

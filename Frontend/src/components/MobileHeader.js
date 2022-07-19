@@ -10,7 +10,6 @@ function MobileHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   function handleMenuClick() {
-    console.log("Clicked");
     setMenuOpen(!menuOpen);
   }
   const hamburgerIcon = (
@@ -40,7 +39,7 @@ function MobileHeader() {
   };
 
   return (
-    <div className="bg-slate-50">
+    <div className="bg-slate-50 ">
       <div className="mobile_header backdrop-blur-sm">
         <div className="siteBrand">
           <img className="mainLogo" src={logo} alt="openbill logo" />
@@ -60,6 +59,7 @@ function MobileHeader() {
               className="mobileLinks"
               isMobile={true}
               closeMobileMenu={closeMobileMenu}
+              menuOpen={menuOpen}
             />
           )}
         </nav>
