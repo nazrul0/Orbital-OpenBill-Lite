@@ -5,7 +5,6 @@ import { useCrud } from "../hooks/useCRUD";
 import { useAuthContext } from "../hooks/useAuthContext";
 import QuillEditor from "../components/QuillEditor";
 import "react-quill/dist/quill.snow.css";
-import { timestamp } from "../config/firebase";
 
 function SubmitOpenB() {
   const [billCategory, setBillCategory] = useState("Environment");
@@ -53,6 +52,7 @@ function SubmitOpenB() {
       ProposalType: "OpenBill",
       OwnerID: id,
       DisplayName: disp,
+      Upvotes: 0,
     });
   };
 
@@ -236,7 +236,7 @@ function SubmitOpenB() {
               </div>
             </section>
 
-            <div className="center">
+            <div className="text-center">
               <p>See a past bill or report considered in Parliament</p>
               <a
                 href="https://sso.agc.gov.sg/Act/CPA2018?ProvIds=P18-#pr45-"
@@ -264,7 +264,7 @@ function SubmitOpenB() {
       </div>
     );
   } else {
-    return <h4 className="center m-9">Publishing...</h4>;
+    return <h4 className="text-center m-9">Publishing...</h4>;
   }
 }
 export default SubmitOpenB;

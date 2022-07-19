@@ -54,7 +54,7 @@ export const useCrud = (collection) => {
         // attaches firestore timestamp object to doc, tries to add to db
         try {
             const createdAt = timestamp.fromDate(new Date())
-            const addedDoc= await ref.add({...doc, createdAt: createdAt});
+            const addedDoc= await ref.add({...doc, CreatedAt: createdAt});
             dispatch({type: 'ADDED_DOC', payload: addedDoc});
         }
         catch (err) {

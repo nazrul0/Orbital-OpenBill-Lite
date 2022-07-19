@@ -10,8 +10,8 @@ function ProposalList({ proposals, filterOn, searchText}) {
   const [filteredData, setFilteredData] = useState([]);
   
   useEffect(() => {
-    // [1] .filter is a js method taking a callback wherein there is one proposal
-    // [2] .includes is another js method
+    // [1] .filter() is a js method taking a callback wherein there is one proposal
+    // [2] .includes() is another js method
     const newFilter = proposals.filter( (oneProposal) => {
       return (
         oneProposal.Title.toLowerCase().includes(searchText.toLowerCase()) ||
@@ -35,6 +35,9 @@ function ProposalList({ proposals, filterOn, searchText}) {
               title={proposal.Title}
               author={proposal.DisplayName}
               category={proposal.Category}
+              proposal_id={proposal.id}
+              type={proposal.ProposalType}
+              curr_upvotes={proposal.Upvotes}
             />
           </Link>
         ))}
@@ -58,6 +61,9 @@ function ProposalList({ proposals, filterOn, searchText}) {
               title={proposal.Title}
               author={proposal.DisplayName}
               category={proposal.Category}
+              proposal_id={proposal.id}
+              type={proposal.ProposalType}
+              curr_upvotes={proposal.Upvotes}
             />
           </Link>
         ))}

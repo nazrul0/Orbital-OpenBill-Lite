@@ -47,7 +47,7 @@ function ArticleRect(props) {
       break;
   }
 
-  console.log(props.content);
+  //console.log(props.content);
 
   return (
     <div className="flex justify-center w-screen">
