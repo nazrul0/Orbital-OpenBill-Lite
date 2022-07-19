@@ -40,7 +40,11 @@ function Faq() {
           );
         })}
       </div>
-      <Link id="shareLink" className="navItem" to="/SubmitFAQ">
+      <Link
+        id="shareLink"
+        className="navItem bg-indigo-200 text-white rounded-lg px-5 py-2 h-4 mb-3"
+        to="/SubmitFAQ"
+      >
         Have further queries for the OpenBill team?
       </Link>
     </div>

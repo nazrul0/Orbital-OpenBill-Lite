@@ -39,9 +39,13 @@ function ProposalsHome() {
   return (
     <div className="bg-slate-100">
       <div className="flex flex-col container mx-auto">
-        <div className="grid justify-items-center">
+        <div className="grid justify-items-center ">
           <PageTitle title="Proposals Home" />
-          <Link id="shareLink" className="navItem" to="/Create">
+          <Link
+            id="shareLink"
+            className="navItem bg-indigo-200 text-white rounded-lg px-5 py-2 h-4"
+            to="/Create"
+          >
             Have a proposal to share?
           </Link>
         </div>
@@ -56,6 +60,7 @@ function ProposalsHome() {
                   : "Search"
               }
               sendUp={searchInputHandler}
+              className="w-full"
             />
             <div className=" flex justify-center items-center gap-2">
               <Switch
