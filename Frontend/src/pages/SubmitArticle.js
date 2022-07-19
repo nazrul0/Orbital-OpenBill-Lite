@@ -133,7 +133,7 @@ function SubmitArticle() {
 
         <button
           type="submit"
-          className="submitArticleTitle"
+          className="m-2 pl-8 p-1 pr-8 bg-indigo-500 text-white rounded-lg"
           onClick={submitHandler}
         >
           Submit Article

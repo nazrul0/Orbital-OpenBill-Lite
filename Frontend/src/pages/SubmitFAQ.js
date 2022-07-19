@@ -2,10 +2,7 @@ import React, { useState } from "react";
 import PageTitle from "../components/PageTitle";
 import "./SubmitFAQ.css";
 import { projFirestore } from "../config/firebase";
-import {
-  collection,
-  addDoc,
-} from "firebase/firestore";
+import { collection, addDoc } from "firebase/firestore";
 
 function SubmitFAQ() {
   const [faqContent, setFaqContent] = useState("");
@@ -42,11 +39,13 @@ function SubmitFAQ() {
   return (
     <div>
       <PageTitle title="Suggest an FAQ" />
-      <div className="submitFaqContainer">
+      <div className="submitFaqContainer ">
         {/* <section className="questionSection">Category?</section> */}
-        <section className="faqSection">
+        <section className="faqSection bg-white w-5/6 sm:w-4/5 md:w-3/4 lg:w-2/3 xl:w-1/2">
           <div className="faqContainer">
-            <h3 className="faqHeader">What would you like to ask the team?</h3>
+            <h3 className="faqHeader text-3xl md:text-4xl">
+              What would you like to ask the team?
+            </h3>
             <form>
               <textarea
                 className="faqContentInput"
@@ -61,7 +60,11 @@ function SubmitFAQ() {
           </div>
         </section>
 
-        <button type="submit" className="submitFaqContent" onClick={createFaq}>
+        <button
+          type="submit"
+          className="m-2 pl-8 p-1 pr-8 bg-indigo-500 text-white rounded-lg"
+          onClick={createFaq}
+        >
           Submit FAQ suggestion
         </button>
       </div>

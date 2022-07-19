@@ -99,7 +99,9 @@ function Login(props) {
       <div className="text-center pb-8 mt-20 font-main font-semibold ">
         <p>Don't have an account?</p>
         <Link className="navItem" to="/Signup">
-          Sign up
+          <button className="m-2 pl-8 p-1 pr-8 bg-indigo-500 text-white rounded-lg">
+            Sign up
+          </button>
         </Link>
       </div>
     </div>
