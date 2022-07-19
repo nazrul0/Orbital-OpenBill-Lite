@@ -10,8 +10,12 @@ import ProposalList from "../components/ProposalList";
 import Switch from "../components/Switch";
 
 function ProposalsHome() {
-  const { docs: docsBills, error: errorBills } = useCollection("OpenBills");
-  const { docs: docsMotions, error: errorMotions } = useCollection("OpenQuestions");
+  // pagination limit value
+  const [limitVal, setLimitVal] = useState(2);
+
+  // retrieving the documents
+  const { docs: docsBills, error: errorBills } = useCollection("OpenBills", limitVal);
+  const { docs: docsMotions, error: errorMotions } = useCollection("OpenQuestions", limitVal);
   const [isToggled, setIsToggled] = useState(false);
 
   // search filtering state
@@ -24,13 +28,24 @@ function ProposalsHome() {
 
   // logging inputText HAS to be outside the onChange handler since console.log would execute first
   useEffect(() => {
-    console.log(inputText);
+    //console.log(inputText);
     if(inputText !== ""){
       setIsInput(true);
     }else{
       setIsInput(false);
     }
   }, [inputText]);
+
+  useEffect(() => {
+    //console.log(inputText);
+    setLimitVal(2)
+  }, []);
+
+  const loadHandler= (e) => {
+    setLimitVal(limitVal + 2);
+    console.log(limitVal)
+  }
+
 
   return (
     <div className="bg-slate-100">
@@ -73,6 +88,9 @@ function ProposalsHome() {
             {errorMotions && <p>{errorMotions}</p>}
           </div>
         )}
+        <div className="grid justify-items-center">
+          <button className="my-8 py-1 px-6 rounded-full bg-black text-white font-main" onClick={loadHandler}>Load more</button>
+        </div>
       </div>
     </div>
   );

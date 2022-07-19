@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { projFirestore } from "../config/firebase";
 
-export const useCollection = (collection) => {
+export const useCollection = (collection, limitVal) => {
   const [docs, setDocs] = useState(null);
   const [error, setError] = useState(null);
 
   // a subscription to a firestore collection hence useEffect
   useEffect(() => {
-    let ref = projFirestore.collection(collection).orderBy("CreatedAt", "desc");
+    let ref = projFirestore.collection(collection).orderBy("CreatedAt", "desc").limit(limitVal);
 
     // snapshot function takes 2 funcs as callbacks
     // second one is error func- hence try/catch not needed
@@ -31,7 +31,7 @@ export const useCollection = (collection) => {
 
     // unsubscribe from the snapshot listening if unmount
     return () => unsub();
-  }, [collection]);
+  }, [collection, limitVal]);
 
   return { docs, error };
 };
