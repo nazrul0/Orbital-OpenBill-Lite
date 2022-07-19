@@ -73,7 +73,7 @@ function Signup() {
               element="input"
               id="displayname"
               type="text"
-              label="Display Name"
+              label="Display Name (Preferably one word)"
               value={enteredDisplayName}
               errortext="Please enter a valid display name"
               onChange={displayNameChangeHandler}

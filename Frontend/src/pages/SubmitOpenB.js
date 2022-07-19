@@ -15,7 +15,7 @@ function SubmitOpenB() {
   const [elabHow, setElabHow] = useState("");
   const [elabWhy, setElabWhy] = useState("");
   const [bibliography, setBibliography] = useState("");
-  
+
   const { addDoc, state } = useCrud("OpenBills");
   const { user } = useAuthContext(); // importing user to get access to uid field on the user object
 
@@ -25,8 +25,16 @@ function SubmitOpenB() {
     const id = user.uid;
     const disp = user.displayName;
 
-    if(billTitle === "" || relatedLaws === "" || currentProbs === "" || summary=== "" || elabHow === ""){
-      alert("Required fields: Title, related laws, current problem, summary, elaboration section 1");
+    if (
+      billTitle === "" ||
+      relatedLaws === "" ||
+      currentProbs === "" ||
+      summary === "" ||
+      elabHow === ""
+    ) {
+      alert(
+        "Required fields: Title, related laws, current problem, summary, elaboration section 1"
+      );
       return;
     }
 
@@ -68,7 +76,7 @@ function SubmitOpenB() {
   //   console.log(elabHow)
   // }, [elabHow])
 
-  if(state.isPending === false){
+  if (state.isPending === false) {
     return (
       <div className="bg-slate-100 font-main">
         <PageTitle title="Create an OpenBill" />
@@ -98,12 +106,12 @@ function SubmitOpenB() {
                       <option value="Transport">Transport</option>
                     </select>
                   )}
-  
+
                   {state.isPending && <select disabled></select>}
                 </div>
               </div>
             </section>
-  
+
             <section className="questionSection bg-white">
               <div className="sectionContainer">
                 <h3 className="questionHeader">Title</h3>
@@ -120,95 +128,114 @@ function SubmitOpenB() {
                     required
                   ></textarea>
                 )}
-  
+
                 {state.isPending && (
                   <textarea className="questionTitleInput" disabled></textarea>
                 )}
               </div>
             </section>
-  
+
             <section className="questionSection bg-white">
               <div className="sectionContainer">
                 <h3 className="questionHeader">Related laws</h3>
                 <h5>Which acts/policies/laws are likely to be affected?</h5>
-                  <QuillEditor
-                    sendUp={setRelatedLaws}
-                    className="editor-style"
-                    readMode={false}
-                  />
+                <QuillEditor
+                  sendUp={setRelatedLaws}
+                  className="editor-style"
+                  readMode={false}
+                />
               </div>
             </section>
-  
+
             <section className="questionSection bg-white">
               <div className="sectionContainer">
                 <h3 className="questionHeader">Current Problems</h3>
-                <h5>What’s wrong? How are current policies insufficient/ ineffective?</h5>
-                  <QuillEditor
-                    sendUp={setCurrentProbs}
-                    className="editor-style"
-                    readMode={false}
-                  />
+                <h5>
+                  What’s wrong? How are current policies insufficient/
+                  ineffective?
+                </h5>
+                <QuillEditor
+                  sendUp={setCurrentProbs}
+                  className="editor-style"
+                  readMode={false}
+                />
               </div>
             </section>
-  
+
             <section className="questionSection bg-white">
               <div className="sectionContainer">
                 <h3 className="questionHeader">Summary of Recommendations</h3>
-                <h5>First summarise your recommendations, ideally in less than 50 words per point :)</h5>
-                  <QuillEditor
-                    sendUp={setSummary}
-                    className="editor-style"
-                    readMode={false}
-                  />
+                <h5>
+                  First summarise your recommendations, ideally in less than 50
+                  words per point :)
+                </h5>
+                <QuillEditor
+                  sendUp={setSummary}
+                  className="editor-style"
+                  readMode={false}
+                />
               </div>
             </section>
-  
+
             <section className="questionSection bg-white">
               <div className="sectionContainer">
                 <h3 className="questionHeader">Elaboration: Part 1</h3>
-                <h5>Now provide details on how these recommendations would be implemented</h5>
-                  <QuillEditor
-                    sendUp={setElabHow}
-                    className="editor-style"
-                    readMode={false}
-                  />
+                <h5>
+                  Now provide details on how these recommendations would be
+                  implemented
+                </h5>
+                <QuillEditor
+                  sendUp={setElabHow}
+                  className="editor-style"
+                  readMode={false}
+                />
               </div>
             </section>
-  
+
             <section className="questionSection bg-white">
               <div className="sectionContainer">
                 <h3 className="questionHeader">Elaboration: Part 2</h3>
-                <h5>Why do these measures work? If you have theoretical explanations/ supporting data, present these arguments here (Optional)</h5>
-                  <QuillEditor
-                    sendUp={setElabWhy}
-                    className="editor-style"
-                    readMode={false}
-                  />
+                <h5>
+                  Why do these measures work? If you have theoretical
+                  explanations/ supporting data, present these arguments here
+                  (Optional)
+                </h5>
+                <QuillEditor
+                  sendUp={setElabWhy}
+                  className="editor-style"
+                  readMode={false}
+                />
               </div>
             </section>
-  
+
             <section className="questionSection bg-white">
               <div className="sectionContainer">
                 <h3 className="questionHeader">Bibliography</h3>
                 <h5>Optional, but highly recommended!</h5>
-                  <QuillEditor
-                    sendUp={setBibliography}
-                    className="editor-style"
-                    readMode={false}
-                  />
+                <QuillEditor
+                  sendUp={setBibliography}
+                  className="editor-style"
+                  readMode={false}
+                />
               </div>
             </section>
-  
-            <div className="center">
+
+            <div className="text-center">
               <p>See a past bill or report considered in Parliament</p>
-                <a href="https://sso.agc.gov.sg/Act/CPA2018?ProvIds=P18-#pr45-" className="underline m-2">
-                  Bill  
-                </a>
-                <a href="https://sso.agc.gov.sg/Act/CPA2018?ProvIds=P18-#pr45-" className="underline m-2">
-                  Report  
-                </a>
+              <a
+                href="https://sso.agc.gov.sg/Act/CPA2018?ProvIds=P18-#pr45-"
+                className="underline m-2"
+              >
+                Bill
+              </a>
+              <a
+                href="https://sso.agc.gov.sg/Act/CPA2018?ProvIds=P18-#pr45-"
+                className="underline m-2"
+              >
+                Report
+              </a>
             </div>
-  
+
             <button
               type="submit"
               onClick={submitHandler}
@@ -216,18 +243,12 @@ function SubmitOpenB() {
             >
               Publish OpenBill
             </button>
-  
           </div>
         </form>
-        
       </div>
     );
+  } else {
+    return <h4 className="text-center m-9">Publishing...</h4>;
   }
-  else{
-    return (
-      <h4 className="center m-9">Publishing...</h4>
-    )
-  }
-  
 }
 export default SubmitOpenB;
