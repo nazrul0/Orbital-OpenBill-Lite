@@ -1,7 +1,13 @@
 import { useState, useEffect } from "react";
 import { projFirestore } from "../config/firebase";
 
-export const usePaginate = (collection, firstLatestDoc) => {
+export const usePaginate = (
+  collection,
+  firstLatestDoc,
+  initialNumber,
+  fetchNumber,
+  type
+) => {
   const [paginatedProposals, setPaginatedProposals] = useState([]);
   const [latestDoc, setLatestDoc] = useState(firstLatestDoc);
 
@@ -10,7 +16,7 @@ export const usePaginate = (collection, firstLatestDoc) => {
       const ref = projFirestore
         .collection(collection)
         .orderBy("CreatedAt", "desc")
-        .limit(10);
+        .limit(initialNumber);
       const data = await ref.get();
       let proposalsArray = [];
       data.docs.forEach((doc) => {
@@ -30,7 +36,7 @@ export const usePaginate = (collection, firstLatestDoc) => {
         .collection(collection)
         .orderBy("CreatedAt", "desc")
         .startAfter(latestDoc)
-        .limit(5);
+        .limit(fetchNumber);
       const data = await ref.get();
       let proposalsArray = [];
       data.docs.forEach((doc) => {
@@ -41,7 +47,7 @@ export const usePaginate = (collection, firstLatestDoc) => {
 
       // console.log("got", proposalsArray);
     } catch (err) {
-      alert("There are no more proposals to display.");
+      alert("There are no more " + type + " to display.");
     }
   }
 

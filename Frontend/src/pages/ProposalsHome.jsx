@@ -40,12 +40,12 @@ function ProposalsHome() {
 
   // paginate using hooks
   const { paginatedProposals: paginatedBills, getNextProposals: getNextBills } =
-    usePaginate("OpenBills", null);
+    usePaginate("OpenBills", null, 10, 5, "proposals");
 
   const {
     paginatedProposals: paginatedQuestions,
     getNextProposals: getNextQuestions,
-  } = usePaginate("OpenQuestions", null);
+  } = usePaginate("OpenQuestions", null, 10, 5, "proposals");
 
   return (
     <div className="bg-slate-100">
@@ -111,7 +111,7 @@ function ProposalsHome() {
                 // type="submit"
                 id="loadMore"
                 onClick={getNextBills}
-                className="m-2 pl-8 p-1 pr-8 bg-indigo-500 text-white rounded-lg w-72 h-10"
+                className="m-2 pl-8 p-1 pr-8 bg-indigo-500 text-white rounded-lg "
               >
                 Load more proposals
               </button>

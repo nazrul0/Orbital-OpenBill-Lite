@@ -2,80 +2,113 @@ import React, { useEffect, useState } from "react";
 import "./UserProfile.css";
 import PageTitle from "../components/PageTitle";
 import { useAuthContext } from "../hooks/useAuthContext";
-import { projFirestore } from "../config/firebase";
-import ProfileProposalList from "../components/ProfileProposalList";
+// import { projFirestore } from "../config/firebase";
+import ProposalList from "../components/ProposalList";
 import SearchBar from "../components/SearchBar";
 import Button from "../components/Button";
 import { Link } from "react-router-dom";
 import ArticleList from "../components/ArticleList";
 import { useViewport } from "../hooks/useViewport";
+import { usePaginate } from "../hooks/usePaginate";
 
 function UserProfile() {
   const { user } = useAuthContext(); // importing user
-  const id = user.uid;
+  // const id = user.uid;
   const disp = user.displayName;
 
   const { width } = useViewport();
 
-  const [userBills, setUserBills] = useState([]);
-  const [userQuestions, setUserQuestions] = useState([]);
-  const [userArticles, setUserArticles] = useState([]);
+  // const [userBills, setUserBills] = useState([]);
+  // const [userQuestions, setUserQuestions] = useState([]);
+  // const [userArticles, setUserArticles] = useState([]);
 
+  // useEffect(() => {
+  //   const unsubBills = projFirestore
+  //     .collection("OpenBills")
+  //     .where("OwnerID", "==", id)
+  //     .onSnapshot(
+  //       (querySnapshot) => {
+  //         let results = [];
+  //         querySnapshot.forEach((doc) => {
+  //           results.push({ ...doc.data(), id: doc.id });
+  //         });
+  //         setUserBills(results);
+  //       },
+  //       (error) => {
+  //         console.log("Could not fetch.");
+  //       }
+  //     );
+
+  //   const unsubQuestions = projFirestore
+  //     .collection("OpenQuestions")
+  //     .where("OwnerID", "==", id)
+  //     .onSnapshot(
+  //       (querySnapshot) => {
+  //         let results = [];
+  //         querySnapshot.forEach((doc) => {
+  //           results.push({ ...doc.data(), id: doc.id });
+  //         });
+  //         setUserQuestions(results);
+  //       },
+  //       (error) => {
+  //         console.log("Could not fetch.");
+  //       }
+  //     );
+
+  //   const unsubArticles = projFirestore
+  //     .collection("Articles")
+  //     .where("OwnerID", "==", id)
+  //     .onSnapshot(
+  //       (querySnapshot) => {
+  //         let results = [];
+  //         querySnapshot.forEach((doc) => {
+  //           results.push({ ...doc.data(), id: doc.id });
+  //         });
+  //         setUserArticles(results);
+  //       },
+  //       (error) => {
+  //         console.log("Could not fetch.");
+  //       }
+  //     );
+
+  //   return () => {
+  //     unsubBills();
+  //     unsubQuestions();
+  //     unsubArticles();
+  //   };
+  // }, []);
+
+  //
+
+  const [inputText, setInputText] = useState("");
+  const [isInput, setIsInput] = useState(false);
+
+  // const searchInputHandler = (e) => {
+  //   setInputText(e.target.value);
+  // };
+
+  // logging inputText HAS to be outside the onChange handler since console.log would execute first
   useEffect(() => {
-    const unsubBills = projFirestore
-      .collection("OpenBills")
-      .where("OwnerID", "==", id)
-      .onSnapshot(
-        (querySnapshot) => {
-          let results = [];
-          querySnapshot.forEach((doc) => {
-            results.push({ ...doc.data(), id: doc.id });
-          });
-          setUserBills(results);
-        },
-        (error) => {
-          console.log("Could not fetch.");
-        }
-      );
+    console.log(inputText);
+    if (inputText !== "") {
+      setIsInput(true);
+    } else {
+      setIsInput(false);
+    }
+  }, [inputText]);
 
-    const unsubQuestions = projFirestore
-      .collection("OpenQuestions")
-      .where("OwnerID", "==", id)
-      .onSnapshot(
-        (querySnapshot) => {
-          let results = [];
-          querySnapshot.forEach((doc) => {
-            results.push({ ...doc.data(), id: doc.id });
-          });
-          setUserQuestions(results);
-        },
-        (error) => {
-          console.log("Could not fetch.");
-        }
-      );
+  const { paginatedProposals: paginatedBills, getNextProposals: getNextBills } =
+    usePaginate("OpenBills", null, 4, 4, "proposals");
 
-    const unsubArticles = projFirestore
-      .collection("Articles")
-      .where("OwnerID", "==", id)
-      .onSnapshot(
-        (querySnapshot) => {
-          let results = [];
-          querySnapshot.forEach((doc) => {
-            results.push({ ...doc.data(), id: doc.id });
-          });
-          setUserArticles(results);
-        },
-        (error) => {
-          console.log("Could not fetch.");
-        }
-      );
+  const {
+    paginatedProposals: paginatedQuestions,
+    getNextProposals: getNextQuestions,
+  } = usePaginate("OpenQuestions", null, 4, 4, "proposals");
 
-    return () => {
-      unsubBills();
-      unsubQuestions();
-      unsubArticles();
-    };
-  }, []);
+  const {
+    paginatedProposals: paginatedArticles,
+    getNextProposals: getNextArticles,
+  } = usePaginate("Articles", null, 2, 2, "articles");
 
   return (
     <div className="profileMainContainer bg-slate-100">
@@ -99,10 +132,24 @@ function UserProfile() {
           <div className="proposalSubDivision">
             <h3 className="proposalTypeHeader">OpenBills</h3>
             <div className="proposalDisplayContainer">
-              {userBills.length > 0 && (
-                <ProfileProposalList proposals={userBills} />
+              {paginatedBills.length > 0 && (
+                <div className="paginateContainer">
+                  <ProposalList
+                    proposals={paginatedBills}
+                    filterOn={isInput}
+                    searchText={inputText}
+                  />
+                  <button
+                    // type="submit"
+                    id="loadMore"
+                    onClick={getNextBills}
+                    className="m-2 pl-8 p-1 pr-8 bg-indigo-500 text-white rounded-lg"
+                  >
+                    Load more OpenBills
+                  </button>
+                </div>
               )}
-              {userBills.length === 0 && (
+              {paginatedBills.length === 0 && (
                 <p>This user has not submitted any OpenBills.</p>
               )}
             </div>
@@ -110,10 +157,24 @@ function UserProfile() {
           <div className="proposalSubDivision">
             <h3 className="proposalTypeHeader">OpenQuestions</h3>
             <div className="proposalDisplayContainer">
-              {userQuestions.length > 0 && (
-                <ProfileProposalList proposals={userQuestions} />
+              {paginatedQuestions.length > 0 && (
+                <div className="paginateContainer">
+                  <ProposalList
+                    proposals={paginatedQuestions}
+                    filterOn={isInput}
+                    searchText={inputText}
+                  />
+                  <button
+                    // type="submit"
+                    id="loadMore"
+                    onClick={getNextQuestions}
+                    className="m-2 pl-8 p-1 pr-8 bg-indigo-500 text-white rounded-lg"
+                  >
+                    Load more OpenQuestions
+                  </button>
+                </div>
               )}
-              {userQuestions.length === 0 && (
+              {paginatedQuestions.length === 0 && (
                 <p>This user has not submitted any OpenQuestions.</p>
               )}
             </div>
@@ -125,8 +186,20 @@ function UserProfile() {
             Articles
           </h2>
           <div className="articleDisplayContainer">
-            {userArticles.length > 0 && <ArticleList articles={userArticles} />}
-            {userArticles.length === 0 && (
+            {paginatedArticles.length > 0 && (
+              <div className="paginateContainer">
+                <ArticleList articles={paginatedArticles} />
+                <button
+                  // type="submit"
+                  id="loadMore"
+                  onClick={getNextArticles}
+                  className="m-2 pl-8 p-1 pr-8 bg-indigo-500 text-white rounded-lg"
+                >
+                  Load more Articles
+                </button>
+              </div>
+            )}
+            {paginatedArticles.length === 0 && (
               <p>This user has not submitted any articles.</p>
             )}
           </div>
