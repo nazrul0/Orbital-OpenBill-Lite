@@ -1,8 +1,8 @@
-.searchSection {
+/* .searchSection {
   display: flex;
   gap: 1rem;
   justify-content: center;
-}
+} */
 /*
 .gridContainer {
   display: flex;
@@ -10,9 +10,9 @@
 }
 */
 
-.proposalsBody {
+/* .proposalsBody {
   margin-bottom: 4rem;
-}
+} */
 
 /* 
 .proposalGrid {
@@ -27,15 +27,24 @@
 }
 */
 
-.proposalsHomeContainer {
+/* .proposalsHomeContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* background-color: aqua; */
+  background-color: aqua;
 }
 
 #shareLink {
   margin-bottom: 3rem;
   font-size: 1rem;
   color: rgba(0, 0, 0, 0.65);
+} */
+
+.paginateContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.paginateContainer button {
+  align-self: center;
 }

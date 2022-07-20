@@ -2,18 +2,20 @@ import React, { useEffect, useState } from "react";
 import PageTitle from "../components/PageTitle";
 //import ProposalCard from "../components/ProposalCard";
 import SearchBar from "../components/SearchBar";
-import Button from "../components/Button";
-//import "./ProposalHome.css";
+// import Button from "../components/Button";
+import "./ProposalsHome.css";
 import { Link } from "react-router-dom";
-import { useCollection } from "../hooks/useCollection";
+// import { useCollection } from "../hooks/useCollection";
 import ProposalList from "../components/ProposalList";
 import Switch from "../components/Switch";
 import { useViewport } from "../hooks/useViewport";
+// import { projFirestore } from "../config/firebase";
+import { usePaginate } from "../hooks/usePaginate";
 
 function ProposalsHome() {
-  const { docs: docsBills, error: errorBills } = useCollection("OpenBills");
-  const { docs: docsMotions, error: errorMotions } =
-    useCollection("OpenQuestions");
+  // const { docs: docsBills, error: errorBills } = useCollection("OpenBills");
+  // const { docs: docsQuestions, error: errorQuestions } =
+  //   useCollection("OpenQuestions");
   const [isToggled, setIsToggled] = useState(false);
 
   const { width } = useViewport();
@@ -35,6 +37,15 @@ function ProposalsHome() {
       setIsInput(false);
     }
   }, [inputText]);
+
+  // paginate using hooks
+  const { paginatedProposals: paginatedBills, getNextProposals: getNextBills } =
+    usePaginate("OpenBills", null);
+
+  const {
+    paginatedProposals: paginatedQuestions,
+    getNextProposals: getNextQuestions,
+  } = usePaginate("OpenQuestions", null);
 
   return (
     <div className="bg-slate-100">
@@ -78,28 +89,62 @@ function ProposalsHome() {
         </div>
 
         {!isToggled && (
-          <div className="mx-11">
-            {docsBills && (
+          <div className="mx-11 ">
+            {/* {docsBills && (
               <ProposalList
                 proposals={docsBills}
                 filterOn={isInput}
                 searchText={inputText}
               />
             )}
-            {errorBills && <p>{errorBills}</p>}
+            {errorBills && <p>{errorBills}</p>} */}
+            <div className="paginateContainer">
+              {/* <p>paginated</p> */}
+              <div>
+                <ProposalList
+                  proposals={paginatedBills}
+                  filterOn={isInput}
+                  searchText={inputText}
+                />
+              </div>
+              <button
+                // type="submit"
+                id="loadMore"
+                onClick={getNextBills}
+                className="m-2 pl-8 p-1 pr-8 bg-indigo-500 text-white rounded-lg w-72 h-10"
+              >
+                Load more proposals
+              </button>
+            </div>
           </div>
         )}
 
         {isToggled && (
           <div className="mx-11">
-            {docsMotions && (
+            {/* {docsQuestions && (
               <ProposalList
-                proposals={docsMotions}
+                proposals={docsQuestions}
                 filterOn={isInput}
                 searchText={inputText}
               />
             )}
-            {errorMotions && <p>{errorMotions}</p>}
+            {errorQuestions && <p>{errorQuestions}</p>} */}
+            <div className="paginateContainer">
+              {/* <p>paginated</p> */}
+              <ProposalList
+                proposals={paginatedQuestions}
+                filterOn={isInput}
+                searchText={inputText}
+              />
+              <button
+                // type="submit"
+                id="loadMore"
+                onClick={getNextQuestions}
+                className="m-2 pl-8 p-1 pr-8 bg-indigo-500 text-white rounded-lg"
+              >
+                Load more proposals
+              </button>
+            </div>
           </div>
         )}
       </div>
