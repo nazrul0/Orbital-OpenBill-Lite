@@ -19,7 +19,7 @@ function Create() {
           
           <div className="lg:col-start-2 lg:col-span-1 col-start-2 col-span-3 mb-4">
             <Link className="grid grid-cols-2 bg-black text-white place-items-center rounded shadow-xl" to="/SubmitOpenBill">
-              <h3 className="font-main">OpenBill</h3>
+              <h4 className="font-main sm:text-2xl">OpenBill</h4>
               <img className="object-fit col-start-2 col-span-1 bg-indigo-400 rounded" src={gavel} alt="Option Icon" />
             </Link>
           </div>
@@ -30,7 +30,7 @@ function Create() {
   */}
           <div className="lg:col-start-2 lg:col-span-1 col-start-2 col-span-3 mt-4">
             <Link className="grid grid-cols-2 bg-black text-white place-items-center rounded shadow-xl" to="/SubmitOpenQuestion">
-              <h3 className="font-main">OpenQuestion</h3>
+              <h4 className="font-main sm:text-2xl">OpenQuestion</h4>
               <img className="object-fit col-start-2 col-span-1 bg-indigo-400 rounded" src={mic} alt="Option Icon" />
             </Link>
           </div>

@@ -40,12 +40,12 @@ function ProposalsHome() {
 
   // paginate using hooks
   const { paginatedProposals: paginatedBills, getNextProposals: getNextBills } =
-    usePaginate("OpenBills", null, 10, 5, "proposals");
+    usePaginate("OpenBills", null, 20, 10, "proposals");
 
   const {
     paginatedProposals: paginatedQuestions,
     getNextProposals: getNextQuestions,
-  } = usePaginate("OpenQuestions", null, 10, 5, "proposals");
+  } = usePaginate("OpenQuestions", null, 20, 10, "proposals");
 
   return (
     <div className="bg-slate-100">
@@ -54,7 +54,7 @@ function ProposalsHome() {
           <PageTitle title="Proposals Home" />
           <Link
             id="shareLink"
-            className="navItem bg-indigo-200 text-white rounded-lg px-5 py-2 h-4"
+            className="navItem text-white rounded-lg px-5 py-2 h-4"
             to="/Create"
           >
             Have a proposal to share?
