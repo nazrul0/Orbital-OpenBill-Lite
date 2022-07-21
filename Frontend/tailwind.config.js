@@ -40,7 +40,7 @@ module.exports = {
         },
 
         gender_pop: {
-          100: "#B032E2"
+          100: "#8b5cf6"
         },
 
         transport_pop: {

@@ -117,9 +117,9 @@ function EditProposalB(props) {
         image = mailImage;
         colour = "social_pop-100";
         break;
-      case "Gender":
+      case "Identity":
         image = ringImage;
-        colour = "gender_pop-100";
+        colour = "violet-500";
         break;
       case "Privacy/Security":
         image = thumbprintImage;

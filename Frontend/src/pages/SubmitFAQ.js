@@ -37,15 +37,15 @@ function SubmitFAQ() {
   console.log(faqs);
 
   return (
-    <div>
+    <div className="bg-slate-100">
       <PageTitle title="Suggest an FAQ" />
-      <div className="submitFaqContainer ">
+      <div className="submitFaqContainer">
         {/* <section className="questionSection">Category?</section> */}
-        <section className="faqSection bg-white w-5/6 sm:w-4/5 md:w-3/4 lg:w-2/3 xl:w-1/2">
+        <section className="faqSection bg-white lg:mx-20 sm:mx-8">
           <div className="faqContainer">
-            <h3 className="faqHeader text-3xl md:text-4xl">
+            <h5 className="faqHeader text-2xl">
               What would you like to ask the team?
-            </h3>
+            </h5>
             <form>
               <textarea
                 className="faqContentInput"
@@ -62,24 +62,21 @@ function SubmitFAQ() {
 
         <button
           type="submit"
-          className="m-2 pl-8 p-1 pr-8 bg-indigo-500 text-white rounded-lg"
+          className="m-2 pl-8 p-1 pr-8 bg-slate-300 text-black rounded-lg font-main"
           onClick={createFaq}
         >
           Submit FAQ suggestion
         </button>
       </div>
 
-      {/* <div className="faqbillTestArea">
-        <p>TEST LOCATION</p>
-        {faqs.map((faq) => {
-          return (
-            <div>
-              <p>Content: {faq.Data.Question}</p>
-            </div>
-          );
-        })}
-        <p>TEST LOCATION</p>
-      </div> */}
+      <div className="bg-black w-full text-white flex flex-col items-center pb-16 pt-10 mt-10">
+        <h3 className="font-title">
+          Privacy policy
+        </h3>
+        <p className="font-main text-base lg:mx-60 md:mx-32 mx-16 mt-6">
+          OpenBill SG takes your privacy and security very seriously. The following lists the measures taken by OpenBill SG and its administrators to ensure this. 1. All data is kept exclusively with OpenBill SG. (a) Personal data is encrypted and kept secure by Google Firebase services (b) No user data is or will be shared with advertising companies. 2. We are transparent with the data we collect. (a) Email and password data is collected for you to register an account with us. Your credentials are never shared with any other parties (b) Data created by you on OpenBill remains within the OpenBill database. 3. We comply by Personal Data Protect Act (PDPA) laws.
+        </p>
+      </div>
     </div>
   );
 }

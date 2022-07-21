@@ -105,13 +105,20 @@ function Faq() {
 
         </div>
 
-        <div className="pb-6 pt-16">
+        <div className="pb-10 pt-10">
           <Link
             id=""
-            className="bg-slate-300 text-black py-1 px-5 rounded-full mb-6 font-main justify-self-center"
+            className="bg-slate-300 text-black py-1 px-5 rounded-full mb-6 font-main font-light justify-self-center"
             to="/SubmitFAQ"
           >
-          Further queries? Write to us here.
+          Further queries? Ask here.
+          </Link>
+          <Link
+            id=""
+            className="bg-slate-300 text-black py-1 px-5 rounded-full mb-6 font-main font-light justify-self-cente mx-4"
+            to="/SubmitFAQ"
+          >
+          View privacy policy.
           </Link>
         </div>
       </div>

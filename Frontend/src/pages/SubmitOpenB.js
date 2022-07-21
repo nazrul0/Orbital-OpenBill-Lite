@@ -105,7 +105,7 @@ function SubmitOpenB() {
                       <option value="Education">Education</option>
                       <option value="Economic">Economic</option>
                       <option value="Social Welfare">Social Welfare</option>
-                      <option value="Gender">Gender</option>
+                      <option value="Identity">Identity</option>
                       <option value="Privacy/Security">Privacy/Security</option>
                       <option value="Health">Health</option>
                       <option value="Housing">Housing</option>

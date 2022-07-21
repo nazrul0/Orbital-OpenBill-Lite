@@ -3,10 +3,10 @@ import "./ParticularProposal.css";
 import treeImage from "../imgs/OB(tree).png";
 import educationImage from "../imgs/OB(education).png";
 import moneyImage from "../imgs/OB(money).png";
-import mailImage from "../imgs/OB(mail).png";
+import socialImage from "../imgs/OB(social).png";
 import ringImage from "../imgs/OB(ring).png";
 import thumbprintImage from "../imgs/OB(thumbprint).png";
-import plusImage from "../imgs/OB(plus).png";
+import plusImage from "../imgs/OB(healthcare).png";
 import cityImage from "../imgs/OB(city).png";
 import busImage from "../imgs/OB(bus).png";
 import OB from "../imgs/OB(logo).png";
@@ -81,12 +81,12 @@ function Proposal(props) {
           colour = "econ_pop-100";
           break;
         case "Social Welfare":
-          image = mailImage;
+          image = socialImage;
           colour = "social_pop-100";
           break;
-        case "Gender":
+        case "Identity":
           image = ringImage;
-          colour = "gender_pop-100";
+          colour = "violet-500";
           break;
         case "Privacy/Security":
           image = thumbprintImage;
@@ -102,7 +102,7 @@ function Proposal(props) {
           break;
         case "Transport":
           image = busImage;
-          colour = "housing_pop-100";
+          colour = "transport_pop-100";
           break;
       }
   

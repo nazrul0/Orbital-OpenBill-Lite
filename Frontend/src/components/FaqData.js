@@ -7,7 +7,7 @@ const Data = [
   {
     question: "What are the different types of proposals?",
     answer:
-      "OpenBill SG offers proposals in two flavours: OpenQuestions and the namesake, OpenBills. An OpenQuestion is a more accessible format, modelled after Parliamentary Questions. This lets individuals zero in on a single thread of a topic. For those with more knowledge, experience, or simply more thoughts, there exists OpenBill. Modelled after parliamentary Bills, white papers and reports presented to parliament, it offers the structure for one to present cohesive and detailed arguments, explanations or recommendations on a extensive variety of issues. Find links to an example of a real parliamentary question or bill at the bottom of the Proposal creation form",
+      "OpenBill SG offers proposals in two flavours: OpenQuestions and the namesake, OpenBills. An OpenQuestion is a more accessible format, modelled after Parliamentary Questions. This lets individuals zero in on a single thread of a topic. For those with more knowledge, experience, or simply more thoughts, there exists OpenBill. Modelled after parliamentary Bills, white papers and reports presented to parliament, it offers the structure for one to present cohesive and detailed arguments, explanations or recommendations on a extensive variety of issues. Find links to an example of a real parliamentary question or bill at the bottom of the Proposal creation form.",
   },
   {
     question: "Do MPs or policymakers see my Proposals?",
@@ -15,8 +15,8 @@ const Data = [
       "While we cannot guarantee that policymakers will see every proposal that is posted, OpenBill exists to bring individuals and policymaking teams closer together. This is also one of the reasons for the upvotes feature in place. Besides, you can be assured that, internally, the OpenBill team will be trying their best to have feedback from OpenBill viewed by the appropriate parties periodically!",
   },
   {
-    question: "How do I write for the Column?",
-    answer: "Please email collab.indraneel@gmail.com using the heading 'OpenBill Column writer application', and do send in one sample of writing. Don't worry, you do not need to be an already-published writer!",
+    question: "How do I write for the Column? And other points to note",
+    answer: "Please email collab.indraneel@gmail.com using the heading 'OpenBill Column writer application', and do send in one sample of writing. Don't worry, you do not need to be an already-published writer! Other points you may wish to note: our privacy policy is linked at the bottom of this page, and as a general code of conduct, posted content should be free of profanities or obscenities, or the administrators reserve the right to take down such content",
   },
 ];
 

@@ -135,7 +135,7 @@ function ProposalCard(props) {
       image = socialImage;
       color = "bg-social_pop-100";
       break;
-    case "Gender":
+    case "Identity":
       image = ringImage;
       color = "bg-violet-500";
       break;
