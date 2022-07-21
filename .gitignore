@@ -13,7 +13,11 @@ node_modules/
 Backend/adminsdk-svc-acct.json
 
 # production
-/build
+build/
+Frontend/build
+Frontend/.firebaserc
+Frontend/.gitignore
+Frontend/firebase.json
 
 # misc
 .DS_Store

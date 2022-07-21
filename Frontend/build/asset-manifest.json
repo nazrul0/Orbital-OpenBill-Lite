@@ -1,16 +1,39 @@
 {
   "files": {
-    "main.css": "/static/css/main.55f440f2.css",
-    "main.js": "/static/js/main.f38a344d.js",
-    "static/media/constellation.png": "/static/media/constellation.165d3678bcaf08a7da71.png",
-    "static/media/map.png": "/static/media/map.c99ef386c7841f69d37c.png",
+    "main.css": "/static/css/main.783a543d.css",
+    "main.js": "/static/js/main.cabe3823.js",
+    "static/media/About2.png": "/static/media/About2.051fc4fe4096915af13a.png",
+    "static/media/About1.png": "/static/media/About1.e8bb5d9ab6bdcfca1e03.png",
+    "static/media/OB(thumbprint).png": "/static/media/OB(thumbprint).2f9ac3c44b0506ed3072.png",
+    "static/media/white-priv.png": "/static/media/white-priv.67c33ff1b1533e332cb8.png",
+    "static/media/white-gender.png": "/static/media/white-gender.f990ff6753b3b647c80c.png",
+    "static/media/linkedin.png": "/static/media/linkedin.4222b59a1544cf072808.png",
+    "static/media/OB(healthcare).png": "/static/media/OB(healthcare).b1f144971c68c151fbd7.png",
+    "static/media/OB(city).png": "/static/media/OB(city).66f70e8c1fe8a54df7d9.png",
+    "static/media/OB(bus).png": "/static/media/OB(bus).cde85a59c18933a279f1.png",
+    "static/media/OB(money).png": "/static/media/OB(money).8f329d7ee8771ea0cc7b.png",
+    "static/media/white-edu.png": "/static/media/white-edu.c6e3f3e4c2b6b4384392.png",
+    "static/media/white-env.png": "/static/media/white-env.bf526053a2dacb2a6377.png",
+    "static/media/white-transport.png": "/static/media/white-transport.9d865e38eba417eb0f86.png",
+    "static/media/white-health.png": "/static/media/white-health.245b00990ec40247b8fe.png",
+    "static/media/constellation.png": "/static/media/constellation.8ff04d106eab33725fcf.png",
+    "static/media/white-econ.png": "/static/media/white-econ.5653a750c7c09f834f74.png",
+    "static/media/white-social.png": "/static/media/white-social.fb644d8e80bbc44aaa09.png",
+    "static/media/map.png": "/static/media/map.9be02f4ce790efb3c37b.png",
+    "static/media/OB(tree).png": "/static/media/OB(tree).4288d88b47978739fc11.png",
+    "static/media/OB(ring).png": "/static/media/OB(ring).08affbf9a5d9feea928f.png",
+    "static/media/OB(education).png": "/static/media/OB(education).c81524b48686b0f4ca20.png",
+    "static/media/white-housing.png": "/static/media/white-housing.2e26a487167bf47d3b45.png",
+    "static/media/OB(social).png": "/static/media/OB(social).1aea2dd4a96e7d1a95cd.png",
+    "static/media/upvote.png": "/static/media/upvote.86d3c3e97aecba4e24e3.png",
+    "static/media/OB(logo).png": "/static/media/OB(logo).7999979c92731b5aab79.png",
     "static/media/logo.png": "/static/media/logo.7999979c92731b5aab79.png",
     "index.html": "/index.html",
-    "main.55f440f2.css.map": "/static/css/main.55f440f2.css.map",
-    "main.f38a344d.js.map": "/static/js/main.f38a344d.js.map"
+    "main.783a543d.css.map": "/static/css/main.783a543d.css.map",
+    "main.cabe3823.js.map": "/static/js/main.cabe3823.js.map"
   },
   "entrypoints": [
-    "static/css/main.55f440f2.css",
-    "static/js/main.f38a344d.js"
+    "static/css/main.783a543d.css",
+    "static/js/main.cabe3823.js"
   ]
 }
