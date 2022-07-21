@@ -19,7 +19,7 @@ function Login(props) {
   const [enteredPassword, updateEnteredPassword] = useState("");
   // simply importing does not work, need to destructure
   //const { login, error, pending } = useLogin();
-  const [user, setUser] = useState(null);
+  const [currUser, setCurrUser] = useState(null);
   
   const { dispatch } = useAuthContext();
   const { addDoc } = useCrud("UserData");
@@ -46,7 +46,31 @@ function Login(props) {
         .then((res) => {
             // The signed-in user info.
             console.log(res.user)
-            setUser(res.user)
+            setCurrUser(res.user)
+
+            var docRef = ref.where("Uid", "==", currUser.uid);
+            docRef.get().then( (doc) => {
+              if(doc.empty){
+              console.log("empty doc")
+              addDoc({
+                Uid: currUser.uid,
+                UpvotedOn: [],
+                Privileged: false
+              });
+              dispatch( {type: 'ADMIN_LOGIN', payload: currUser})
+              return;
+            }
+            else if(doc.get("Privileged")){
+              // casting off a login for privileged user
+              dispatch( {type: 'ADMIN_LOGIN', payload: currUser})
+              return;
+            }
+            else{
+              dispatch( {type: 'ADMIN_LOGIN', payload: currUser})
+            }
+        })
+
+            
         }).catch((error) => {
             // Handle Errors here.
             const errorMessage = error.message;
@@ -58,37 +82,38 @@ function Login(props) {
   };
 
   useEffect(() => {
-    if(user !== null){
-      const snapshot = ref.where('Uid', '==', user.uid).get().then(
-        (querySnapshot) => {
-          querySnapshot.forEach((doc) => {
-            console.log(doc.data())
-            if(!doc.exists){
-              addDoc({
-                Uid: user.uid,
-                UpvotedOn: [],
-                Privileged: false
-              });
-                dispatch( {type: 'LOGIN', payload: user} );
-                return;
-            }
-            else if(doc.get("Privileged")){
-              // casting off a login for privileged user
-              dispatch( {type: 'ADMIN_LOGIN', payload: user})
-              return;
-            }
-            else{
-              //else normal user login
-              console.log("normal")
-              dispatch( {type: 'LOGIN', payload: user} );
-              return;
-            }
-          });
-        }
-      );
-      nav("/ProposalsHome")
+    console.log("hi")
+    if(currUser !== null){
+      console.log("hihi")
+
+      // async function fetchDocs() {
+      //   console.log("trig")
+      //   var docRef = ref.select("id").where("Uid", "==", currUser.uid);
+      //   docRef.get().then( (doc) => {
+      //     if(doc.empty){
+      //       console.log("empty doc")
+      //       addDoc({
+      //         Uid: currUser.uid,
+      //         UpvotedOn: [],
+      //         Privileged: false
+      //       });
+      //       dispatch( {type: 'ADMIN_LOGIN', payload: currUser})
+      //       return;
+      //     }
+      //     else if(doc.get("Privileged")){
+      //       // casting off a login for privileged user
+      //       dispatch( {type: 'ADMIN_LOGIN', payload: currUser})
+      //       return;
+      //     }
+      //     else{
+      //       dispatch( {type: 'ADMIN_LOGIN', payload: currUser})
+      //     }
+      //   })
+      // }
+      // fetchDocs(); 
+      //nav("/ProposalsHome")
     }
-  }, [user, ref, dispatch]);
+  }, [currUser, ref, dispatch]);
 
   
 
