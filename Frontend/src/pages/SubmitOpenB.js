@@ -5,6 +5,7 @@ import { useCrud } from "../hooks/useCRUD";
 import { useAuthContext } from "../hooks/useAuthContext";
 import QuillEditor from "../components/QuillEditor";
 import "react-quill/dist/quill.snow.css";
+import constellation from "../imgs/constellation.png";
 
 function SubmitOpenB() {
   const [billCategory, setBillCategory] = useState("Environment");
@@ -78,10 +79,15 @@ function SubmitOpenB() {
 
   if (state.isPending === false) {
     return (
-      <div className="bg-slate-100 font-main">
+      <div className="bg-slate-100 font-main pb-8">
         <PageTitle title="Create an OpenBill" />
         <form>
-          <div className="submitQuestionContainer">
+          <div className="submitBillContainer">
+            <img
+              src={constellation}
+              alt="Openbill Constellation"
+              className="lg:px-64 md:px-32 sm:px-12"
+            />
             <section className="categorySelect">
               <h4>Choose a Category:</h4>
               <div className="flex justify-center">
@@ -114,8 +120,8 @@ function SubmitOpenB() {
 
             <section className="questionSection bg-white w-5/6 sm:w-4/5 md:w-3/4 lg:w-2/3 xl:w-1/2">
               <div className="sectionContainer">
-                <h3 className="questionHeader text-3xl md:text-4xl">Title</h3>
-                <h5 className="md:text-xl">Write a brief title</h5>
+                <h3 className="questionHeader text-3xl">Title</h3>
+                <h5 className="md:text-lg">Write a brief title</h5>
                 {!state.isPending && (
                   <textarea
                     className="questionTitleInput"
@@ -137,10 +143,10 @@ function SubmitOpenB() {
 
             <section className="questionSection bg-white w-5/6 sm:w-4/5 md:w-3/4 lg:w-2/3 xl:w-1/2">
               <div className="sectionContainer">
-                <h3 className="questionHeader text-3xl md:text-4xl">
+                <h3 className="questionHeader text-3xl">
                   Related laws
                 </h3>
-                <h5 className="md:text-xl">
+                <h5 className="md:text-lg">
                   Which acts/policies/laws are likely to be affected?
                 </h5>
                 <QuillEditor
@@ -153,10 +159,10 @@ function SubmitOpenB() {
 
             <section className="questionSection bg-white w-5/6 sm:w-4/5 md:w-3/4 lg:w-2/3 xl:w-1/2">
               <div className="sectionContainer">
-                <h3 className="questionHeader text-3xl md:text-4xl">
+                <h3 className="questionHeader text-3xl">
                   Current Problems
                 </h3>
-                <h5 className="md:text-xl">
+                <h5 className="md:text-lg">
                   What’s wrong? How are current policies insufficient/
                   ineffective?
                 </h5>
@@ -170,10 +176,10 @@ function SubmitOpenB() {
 
             <section className="questionSection bg-white w-5/6 sm:w-4/5 md:w-3/4 lg:w-2/3 xl:w-1/2">
               <div className="sectionContainer">
-                <h3 className="questionHeader text-3xl md:text-4xl">
+                <h3 className="questionHeader text-3xl">
                   Summary of Recommendations
                 </h3>
-                <h5 className="md:text-xl">
+                <h5 className="md:text-lg">
                   First summarise your recommendations, ideally in less than 50
                   words per point :)
                 </h5>
@@ -187,10 +193,10 @@ function SubmitOpenB() {
 
             <section className="questionSection bg-white w-5/6 sm:w-4/5 md:w-3/4 lg:w-2/3 xl:w-1/2">
               <div className="sectionContainer">
-                <h3 className="questionHeader text-3xl md:text-4xl">
+                <h3 className="questionHeader text-3xl">
                   Elaboration: Part 1
                 </h3>
-                <h5 className="md:text-xl">
+                <h5 className="md:text-lg">
                   Now provide details on how these recommendations would be
                   implemented
                 </h5>
@@ -204,10 +210,10 @@ function SubmitOpenB() {
 
             <section className="questionSection bg-white w-5/6 sm:w-4/5 md:w-3/4 lg:w-2/3 xl:w-1/2">
               <div className="sectionContainer">
-                <h3 className="questionHeader text-3xl md:text-4xl">
+                <h3 className="questionHeader text-3xl">
                   Elaboration: Part 2
                 </h3>
-                <h5 className="md:text-xl">
+                <h5 className="md:text-lg">
                   Why do these measures work? If you have theoretical
                   explanations/ supporting data, present these arguments here
                   (Optional)
@@ -222,10 +228,10 @@ function SubmitOpenB() {
 
             <section className="questionSection bg-white w-5/6 sm:w-4/5 md:w-3/4 lg:w-2/3 xl:w-1/2">
               <div className="sectionContainer">
-                <h3 className="questionHeader text-3xl md:text-4xl">
+                <h3 className="questionHeader text-3xl">
                   Bibliography
                 </h3>
-                <h5 className="md:text-xl">
+                <h5 className="md:text-lg">
                   Optional, but highly recommended!
                 </h5>
                 <QuillEditor

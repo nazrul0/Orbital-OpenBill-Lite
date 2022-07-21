@@ -5,6 +5,7 @@ import { useCrud } from "../hooks/useCRUD";
 import { useAuthContext } from "../hooks/useAuthContext";
 import QuillEditor from "../components/QuillEditor";
 import "react-quill/dist/quill.snow.css";
+import constellation from "../imgs/constellation.png";
 
 function SubmitOpenQ() {
   const [questionTitle, setQuestionTitle] = useState("");
@@ -56,10 +57,15 @@ function SubmitOpenQ() {
   }, [state.success]); // will only fire when success property changes
 
   return (
-    <div className="bg-slate-100">
+    <div className="bg-slate-100 pb-6">
       <PageTitle title="Create an OpenQuestion" />
       <form>
-        <div className="submitQuestionContainer">
+        <div className="submitQuestionContainer font-main">
+          <img
+            src={constellation}
+            alt="Openbill Constellation"
+            className="lg:px-64 md:px-32 sm:px-12"
+          />
           <section className="categorySelect">
             <h4>Choose a Category:</h4>
             <div className="flex justify-center">
@@ -92,8 +98,8 @@ function SubmitOpenQ() {
 
           <section className="questionSection bg-white w-5/6 sm:w-4/5 md:w-3/4 lg:w-2/3 xl:w-1/2">
             <div className="sectionContainer ">
-              <h3 className="questionHeader text-3xl md:text-4xl">Title</h3>
-              <h5 className="md:text-xl">Give a brief title</h5>
+              <h3 className="questionHeader text-3xl">Title</h3>
+              <h5 className="md:text-lg">Give a brief title</h5>
               {!state.isPending && (
                 <textarea
                   className="questionTitleInput"
@@ -115,10 +121,10 @@ function SubmitOpenQ() {
 
           <section className="questionSection bg-white w-5/6 sm:w-4/5 md:w-3/4 lg:w-2/3 xl:w-1/2">
             <div className="sectionContainer">
-              <h3 className="questionHeader text-3xl md:text-4xl">
+              <h3 className="questionHeader text-3xl">
                 Question content
               </h3>
-              <h5 className=" md:text-xl">Elucidate the Question here:</h5>
+              <h5 className=" md:text-lg">Elucidate the Question here:</h5>
               <QuillEditor
                 sendUp={setQuestionContent}
                 className="editor-style"
@@ -129,10 +135,10 @@ function SubmitOpenQ() {
 
           <section className="questionSection bg-white w-5/6 sm:w-4/5 md:w-3/4 lg:w-2/3 xl:w-1/2">
             <div className="sectionContainer">
-              <h3 className="questionHeader text-3xl md:text-4xl">
+              <h3 className="questionHeader text-3xl">
                 Background
               </h3>
-              <h5 className=" md:text-xl">
+              <h5 className=" md:text-lg">
                 What is the issue that the OpenQuestion highlights?
               </h5>
               <QuillEditor

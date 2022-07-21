@@ -5,12 +5,11 @@ export const useCollection = (collection) => {
   const [docs, setDocs] = useState(null);
   const [error, setError] = useState(null);
 
-  // a subscription to a firestore collection hence useEffect
+  // useEffect to ensure re-render whenever db changes
   useEffect(() => {
     let ref = projFirestore.collection(collection).orderBy("CreatedAt", "desc");
 
-    // snapshot function takes 2 funcs as callbacks
-    // second one is error func- hence try/catch not needed
+    // snapshot returns the snapshot and an unsub func
     const unsub = ref.onSnapshot(
       (snapshot) => {
         // javascript array to store the results of the collection

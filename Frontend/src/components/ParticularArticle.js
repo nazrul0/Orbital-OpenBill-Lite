@@ -19,7 +19,6 @@ function ParticularArticle() {
           </section>
 
           <section className="particularArticleContent bg-white">
-            <h3>Header for article content</h3>
             <QuillEditor readMode={true} payload={JSON.parse(curr.Content)} />
           </section>
         </div>

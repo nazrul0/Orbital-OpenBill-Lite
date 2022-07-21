@@ -117,7 +117,7 @@ function UserProfile() {
         <h2 className="userDisplayName">{disp}</h2>
 
         <section className="searchSection">
-          <SearchBar
+          {/* <SearchBar
             type="text"
             placeholder={width > 1000 ? "Search My Profile" : "Search"}
           />

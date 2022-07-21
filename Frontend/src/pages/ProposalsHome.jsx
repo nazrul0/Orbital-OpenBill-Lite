@@ -30,7 +30,7 @@ function ProposalsHome() {
 
   // logging inputText HAS to be outside the onChange handler since console.log would execute first
   useEffect(() => {
-    console.log(inputText);
+    //console.log(inputText);
     if (inputText !== "") {
       setIsInput(true);
     } else {
@@ -48,9 +48,9 @@ function ProposalsHome() {
   } = usePaginate("OpenQuestions", null, 20, 10, "proposals");
 
   return (
-    <div className="bg-slate-100">
+    <div className="bg-slate-100 pb-8">
       <div className="flex flex-col container mx-auto">
-        <div className="grid justify-items-center ">
+        <div className="grid justify-items-center">
           <PageTitle title="Proposals Home" />
           <Link
             id="shareLink"
@@ -89,7 +89,7 @@ function ProposalsHome() {
         </div>
 
         {!isToggled && (
-          <div className="mx-11 ">
+          <div className="mx-11 pt-4">
             {/* {docsBills && (
               <ProposalList
                 proposals={docsBills}
@@ -111,16 +111,16 @@ function ProposalsHome() {
                 // type="submit"
                 id="loadMore"
                 onClick={getNextBills}
-                className="m-2 pl-8 p-1 pr-8 bg-indigo-500 text-white rounded-lg "
+                className="m-2 px-8 py-1 bg-slate-300 text-black font-main rounded-full"
               >
-                Load more proposals
+                Load more
               </button>
             </div>
           </div>
         )}
 
         {isToggled && (
-          <div className="mx-11">
+          <div className="mx-11 pt-4">
             {/* {docsQuestions && (
               <ProposalList
                 proposals={docsQuestions}
@@ -140,9 +140,9 @@ function ProposalsHome() {
                 // type="submit"
                 id="loadMore"
                 onClick={getNextQuestions}
-                className="m-2 pl-8 p-1 pr-8 bg-indigo-500 text-white rounded-lg"
+                className="m-2 px-8 py-1 bg-slate-300 text-black font-main rounded-full"
               >
-                Load more proposals
+                Load more
               </button>
             </div>
           </div>

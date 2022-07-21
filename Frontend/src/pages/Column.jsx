@@ -20,7 +20,7 @@ function Column() {
     <div className="bg-slate-100">
       <PageTitle title="The Column" />
       <section className="columnBody pb-8">
-        <h3 className="columnSubTitle">Latest in Articles</h3>
+        {/*<h3 className="columnSubTitle">Latest in Articles</h3>*/}
         {user && privileged && (
           <Link
             id="shareLink"
@@ -40,9 +40,9 @@ function Column() {
                   // type="submit"
                   id="loadMore"
                   onClick={getNextArticles}
-                  className="m-2 pl-8 p-1 pr-8 bg-indigo-500 text-white rounded-lg"
+                  className="m-2 px-8 py-1 bg-slate-300 text-black font-main rounded-full"
                 >
-                  Load more Articles
+                  Load more
                 </button>
               </div>
             )}

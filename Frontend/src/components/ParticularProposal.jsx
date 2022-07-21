@@ -36,7 +36,9 @@ function Proposal(props) {
       const isOwner = Boolean(currDoc.OwnerID === user.uid)
       
       const deleteHandler = async () => {
-        deleteDoc(currDoc.id);
+        // nav back FIRST. since after deleting, fields will become undefined/null. async function continues
+        nav("/ProposalsHome");
+        deleteDoc(id);
 
         // Cleanup: deleting particular doc's entry from user's UpvotedOn array, if exists
         let ref = projFirestore.collection("UserData");
@@ -59,9 +61,7 @@ function Proposal(props) {
             }
           })
         }
-        
-        // nav back
-        nav("/ProposalsHome");
+      
       };
   
       switch (currDoc.Category) {
