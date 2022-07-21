@@ -149,7 +149,7 @@ function SubmitOpenQ() {
             </div>
           </section>
 
-          <div className="center underline">
+          <div className="text-center bg-black px-20 py-2 text-white rounded-lg underline">
             <a href="https://www.mof.gov.sg/news-publications/parliamentary-replies/response-to-parliamentary-questions-on-inflation-and-cost-of-living">
               See a past Parliamentary Question
             </a>

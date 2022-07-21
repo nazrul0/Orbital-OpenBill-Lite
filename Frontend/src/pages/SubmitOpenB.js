@@ -242,7 +242,7 @@ function SubmitOpenB() {
               </div>
             </section>
 
-            <div className="text-center">
+            <div className="text-center bg-black px-20 py-2 text-white rounded-lg">
               <p>See a past bill or report considered in Parliament</p>
               <a
                 href="https://sso.agc.gov.sg/Act/CPA2018?ProvIds=P18-#pr45-"

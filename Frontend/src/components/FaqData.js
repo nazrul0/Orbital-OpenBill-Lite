@@ -7,7 +7,7 @@ const Data = [
   {
     question: "What are the different types of proposals?",
     answer:
-      "OpenBill SG offers proposals in two flavours: OpenQuestions and the namesake, OpenBills. An OpenQuestion is a more accessible format, modelled after Parliamentary Questions. This lets individuals zero in on a single thread of a topic. For those with more knowledge, experience, or simply more thoughts, there exists OpenBill. Modelled after parliamentary Bills, white papers and reports presented to parliament, it offers the structure for one to present cohesive and detailed arguments, explanations or recommendations on a extensive variety of issues.",
+      "OpenBill SG offers proposals in two flavours: OpenQuestions and the namesake, OpenBills. An OpenQuestion is a more accessible format, modelled after Parliamentary Questions. This lets individuals zero in on a single thread of a topic. For those with more knowledge, experience, or simply more thoughts, there exists OpenBill. Modelled after parliamentary Bills, white papers and reports presented to parliament, it offers the structure for one to present cohesive and detailed arguments, explanations or recommendations on a extensive variety of issues. Find links to an example of a real parliamentary question or bill at the bottom of the Proposal creation form",
   },
   {
     question: "Do MPs or policymakers see my Proposals?",
