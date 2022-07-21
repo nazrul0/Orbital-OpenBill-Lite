@@ -71,7 +71,7 @@ function SubmitFAQ() {
 
       <div className="bg-black w-full text-white flex flex-col items-center pb-16 pt-10 mt-10">
         <h3 className="font-title">
-          Privacy policy
+          Privacy Policy
         </h3>
         <p className="font-main text-base lg:mx-60 md:mx-32 mx-16 mt-6">
           OpenBill SG takes your privacy and security very seriously. The following lists the measures taken by OpenBill SG and its administrators to ensure this. 1. All data is kept exclusively with OpenBill SG. (a) Personal data is encrypted and kept secure by Google Firebase services (b) No user data is or will be shared with advertising companies. 2. We are transparent with the data we collect. (a) Email and password data is collected for you to register an account with us. Your credentials are never shared with any other parties (b) Data created by you on OpenBill remains within the OpenBill database. 3. We comply by Personal Data Protect Act (PDPA) laws.

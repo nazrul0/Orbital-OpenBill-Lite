@@ -4,8 +4,13 @@ import PageTitle from "../components/PageTitle";
 import "./Login.css";
 import Input from "../components/InputField";
 import { VALIDATOR_EMAIL } from "../util/validators.js";
-import { useLogin } from "../hooks/useLogin";
+//import { useLogin } from "../hooks/useLogin";
 import constellation from "../imgs/constellation.png";
+import { useEffect } from "react";
+import { projAuth, projFirestore } from "../config/firebase";
+import { useAuthContext } from "../hooks/useAuthContext";
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { useCrud } from "../hooks/useCRUD";
 
 function Login(props) {
   // destructuring the standard returns of useState- 1.the latest state 2. function to update the state
@@ -13,27 +18,104 @@ function Login(props) {
   const [enteredEmail, updateEnteredEmail] = useState("");
   const [enteredPassword, updateEnteredPassword] = useState("");
   // simply importing does not work, need to destructure
-  const { login, error, pending } = useLogin();
+  //const { login, error, pending } = useLogin();
+  const [currUser, setCurrUser] = useState(null);
+  
+  const { dispatch } = useAuthContext();
+  const { addDoc } = useCrud("UserData");
+
+  let ref = projFirestore.collection("UserData");
 
   const nav = useNavigate();
 
   const emailChangeHandler = (event) => {
     updateEnteredEmail(event.target.value);
-    //console.log(enteredEmail);
   };
 
   const passwordChangeHandler = (event) => {
     updateEnteredPassword(event.target.value);
   };
 
-  const submitHandler = (event) => {
+  const submitHandler = async (event) => {
     event.preventDefault();
 
-    // already an async func, as defined in the hook
-    login(enteredEmail, enteredPassword);
+    const provider = new GoogleAuthProvider();
+    const auth = getAuth();
+            
+    await signInWithPopup(auth, provider)
+        .then((res) => {
+            // The signed-in user info.
+            console.log(res.user)
+            setCurrUser(res.user)
 
-    nav("/ProposalsHome");
+            var docRef = ref.where("Uid", "==", currUser.uid);
+            docRef.get().then( (doc) => {
+              if(doc.empty){
+              console.log("empty doc")
+              addDoc({
+                Uid: currUser.uid,
+                UpvotedOn: [],
+                Privileged: false
+              });
+              dispatch( {type: 'ADMIN_LOGIN', payload: currUser})
+              return;
+            }
+            else if(doc.get("Privileged")){
+              // casting off a login for privileged user
+              dispatch( {type: 'ADMIN_LOGIN', payload: currUser})
+              return;
+            }
+            else{
+              dispatch( {type: 'ADMIN_LOGIN', payload: currUser})
+            }
+        })
+
+            
+        }).catch((error) => {
+            // Handle Errors here.
+            const errorMessage = error.message;
+            console.log(errorMessage)
+        });
+
+    // already an async func, as defined in the hook
+    //login(enteredEmail, enteredPassword);
   };
+
+  useEffect(() => {
+    console.log("hi")
+    if(currUser !== null){
+      console.log("hihi")
+
+      // async function fetchDocs() {
+      //   console.log("trig")
+      //   var docRef = ref.select("id").where("Uid", "==", currUser.uid);
+      //   docRef.get().then( (doc) => {
+      //     if(doc.empty){
+      //       console.log("empty doc")
+      //       addDoc({
+      //         Uid: currUser.uid,
+      //         UpvotedOn: [],
+      //         Privileged: false
+      //       });
+      //       dispatch( {type: 'ADMIN_LOGIN', payload: currUser})
+      //       return;
+      //     }
+      //     else if(doc.get("Privileged")){
+      //       // casting off a login for privileged user
+      //       dispatch( {type: 'ADMIN_LOGIN', payload: currUser})
+      //       return;
+      //     }
+      //     else{
+      //       dispatch( {type: 'ADMIN_LOGIN', payload: currUser})
+      //     }
+      //   })
+      // }
+      // fetchDocs(); 
+      //nav("/ProposalsHome")
+    }
+  }, [currUser, ref, dispatch]);
+
+  
 
   // the element to return
   return (
@@ -76,7 +158,7 @@ function Login(props) {
               onChange={passwordChangeHandler}
             ></Input>
 
-            {!pending && (
+            { (
               <button
                 type="submit"
                 className="my-4 bg-black text-white py-1 px-8 rounded-full font-title font-bold"
@@ -84,8 +166,7 @@ function Login(props) {
                 Log in
               </button>
             )}
-            {pending && <button disabled>Loading</button>}
-            {error && <p>{error}</p>}
+            
           </form>
         </div>
 
