@@ -90,7 +90,7 @@ function ProposalCard(props) {
           console.log("removing upvote");
           
           updateDoc(props.proposal_id, {
-            Upvotes: props.curr_upvotes - 1,
+            Upvotes: currDoc.Upvotes - 1,
           })
 
           // javascript's filter() which runs a check function on each element and returns new arr
