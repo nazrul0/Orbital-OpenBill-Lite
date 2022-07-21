@@ -33,7 +33,7 @@
 }
 
 .categoryImage {
-  width: 50%;
+  width: 40%;
   grid-column: 5/6;
   grid-row: 1/2;
   place-self: center;
