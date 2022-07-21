@@ -9,7 +9,7 @@ import Button from "../components/Button";
 import { Link } from "react-router-dom";
 import ArticleList from "../components/ArticleList";
 import { useViewport } from "../hooks/useViewport";
-import { usePaginate } from "../hooks/usePaginate";
+import { useProfilePaginate } from "../hooks/useProfilePaginate";
 
 function UserProfile() {
   const { user } = useAuthContext(); // importing user
@@ -98,17 +98,17 @@ function UserProfile() {
   }, [inputText]);
 
   const { paginatedProposals: paginatedBills, getNextProposals: getNextBills } =
-    usePaginate("OpenBills", null, 4, 4, "proposals");
+    useProfilePaginate("OpenBills", null, 4, 4, "proposals");
 
   const {
     paginatedProposals: paginatedQuestions,
     getNextProposals: getNextQuestions,
-  } = usePaginate("OpenQuestions", null, 4, 4, "proposals");
+  } = useProfilePaginate("OpenQuestions", null, 4, 4, "proposals");
 
   const {
     paginatedProposals: paginatedArticles,
     getNextProposals: getNextArticles,
-  } = usePaginate("Articles", null, 2, 2, "articles");
+  } = useProfilePaginate("Articles", null, 2, 2, "articles");
 
   return (
     <div className="profileMainContainer bg-slate-100">
