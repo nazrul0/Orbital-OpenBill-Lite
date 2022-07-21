@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 function Create() {
   return (
-    <div className="bg-slate-100 h-100 min-h-screen">  
+    <div className="bg-slate-100 h-100">  
       <div className="flex flex-col justify-center items-center pb-20">
         <PageTitle title="Create" />
         <div className="grid lg:grid-cols-3 grid-cols-5 justify-items-center mx-auto">
@@ -34,6 +34,11 @@ function Create() {
               <img className="object-fit col-start-2 col-span-1 bg-indigo-400 rounded" src={mic} alt="Option Icon" />
             </Link>
           </div>
+        </div>
+      </div>
+      <div className="bg-black w-full text-white flex flex-col items-center pb-12 mt-12">
+        <div className="text-sm tracking-widest font-main font-light uppercase mx-12 mt-8 text-center">
+          <h5>Environment . Education . Economic . Social Welfare . Identity . Privacy and Security . Health . Transport . Housing</h5>
         </div>
       </div>
     </div>

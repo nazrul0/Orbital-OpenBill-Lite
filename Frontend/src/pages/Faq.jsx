@@ -3,6 +3,9 @@ import PageTitle from "../components/PageTitle";
 import Data from "../components/FaqData";
 import "./Faq.css";
 import { Link } from "react-router-dom";
+import indra from "../imgs/About1.png";
+import naz from "../imgs/About2.png";
+import linkedin from "../imgs/linkedin.png";
 
 function Faq() {
   const [clicked, setClicked] = useState(false);
@@ -40,13 +43,78 @@ function Faq() {
           );
         })}
       </div>
-      <Link
-        id=""
-        className="bg-slate-300 text-black py-1 px-5 rounded-full mb-6 font-main"
-        to="/SubmitFAQ"
-      >
-        Further queries? Write to us here.
-      </Link>
+      <div className="bg-black w-full text-white flex flex-col items-center">
+        <div className="pt-6 font-title mt-4 mb-10">
+          <h2>About the team</h2>
+        </div>
+
+        <div className="grid lg:grid-cols-5 sm:grid-cols-3 mx-12">
+          <div className="lg:col-start-2 sm:col-start-1 col-span-1 my-4">
+            <img
+              src={indra}
+              alt="Indraneel Paranjape"
+            />
+          </div>
+
+          <div className="lg:col-start-3 sm:col-start-2 lg:col-span-2 sm:col-span-2 my-8 ml-16">
+            <h4 className="font-title">
+              Indraneel Paranjape
+            </h4>
+            <h5 className="font-title font-light">
+              Founder, Software Development Co-Lead
+            </h5>
+            <h5 className="font-main font-light mt-6 text-sm tracking-wide">
+              Prefers his apps like his pancakes: fully stacked
+            </h5>
+            <a href="https://www.linkedin.com/in/indraneel-p/">
+              <img
+                src={linkedin}
+                alt="Linkedin"
+                className="mt-8 w-8"
+              />
+            </a>
+          </div>
+
+          <div className="lg:col-start-2 sm:col-start-1 col-span-1 my-8">
+            <img
+              src={naz}
+              alt="Nazrul Syahmi"
+            />
+          </div>
+
+          <div className="lg:col-start-3 sm:col-start-2 lg:col-span-2 sm:col-span-2 mt-12 ml-16">
+            <h4 className="font-title">
+              Nazrul Syahmi
+            </h4>
+            <h5 className="font-title font-light">
+              Software Development Co-Lead
+            </h5>
+            <h5 className="font-main font-light text-sm mt-6 tracking-wide">
+              
+            </h5>
+            <a href="https://www.linkedin.com/in/nazrulsyahmi/">
+              <img
+                src={linkedin}
+                alt="Linkedin"
+                className="mt-8 w-8"
+              />
+            </a>
+
+            
+          </div>
+
+        </div>
+
+        <div className="pb-6 pt-16">
+          <Link
+            id=""
+            className="bg-slate-300 text-black py-1 px-5 rounded-full mb-6 font-main justify-self-center"
+            to="/SubmitFAQ"
+          >
+          Further queries? Write to us here.
+          </Link>
+        </div>
+      </div>
     </div>
   );
 }
