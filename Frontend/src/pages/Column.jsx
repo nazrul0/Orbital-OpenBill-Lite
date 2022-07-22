@@ -40,7 +40,7 @@ function Column() {
                   // type="submit"
                   id="loadMore"
                   onClick={getNextArticles}
-                  className="m-2 px-8 py-1 bg-slate-300 text-black font-main rounded-full"
+                  className="m-2 px-8 py-1 bg-indigo-500 text-white font-main rounded-full"
                 >
                   Load more
                 </button>

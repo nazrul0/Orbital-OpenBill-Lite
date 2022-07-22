@@ -5,7 +5,7 @@ function Button(props) {
   return (
     <div>
       <button
-        className="customButton"
+        className={`customButton ${props.className}`}
         disabled={props.disabled}
         onClick={props.onClick}
       >

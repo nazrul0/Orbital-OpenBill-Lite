@@ -97,7 +97,7 @@ function UserSettings() {
   }
 
   return (
-    <div className="settingsMainContainer">
+    <div className="settingsMainContainer bg-slate-100">
       <div className="userSettingsContainer">
         <PageTitle title="Profile Settings" />
         <h2 className="userDisplayName">{disp}</h2>
@@ -138,10 +138,13 @@ function UserSettings() {
               }}
             ></Input>
 
-            {!passwordIsFilled() && <Button text="Confirm" />}
+            {!passwordIsFilled() && (
+              <Button text="Confirm" className="bg-indigo-500 text-white" />
+            )}
             {passwordIsFilled() && (
               <Button
                 text="Confirm"
+                className="bg-indigo-500 text-white"
                 type="submit"
                 onClick={submitPasswordHandler}
               />
@@ -174,10 +177,13 @@ function UserSettings() {
               }}
             ></Input>
 
-            {!nameIsFilled() && <Button text="Confirm" />}
+            {!nameIsFilled() && (
+              <Button text="Confirm" className="bg-indigo-500 text-white" />
+            )}
             {nameIsFilled() && (
               <Button
                 text="Confirm"
+                className="bg-indigo-500 text-white"
                 type="submit"
                 onClick={submitNameHandler}
               />
