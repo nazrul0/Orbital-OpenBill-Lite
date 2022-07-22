@@ -116,18 +116,18 @@ function UserProfile() {
     <div className="profileMainContainer bg-slate-100">
       <div className="profileSubContainer">
         <PageTitle title="Profile" />
-        <section className="flex justify-items-center self-start justify-between w-full">
+        <section className="flex justify-items-center self-start justify-between w-full ml-12">
           <div className="flex">
             <img src={photo} alt="Profile" className="rounded-full" />
             <h2 className="userDisplayName  self-center ">{disp}</h2>
           </div>
 
-          <Link
+          {/* <Link
             className="navItem self-center justify-self-end "
             to={`/UserProfile/${user.uid}/Settings`}
           >
             <Button text="Settings >" className="bg-slate-300" />
-          </Link>
+          </Link> */}
         </section>
 
         <section className="searchSection">
