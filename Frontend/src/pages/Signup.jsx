@@ -100,7 +100,7 @@ function Signup() {
           <button onClick={submitHandler} className="my-4 bg-black text-white py-1 px-8 rounded-full font-title font-bold">
             Sign up/ Login with Google
           </button>
-          <p className="mt-8 px-16 text-sm font-main font-light">
+          <p className="mt-8 md:px-16 sm:px-8 px-4 text-sm font-main font-light">
             Since v0.9, we've switched to Google for a more secure and seamless sign-in experience
           </p>
         </div>

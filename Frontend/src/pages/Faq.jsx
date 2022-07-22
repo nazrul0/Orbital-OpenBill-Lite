@@ -90,7 +90,7 @@ function Faq() {
               Software Development Co-Lead
             </h5>
             <h5 className="font-main font-light text-sm mt-6 tracking-wide">
-              
+              Console.log("Only speaks in javascript")
             </h5>
             <a href="https://www.linkedin.com/in/nazrulsyahmi/">
               <img

@@ -42,9 +42,8 @@ function LandingPage() {
             What if there existed a way, far more real than spreading awareness
             on social media, for you to constructively impact the social and
             policy issues that matter to you? What if there existed a platform
-            to facilitate the expression of your ideas towards public discourse?
-            These were, and remain, the central questions that undergirded the
-            genesis of OpenBill. Today, by building the first crowdsourced
+            to facilitate the expression of such ideas? These were, and remain, 
+            the central questions that undergirded the genesis of OpenBill. Today, by building the first crowdsourced
             policy recommendation and feedback platform in Singapore, we're
             hoping to answer those two questions- and empower you to do the
             same.
