@@ -1,40 +1,40 @@
 import { useState, useEffect } from "react";
 import { projFirestore } from "../config/firebase";
 
-export const usePaginate = (
+export const usePaginateUpvotes = (
   collection,
   firstLatestDoc,
   initialNumber,
   fetchNumber,
   type,
 ) => {
-  const [paginatedProposals, setPaginatedProposals] = useState([]);
+  const [paginatedPropsUpvotes, setPaginatedPropsUpvotes] = useState([]);
   const [latestDoc, setLatestDoc] = useState(firstLatestDoc);
 
   useEffect(() => {
-    const getNextProposals = async () => {
+    const getNextPropsUpvotes = async () => {
       const ref = projFirestore
         .collection(collection)
-        .orderBy("CreatedAt", "desc")
+        .orderBy("Upvotes", "desc")
         .limit(initialNumber);
       const data = await ref.get();
       let proposalsArray = [];
       data.docs.forEach((doc) => {
         proposalsArray.push({ ...doc.data(), id: doc.id });
       });
-      setPaginatedProposals((oldArray) => [...oldArray, ...proposalsArray]);
+      setPaginatedPropsUpvotes((oldArray) => [...oldArray, ...proposalsArray]);
       setLatestDoc(data.docs[data.docs.length - 1]);
 
       // console.log("got", proposalsArray);
     };
-    getNextProposals();
+    getNextPropsUpvotes();
   }, []);
 
-  async function getNextProposals() {
+  async function getNextPropsUpvotes() {
     try {
       const ref = projFirestore
         .collection(collection)
-        .orderBy("CreatedAt", "desc")
+        .orderBy("Upvotes", "desc")
         .startAfter(latestDoc)
         .limit(fetchNumber);
       const data = await ref.get();
@@ -42,7 +42,7 @@ export const usePaginate = (
       data.docs.forEach((doc) => {
         proposalsArray.push({ ...doc.data(), id: doc.id });
       });
-      setPaginatedProposals((oldArray) => [...oldArray, ...proposalsArray]);
+      setPaginatedPropsUpvotes((oldArray) => [...oldArray, ...proposalsArray]);
       setLatestDoc(data.docs[data.docs.length - 1]);
 
       // console.log("got", proposalsArray);
@@ -51,5 +51,5 @@ export const usePaginate = (
     }
   }
 
-  return { paginatedProposals, getNextProposals };
+  return { paginatedPropsUpvotes, getNextPropsUpvotes };
 };
