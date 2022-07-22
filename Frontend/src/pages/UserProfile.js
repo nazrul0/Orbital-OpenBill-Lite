@@ -20,76 +20,9 @@ function UserProfile() {
 
   const { width } = useViewport();
 
-  // const [userBills, setUserBills] = useState([]);
-  // const [userQuestions, setUserQuestions] = useState([]);
-  // const [userArticles, setUserArticles] = useState([]);
-
-  // useEffect(() => {
-  //   const unsubBills = projFirestore
-  //     .collection("OpenBills")
-  //     .where("OwnerID", "==", id)
-  //     .onSnapshot(
-  //       (querySnapshot) => {
-  //         let results = [];
-  //         querySnapshot.forEach((doc) => {
-  //           results.push({ ...doc.data(), id: doc.id });
-  //         });
-  //         setUserBills(results);
-  //       },
-  //       (error) => {
-  //         console.log("Could not fetch.");
-  //       }
-  //     );
-
-  //   const unsubQuestions = projFirestore
-  //     .collection("OpenQuestions")
-  //     .where("OwnerID", "==", id)
-  //     .onSnapshot(
-  //       (querySnapshot) => {
-  //         let results = [];
-  //         querySnapshot.forEach((doc) => {
-  //           results.push({ ...doc.data(), id: doc.id });
-  //         });
-  //         setUserQuestions(results);
-  //       },
-  //       (error) => {
-  //         console.log("Could not fetch.");
-  //       }
-  //     );
-
-  //   const unsubArticles = projFirestore
-  //     .collection("Articles")
-  //     .where("OwnerID", "==", id)
-  //     .onSnapshot(
-  //       (querySnapshot) => {
-  //         let results = [];
-  //         querySnapshot.forEach((doc) => {
-  //           results.push({ ...doc.data(), id: doc.id });
-  //         });
-  //         setUserArticles(results);
-  //       },
-  //       (error) => {
-  //         console.log("Could not fetch.");
-  //       }
-  //     );
-
-  //   return () => {
-  //     unsubBills();
-  //     unsubQuestions();
-  //     unsubArticles();
-  //   };
-  // }, []);
-
-  //
-
   const [inputText, setInputText] = useState("");
   const [isInput, setIsInput] = useState(false);
 
-  // const searchInputHandler = (e) => {
-  //   setInputText(e.target.value);
-  // };
-
-  // logging inputText HAS to be outside the onChange handler since console.log would execute first
   useEffect(() => {
     console.log(inputText);
     if (inputText !== "") {
@@ -113,61 +46,46 @@ function UserProfile() {
   } = useProfilePaginate("Articles", null, 2, 2, "articles");
 
   return (
-    <div className="profileMainContainer bg-slate-100">
-      <div className="profileSubContainer">
-        <PageTitle title="Profile" />
-        <section className="flex justify-items-center self-start justify-between w-full ml-12">
-          <div className="flex">
-            <img src={photo} alt="Profile" className="rounded-full" />
-            <h2 className="userDisplayName  self-center ">{disp}</h2>
+    <div className="bg-slate-100">
+      <PageTitle title="Profile" />
+      <div className="grid grid-cols-6">
+        <div className="col-start-2 col-span-4 bg-slate-100 my-5 rounded-lg p-2">
+          
+          <img src={photo} alt="Profile" className="rounded-full" />
+          <h3 className="rounded-lg font-title font-bold py-2 justify-self-left">{disp}</h3>
+          
+          <div className="grid mt-4 font-main font-bold rounded-lg bg-slate-300 py-1">
+            <h3 className="justify-self-center uppercase tracking-wide">OpenBills</h3>
+          </div>
+          
+          <div className="proposalDisplayContainer">
+            {paginatedBills.length > 0 && (
+              <div className="paginateContainer">
+                <ProposalList
+                  proposals={paginatedBills}
+                  filterOn={isInput}
+                  searchText={inputText}
+                />
+                <button
+                  // type="submit"
+                  id="loadMore"
+                  onClick={getNextBills}
+                  className="m-2 pl-8 p-1 pr-8 bg-slate-300 rounded-full"
+                >
+                Load more OpenBills
+                </button>
+              </div>
+            )}
+            {paginatedBills.length === 0 && (
+              <p className="justify-self-center text-sm">This user has not submitted any OpenBills.</p>
+            )}
           </div>
 
-          {/* <Link
-            className="navItem self-center justify-self-end "
-            to={`/UserProfile/${user.uid}/Settings`}
-          >
-            <Button text="Settings >" className="bg-slate-300" />
-          </Link> */}
-        </section>
-
-        <section className="searchSection">
-          {/* <SearchBar
-            type="text"
-            placeholder={width > 1000 ? "Search My Profile" : "Search"}
-          />
-          {/* <Button text="Filter" /> */}
-        </section>
-
-        <section className="subSection">
-          <h2 className="profileSectionHeader">Proposals</h2>
-          <div className="proposalSubDivision">
-            <h3 className="proposalTypeHeader">OpenBills</h3>
-            <div className="proposalDisplayContainer">
-              {paginatedBills.length > 0 && (
-                <div className="paginateContainer">
-                  <ProposalList
-                    proposals={paginatedBills}
-                    filterOn={isInput}
-                    searchText={inputText}
-                  />
-                  <button
-                    // type="submit"
-                    id="loadMore"
-                    onClick={getNextBills}
-                    className="m-2 pl-8 p-1 pr-8 bg-indigo-500 text-white rounded-lg"
-                  >
-                    Load more OpenBills
-                  </button>
-                </div>
-              )}
-              {paginatedBills.length === 0 && (
-                <p>This user has not submitted any OpenBills.</p>
-              )}
-            </div>
+          <div className="grid mt-4 font-main font-bold rounded-lg bg-slate-300 py-1 mt-10">
+            <h3 className="justify-self-center uppercase tracking-wide">OpenQuestions</h3>
           </div>
-          <div className="proposalSubDivision">
-            <h3 className="proposalTypeHeader">OpenQuestions</h3>
-            <div className="proposalDisplayContainer">
+
+          <div className="proposalDisplayContainer">
               {paginatedQuestions.length > 0 && (
                 <div className="paginateContainer">
                   <ProposalList
@@ -179,23 +97,21 @@ function UserProfile() {
                     // type="submit"
                     id="loadMore"
                     onClick={getNextQuestions}
-                    className="m-2 pl-8 p-1 pr-8 bg-indigo-500 text-white rounded-lg"
+                    className="m-2 pl-8 p-1 pr-8 bg-slate-300 rounded-full"
                   >
                     Load more OpenQuestions
                   </button>
                 </div>
               )}
               {paginatedQuestions.length === 0 && (
-                <p>This user has not submitted any OpenQuestions.</p>
+                <p className="justify-self-center text-sm">This user has not submitted any OpenQuestions.</p>
               )}
-            </div>
           </div>
-        </section>
 
-        <section className="subSection">
-          <h2 className="profileSectionHeader" id="articlesSectionHeader">
-            Articles
-          </h2>
+          <div className="grid mt-4 font-main font-bold rounded-lg bg-slate-300 py-1 mt-10">
+            <h3 className="justify-self-center uppercase tracking-wide">Articles</h3>
+          </div>
+
           <div className="articleDisplayContainer">
             {paginatedArticles.length > 0 && (
               <div className="paginateContainer">
@@ -211,11 +127,12 @@ function UserProfile() {
               </div>
             )}
             {paginatedArticles.length === 0 && (
-              <p>This user has not submitted any articles.</p>
+              <p className="justify-self-center text-sm">This user has not submitted any articles.</p>
             )}
           </div>
-        </section>
-      </div>
+        
+        </div>
+      </div>  
     </div>
   );
 }
