@@ -1,46 +1,85 @@
-import React, { useState } from "react";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import PageTitle from "../components/PageTitle";
 import "./Login.css";
-import Input from "../components/InputField";
-import { useSignup } from "../hooks/useSignup";
-import { useNavigate } from "react-router-dom";
+//import Input from "../components/InputField";
+//import { VALIDATOR_EMAIL } from "../util/validators.js";
+//import { useLogin } from "../hooks/useLogin";
 import constellation from "../imgs/constellation.png";
-import map from "../imgs/map.png";
+import { projFirestore } from "../config/firebase";
+import { useAuthContext } from "../hooks/useAuthContext";
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { useCrud } from "../hooks/useCRUD";
 
 function Signup() {
-  // destructuring the standard returns of useState- 1.the latest state 2. function to update the state
-  // inside the useState call specify the initialisation state
-  const [enteredEmail, updateEnteredEmail] = useState("");
-  const [enteredPassword, updateEnteredPassword] = useState("");
-  const [enteredDisplayName, updateEnteredDisplayName] = useState("");
-  const { signup, pending, error } = useSignup();
+  const { dispatch } = useAuthContext();
+  const { addDoc } = useCrud("UserData");
+
+  let ref = projFirestore.collection("UserData");
+
   const nav = useNavigate();
 
-  const emailChangeHandler = (event) => {
-    updateEnteredEmail(event.target.value);
-  };
-
-  const passwordChangeHandler = (event) => {
-    updateEnteredPassword(event.target.value);
-  };
-
-  const displayNameChangeHandler = (event) => {
-    updateEnteredDisplayName(event.target.value);
-  };
-
-  const submitHandler = (event) => {
+  const submitHandler = async (event) => {
     event.preventDefault();
 
-    // calling the signup method we defined in the hook and returned to this file
-    signup(enteredEmail, enteredPassword, enteredDisplayName);
+    const provider = new GoogleAuthProvider();
+    provider.setCustomParameters({
+      prompt: "select_account",
+    });
+    const auth = getAuth();
+            
+    await signInWithPopup(auth, provider)
+    .then((res) => {
+      //console.log(res.user)
 
-    // redirecting after signup
-    nav("/ProposalsHome");
+      // gets a reference to all documents from UserData that match criteria
+      const docRef = ref.where("Uid", "==", res.user.uid).get();
+      
+      // async therefore need .then()
+      docRef
+      .then( (docs) => {
+        console.log(docs.empty)
+        
+        if(docs.empty === true){
+          // create supplementary data
+          addDoc({
+            Uid: res.user.uid,
+            UpvotedOn: [],
+            Privileged: false
+          });
+          
+          dispatch( {type: 'LOGIN', payload: res.user})
+          nav("/ProposalsHome");
+          window.location.reload();
+          return;
+        }
+        // not empty then we have to iterate to access particular doc
+        docs.forEach( doc => {
+          // checking Privileged field of a doc
+          if(doc.data().Privileged){
+            console.log("privileged login")
+            dispatch( {type: 'ADMIN_LOGIN', payload: res.user})
+            return;
+          }
+          else{
+            // Dispatch normal login
+            dispatch( {type: 'ADMIN_LOGIN', payload: res.user})
+          }
+        })
+        
+        nav("/ProposalsHome");
+        window.location.reload();
+      })   
+    }).catch((error) => {
+      // Handle Errors here.
+      const errorMessage = error.message;
+      console.log(errorMessage)
+    });
   };
 
   // the element to return
   return (
-    <div className="bg-slate-100 h-screen pt-10">
+    <div className="bg-slate-100 pb-48 pt-10">
       <div className="grid grid-cols-5 ">
         <img
           src={constellation}
@@ -48,60 +87,23 @@ function Signup() {
           className="col-start-3 col-span-4 w-full pl-16"
         />
 
-        <div className="mt-32 sm:mt-28 md:mt-20 lg:mt-0" />
-
+        {/* A SELF CLOSING DIV TAG BELOW */}
+        <div className="mt-36 sm:mt-28 md:mt-22 lg:mt-8 xl:mt-4" />
         <img
           src={constellation}
           alt="Openbill Constellation"
           className="col-start-1 col-span-3 w-full mt-48"
         />
-
-        <div className="login_box -mt-96 bg-indigo-500 text-white col-start-2 col-span-3">
-          <PageTitle title="Sign Up" />
-          <form onSubmit={submitHandler}>
-            <Input
-              element="input"
-              id="email"
-              type="email"
-              label="E-mail"
-              value={enteredEmail}
-              errortext="Please enter a valid email address"
-              onChange={emailChangeHandler}
-            ></Input>
-
-            <Input
-              element="input"
-              id="password"
-              type="password"
-              label="Password"
-              value={enteredPassword}
-              errortext="Please enter a valid password"
-              onChange={passwordChangeHandler}
-            ></Input>
-
-            <Input
-              element="input"
-              id="displayname"
-              type="text"
-              label="Display Name (Preferably one word)"
-              value={enteredDisplayName}
-              errortext="Please enter a valid display name"
-              onChange={displayNameChangeHandler}
-            ></Input>
-
-            {!pending && (
-              <button
-                type="submit"
-                className="my-4 bg-black text-white py-1 px-8 rounded-full font-title font-bold"
-              >
-                Sign up
-              </button>
-            )}
-            {pending && <button disabled>Loading</button>}
-            {error && <p>{error}</p>}
-          </form>
+          
+        <div className="login_box -mt-96 bg-indigo-500 text-white col-start-2 col-span-3 ">
+          <PageTitle title="Log in" />
+          <button onClick={submitHandler} className="my-4 bg-black text-white py-1 px-8 rounded-full font-title font-bold">
+            Sign up/ Login with Google
+          </button>
+          <p className="mt-8 px-16 text-sm font-main font-light">
+            Since v0.9, we've switched to Google for a more secure and seamless sign-in experience
+          </p>
         </div>
-        {/* <img src={constellation} alt="Openbill Constellation" className="col-start-1 col-span-3 w-full -mt-16 -ml-16"/>   */}
       </div>
     </div>
   );

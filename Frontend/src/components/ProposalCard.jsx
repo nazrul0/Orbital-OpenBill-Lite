@@ -22,7 +22,8 @@ function ProposalCard(props) {
   const { user } = useAuthContext();
   const {updateDoc} = useCrud(`${props.type}s`)
   const [isUpvoted, setIsUpvoted] = useState(false);
-  const { currDoc } = useDoc(`${props.type}s`, props.proposal_id)
+  const { currDoc } = useDoc(`${props.type}s`, props.proposal_id);
+  var str = props.author.substring(0,11);
 
   useEffect(() => {
     // fetches all the proposals on page load that are upvoted by user
@@ -159,9 +160,9 @@ function ProposalCard(props) {
   if(currDoc !== null){
     return (
       <div className={`cardContainer rounded-xl ${color}`}>
-        <div className="grid grid-cols-2">
-          <h6 className="text-white">By {props.author}</h6>
-          <div className="place-self-end">
+        <div className="grid grid-cols-6">
+          <h6 className="text-white col-start-1 col-span-5">By {str}</h6>
+          <div className="col-end-7">
             <div className="upvotesContainer flex flex-row p-0 mx-0">
               <h6 className="mr-1 text-white py-1 -mt-1">{currDoc.Upvotes}</h6>
               {user && (!isUpvoted && (
