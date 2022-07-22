@@ -18,14 +18,17 @@ function Signup() {
   let ref = projFirestore.collection("UserData");
 
   const nav = useNavigate();
+  
 
   const submitHandler = async (event) => {
     event.preventDefault();
 
     const provider = new GoogleAuthProvider();
+    
     provider.setCustomParameters({
       prompt: "select_account",
     });
+    
     const auth = getAuth();
             
     await signInWithPopup(auth, provider)
@@ -38,43 +41,35 @@ function Signup() {
       // async therefore need .then()
       docRef
       .then( (docs) => {
-        console.log(docs.empty)
-        
         if(docs.empty === true){
+          console.log(docs.empty)
           // create supplementary data
           addDoc({
             Uid: res.user.uid,
             UpvotedOn: [],
             Privileged: false
           });
-          
           dispatch( {type: 'LOGIN', payload: res.user})
-          nav("/ProposalsHome");
-          window.location.reload();
           return;
+        }else{
+          docs.forEach( doc => {
+            // checking Privileged field of a doc
+            if(doc.data().Privileged){
+              console.log("privileged login")
+              dispatch( {type: 'ADMIN_LOGIN', payload: res.user})
+            }else{
+              dispatch( {type: 'LOGIN', payload: res.user})
+            }
+          })
         }
-        // not empty then we have to iterate to access particular doc
-        docs.forEach( doc => {
-          // checking Privileged field of a doc
-          if(doc.data().Privileged){
-            console.log("privileged login")
-            dispatch( {type: 'ADMIN_LOGIN', payload: res.user})
-            return;
-          }
-          else{
-            // Dispatch normal login
-            dispatch( {type: 'ADMIN_LOGIN', payload: res.user})
-          }
-        })
-        
-        nav("/ProposalsHome");
-        window.location.reload();
-      })   
+      })  
+      return;
     }).catch((error) => {
       // Handle Errors here.
       const errorMessage = error.message;
       console.log(errorMessage)
     });
+
   };
 
   // the element to return
