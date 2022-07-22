@@ -122,9 +122,9 @@ function UserProfile() {
             placeholder={width > 1000 ? "Search My Profile" : "Search"}
           />
           {/* <Button text="Filter" /> */}
-          <Link className="navItem" to={`/UserProfile/${user.uid}/Settings`}>
+          {/* <Link className="navItem" to={`/UserProfile/${user.uid}/Settings`}>
             <Button text="Settings >" />
-          </Link>
+  </Link> */}
         </section>
 
         <section className="subSection">
