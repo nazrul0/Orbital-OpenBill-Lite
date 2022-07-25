@@ -11,6 +11,8 @@ function Column() {
   const { error } = useCollection("Articles");
   const { user, privileged } = useAuthContext();
 
+  console.log(privileged)
+
   const {
     paginatedProposals: paginatedArticles,
     getNextProposals: getNextArticles,
