@@ -5,6 +5,13 @@ import logo from "../imgs/logo.png";
 import { useLogout } from "../hooks/useLogout";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { Fragment } from "react";
+import userprofileicon from "../imgs/userprofileicon.png";
+import createnew from "../imgs/createnew.png";
+import faq from "../imgs/faq.png";
+import home from "../imgs/home.png";
+import logouticon from "../imgs/logout.png";
+import columnicon from "../imgs/column.png";
+
 
 function Header() {
   const { user } = useAuthContext();
@@ -27,35 +34,60 @@ function Header() {
         </div>
         <div className="navBar">
           <Link className="navItem" to="/ProposalsHome">
-            Proposals Home
+            <img
+              src={home}
+              alt="proposals home"
+              className="w-8 mr-1"
+            />
           </Link>
           <Link className="navItem" to="/Column">
-            The Column
+            <img
+              src={columnicon}
+              alt="column"
+              className="w-8 mr-1"
+            />
           </Link>
           <Link className="navItem" to="/Faq">
-            FAQ
+            <img
+              src={faq}
+              alt="faq"
+              className="w-8 mr-1"
+            />
           </Link>
 
           {user && (
             <Fragment>
               <Link className="navItem" to="/Create">
-                Create
+              <img
+                src={createnew}
+                alt="user profile"
+                className="w-8 mr-2"
+              />
               </Link>
               <Link className="navItem" to={`/UserProfile/${user.uid}`}>
-                Profile
+                <img
+                  src={userprofileicon}
+                  alt="user profile"
+                  className="w-8 mr-2"
+                />
               </Link>
+              
               <Link className="navItem" to="ProposalsHome" onClick={logout}>
-                Logout
+                <img
+                  src={logouticon}
+                  alt="user profile"
+                  className="w-8 mr-6"
+                />
               </Link>
             </Fragment>
           )}
 
           {!user && (
             <Fragment>
-              <Link className="navItem" to="/Login" menuOpen={menuOpen}>
+              <Link className="navItem px-3 pt-2 rounded-full bg-slate-600 text-white font-light text-xs tracking-widest" to="/Login" menuOpen={menuOpen}>
                 Login
               </Link>
-              <Link className="navItem" to="/Signup" menuOpen={menuOpen}>
+              <Link className="navItem px-3 pt-2 rounded-full bg-slate-600 text-white font-light text-xs tracking-widest" to="/Signup" menuOpen={menuOpen}>
                 Sign up
               </Link>
             </Fragment>

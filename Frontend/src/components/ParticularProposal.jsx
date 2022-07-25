@@ -254,9 +254,9 @@ function Proposal(props) {
             <div className="bg-black text-white font-title py-12 px-10 text-center">
               <h3 className="mb-8">Hey.</h3> 
               <h4 className="">Nice to see you here.</h4>
-              <h4>Sign up to view the contents of this Proposal.</h4>
+              <h4>Log in to view the contents of this Proposal.</h4>
               <button className="mt-6 py-1 px-8 bg-indigo-500 text-white font-semibold rounded-full">
-                  <Link to={"/Signup"}>Signup</Link>
+                  <Link to={"/Signup"}>Log in/ Sign up</Link>
               </button>
             </div>
           </div>
