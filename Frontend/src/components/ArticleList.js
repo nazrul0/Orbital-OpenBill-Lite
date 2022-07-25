@@ -19,7 +19,7 @@ function ArticleList({ articles }) {
             title={article.Title}
             content={article.Content}
             // category={article.Category}
-            author="testuser"
+            author={article.DisplayName}
           />
         </Link>
       ))}
