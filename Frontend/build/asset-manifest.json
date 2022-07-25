@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.22094720.css",
-    "main.js": "/static/js/main.1f9fdc7a.js",
+    "main.css": "/static/css/main.57179154.css",
+    "main.js": "/static/js/main.8e4a6bb4.js",
     "static/media/About2.png": "/static/media/About2.051fc4fe4096915af13a.png",
     "static/media/About1.png": "/static/media/About1.e8bb5d9ab6bdcfca1e03.png",
     "static/media/OB(thumbprint).png": "/static/media/OB(thumbprint).2f9ac3c44b0506ed3072.png",
@@ -18,22 +18,28 @@
     "static/media/white-health.png": "/static/media/white-health.245b00990ec40247b8fe.png",
     "static/media/constellation.png": "/static/media/constellation.8ff04d106eab33725fcf.png",
     "static/media/white-econ.png": "/static/media/white-econ.5653a750c7c09f834f74.png",
+    "static/media/column.png": "/static/media/column.05858feaad79884d991f.png",
     "static/media/white-social.png": "/static/media/white-social.fb644d8e80bbc44aaa09.png",
     "static/media/map.png": "/static/media/map.9be02f4ce790efb3c37b.png",
     "static/media/OB(tree).png": "/static/media/OB(tree).4288d88b47978739fc11.png",
     "static/media/OB(ring).png": "/static/media/OB(ring).08affbf9a5d9feea928f.png",
     "static/media/OB(education).png": "/static/media/OB(education).c81524b48686b0f4ca20.png",
     "static/media/white-housing.png": "/static/media/white-housing.2e26a487167bf47d3b45.png",
+    "static/media/logout.png": "/static/media/logout.6c952ed1f51d42522b05.png",
     "static/media/OB(social).png": "/static/media/OB(social).1aea2dd4a96e7d1a95cd.png",
     "static/media/upvote.png": "/static/media/upvote.86d3c3e97aecba4e24e3.png",
+    "static/media/createnew.png": "/static/media/createnew.51ce59ea0e8fb4c8cd8f.png",
+    "static/media/userprofileicon.png": "/static/media/userprofileicon.ed13a9ba74447cf29e2d.png",
+    "static/media/faq.png": "/static/media/faq.acd043ee6465b351c5d5.png",
+    "static/media/home.png": "/static/media/home.a6b8d13b5d2e1534daa9.png",
     "static/media/OB(logo).png": "/static/media/OB(logo).7999979c92731b5aab79.png",
     "static/media/logo.png": "/static/media/logo.7999979c92731b5aab79.png",
     "index.html": "/index.html",
-    "main.22094720.css.map": "/static/css/main.22094720.css.map",
-    "main.1f9fdc7a.js.map": "/static/js/main.1f9fdc7a.js.map"
+    "main.57179154.css.map": "/static/css/main.57179154.css.map",
+    "main.8e4a6bb4.js.map": "/static/js/main.8e4a6bb4.js.map"
   },
   "entrypoints": [
-    "static/css/main.22094720.css",
-    "static/js/main.1f9fdc7a.js"
+    "static/css/main.57179154.css",
+    "static/js/main.8e4a6bb4.js"
   ]
 }

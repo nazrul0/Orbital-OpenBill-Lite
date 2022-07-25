@@ -37,21 +37,21 @@ function Header() {
             <img
               src={home}
               alt="proposals home"
-              className="w-8 mr-1"
+              className="w-7 mr-1"
             />
           </Link>
           <Link className="navItem" to="/Column">
             <img
               src={columnicon}
               alt="column"
-              className="w-8 mr-1"
+              className="w-7 mr-1"
             />
           </Link>
           <Link className="navItem" to="/Faq">
             <img
               src={faq}
               alt="faq"
-              className="w-8 mr-1"
+              className="w-7 mr-1"
             />
           </Link>
 
@@ -61,14 +61,14 @@ function Header() {
               <img
                 src={createnew}
                 alt="user profile"
-                className="w-8 mr-2"
+                className="w-7 mr-2"
               />
               </Link>
               <Link className="navItem" to={`/UserProfile/${user.uid}`}>
                 <img
                   src={userprofileicon}
                   alt="user profile"
-                  className="w-8 mr-2"
+                  className="w-7 mr-2"
                 />
               </Link>
               
@@ -76,7 +76,7 @@ function Header() {
                 <img
                   src={logouticon}
                   alt="user profile"
-                  className="w-8 mr-6"
+                  className="w-7 mr-6"
                 />
               </Link>
             </Fragment>

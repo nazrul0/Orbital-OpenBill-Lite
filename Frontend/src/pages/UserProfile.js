@@ -47,7 +47,7 @@ function UserProfile() {
 
   return (
     <div className="bg-slate-100">
-      <PageTitle title="Profile" />
+      <PageTitle title="My Profile" />
       <div className="grid grid-cols-6">
         <div className="col-start-2 col-span-4 bg-slate-100 mb-5 rounded-lg p-2">
           
