@@ -16,7 +16,7 @@ function UserProfile() {
   // const id = user.uid;
   const disp = user.displayName;
   const photo = user.photoURL;
-  console.log("photoURL: " + photo);
+  //console.log("photoURL: " + photo);
 
   const { width } = useViewport();
 
@@ -49,13 +49,13 @@ function UserProfile() {
     <div className="bg-slate-100">
       <PageTitle title="Profile" />
       <div className="grid grid-cols-6">
-        <div className="col-start-2 col-span-4 bg-slate-100 my-5 rounded-lg p-2">
+        <div className="col-start-2 col-span-4 bg-slate-100 mb-5 rounded-lg p-2">
           
           <img src={photo} alt="Profile" className="rounded-full" />
           <h3 className="rounded-lg font-title font-bold py-2 justify-self-left">{disp}</h3>
           
-          <div className="grid mt-4 font-main font-bold rounded-lg bg-slate-300 py-1">
-            <h3 className="justify-self-center uppercase tracking-wide">OpenBills</h3>
+          <div className="grid mt-4 font-main font-bold rounded-lg bg-black text-white py-1">
+            <h3 className="justify-self-center uppercase tracking-wider">OpenBills</h3>
           </div>
           
           <div className="proposalDisplayContainer">
@@ -81,8 +81,8 @@ function UserProfile() {
             )}
           </div>
 
-          <div className="grid mt-4 font-main font-bold rounded-lg bg-slate-300 py-1 mt-10">
-            <h3 className="justify-self-center uppercase tracking-wide">OpenQuestions</h3>
+          <div className="grid mt-4 font-main font-bold rounded-lg bg-black text-white py-1 mt-10">
+            <h3 className="justify-self-center uppercase tracking-wider">OpenQuestions</h3>
           </div>
 
           <div className="proposalDisplayContainer">
@@ -108,8 +108,8 @@ function UserProfile() {
               )}
           </div>
 
-          <div className="grid mt-4 font-main font-bold rounded-lg bg-slate-300 py-1 mt-10">
-            <h3 className="justify-self-center uppercase tracking-wide">Articles</h3>
+          <div className="grid mt-4 font-main font-bold rounded-lg bg-black text-white py-1 mt-10">
+            <h3 className="justify-self-center uppercase tracking-wider">Articles</h3>
           </div>
 
           <div className="articleDisplayContainer">
@@ -120,7 +120,7 @@ function UserProfile() {
                   // type="submit"
                   id="loadMore"
                   onClick={getNextArticles}
-                  className="m-2 pl-8 p-1 pr-8 bg-indigo-500 text-white rounded-lg"
+                  className="m-2 pl-8 p-1 pr-8 bg-slate-300 rounded-full"
                 >
                   Load more Articles
                 </button>

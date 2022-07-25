@@ -6,6 +6,7 @@ import { useAuthContext } from "../hooks/useAuthContext";
 import QuillEditor from "../components/QuillEditor";
 import "react-quill/dist/quill.snow.css";
 import constellation from "../imgs/constellation.png";
+import { useNavigate } from "react-router-dom";
 
 function SubmitOpenB() {
   const [billCategory, setBillCategory] = useState("Environment");
@@ -20,11 +21,13 @@ function SubmitOpenB() {
   const { addDoc, state } = useCrud("OpenBills");
   const { user } = useAuthContext(); // importing user to get access to uid field on the user object
 
+  const nav = useNavigate();
+  // getting the Owner id
+  const id = user.uid;
+  const disp = user.displayName;
+
   const submitHandler = (event) => {
     event.preventDefault();
-    // getting the Owner id
-    const id = user.uid;
-    const disp = user.displayName;
 
     if (
       billTitle === "" ||
@@ -69,7 +72,8 @@ function SubmitOpenB() {
       setBibliography("");
       setBillCategory("Environment");
       //alert("Submitted!");
-      window.location.reload(false);
+      //window.location.reload(false);
+      nav(`/UserProfile/${id}`);
     }
   }, [state.success]); // will only fire when success property changes
 
@@ -118,7 +122,7 @@ function SubmitOpenB() {
               </div>
             </section>
 
-            <section className="questionSection bg-white w-5/6 sm:w-4/5 md:w-3/4 lg:w-2/3 xl:w-1/2">
+            <section className="questionSection bg-white w-5/6 sm:w-4/5 md:w-3/4 lg:w-3/5 2xl:w-1/2">
               <div className="sectionContainer">
                 <h3 className="questionHeader text-3xl">Title</h3>
                 <h5 className="md:text-lg">Write a brief title</h5>
@@ -141,7 +145,7 @@ function SubmitOpenB() {
               </div>
             </section>
 
-            <section className="questionSection bg-white w-5/6 sm:w-4/5 md:w-3/4 lg:w-2/3 xl:w-1/2">
+            <section className="questionSection bg-white w-5/6 sm:w-4/5 md:w-3/4 lg:w-3/5 2xl:w-1/2">
               <div className="sectionContainer">
                 <h3 className="questionHeader text-3xl">
                   Related laws
@@ -157,7 +161,7 @@ function SubmitOpenB() {
               </div>
             </section>
 
-            <section className="questionSection bg-white w-5/6 sm:w-4/5 md:w-3/4 lg:w-2/3 xl:w-1/2">
+            <section className="questionSection bg-white w-5/6 sm:w-4/5 md:w-3/4 lg:w-3/5 2xl:w-1/2">
               <div className="sectionContainer">
                 <h3 className="questionHeader text-3xl">
                   Current Problems
@@ -174,7 +178,7 @@ function SubmitOpenB() {
               </div>
             </section>
 
-            <section className="questionSection bg-white w-5/6 sm:w-4/5 md:w-3/4 lg:w-2/3 xl:w-1/2">
+            <section className="questionSection bg-white w-5/6 sm:w-4/5 md:w-3/4 lg:w-3/5 2xl:w-1/2">
               <div className="sectionContainer">
                 <h3 className="questionHeader text-3xl">
                   Summary of Recommendations
@@ -191,7 +195,7 @@ function SubmitOpenB() {
               </div>
             </section>
 
-            <section className="questionSection bg-white w-5/6 sm:w-4/5 md:w-3/4 lg:w-2/3 xl:w-1/2">
+            <section className="questionSection bg-white w-5/6 sm:w-4/5 md:w-3/4 lg:w-3/5 2xl:w-1/2">
               <div className="sectionContainer">
                 <h3 className="questionHeader text-3xl">
                   Elaboration: Part 1
@@ -208,7 +212,7 @@ function SubmitOpenB() {
               </div>
             </section>
 
-            <section className="questionSection bg-white w-5/6 sm:w-4/5 md:w-3/4 lg:w-2/3 xl:w-1/2">
+            <section className="questionSection bg-white w-5/6 sm:w-4/5 md:w-3/4 lg:w-3/5 2xl:w-1/2">
               <div className="sectionContainer">
                 <h3 className="questionHeader text-3xl">
                   Elaboration: Part 2
@@ -226,7 +230,7 @@ function SubmitOpenB() {
               </div>
             </section>
 
-            <section className="questionSection bg-white w-5/6 sm:w-4/5 md:w-3/4 lg:w-2/3 xl:w-1/2">
+            <section className="questionSection bg-white w-5/6 sm:w-4/5 md:w-3/4 lg:w-3/5 2xl:w-1/2">
               <div className="sectionContainer">
                 <h3 className="questionHeader text-3xl">
                   Bibliography
