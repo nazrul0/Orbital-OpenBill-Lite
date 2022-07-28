@@ -153,7 +153,7 @@ function EditProposalB(props) {
                 <h5 className="proposalCategory ">{currDoc.Category}</h5>
               </section>
 
-              <button className={`py-1 px-6 mx-1 text-black rounded-full place-self-end bg-${colour}`} onClick={updateHandlerB}>Update</button>
+              <button className={`py-1 px-6 mx-1 text-black rounded-full place-self-end font-semibold bg-${colour}`} onClick={updateHandlerB}>Update</button>
                   
               <section className="proposalContent">
                 <h3>Related Laws</h3>

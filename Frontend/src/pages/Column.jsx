@@ -16,7 +16,7 @@ function Column() {
   const {
     paginatedProposals: paginatedArticles,
     getNextProposals: getNextArticles,
-  } = usePaginate("Articles", null, 3, 2, "articles");
+  } = usePaginate("Articles", null, 6, 6, "articles");
 
   return (
     <div className="bg-slate-100">
