@@ -17,7 +17,7 @@ function QuillEditor({ sendUp, readMode, payload }) {
   // CANNOT SENDUP IN THE ONCHANGE FUNCTION! - IT WILL LAG BY ONE CHANGE
   useEffect(() => {
     if(sendUp !== undefined){
-      console.log(JSON.stringify(contents));
+      //console.log(JSON.stringify(contents));
       sendUp(JSON.stringify(contents)); // stringify before sendup. pass sendup to useEffect callback
     }
   }, [contents]);
