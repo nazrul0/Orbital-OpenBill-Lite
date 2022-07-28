@@ -106,9 +106,9 @@ function SubmitOpenQ() {
               <h5 className="md:text-lg">Give a brief title</h5>
               {!state.isPending && (
                 <textarea
-                  className="questionTitleInput"
-                  maxLength="200"
-                  placeholder=""
+                  className="questionTitleInput text-lg"
+                  maxlength="80"
+                  placeholder="80-character limit"
                   value={questionTitle}
                   onChange={(event) => {
                     setQuestionTitle(event.target.value);
