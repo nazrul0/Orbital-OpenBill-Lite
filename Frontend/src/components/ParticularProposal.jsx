@@ -116,7 +116,7 @@ function Proposal(props) {
               <div className="proposalContainer">
                 <section className="proposalHeader bg-black text-white">
                   <h3 className="proposalTitle md:text-4xl">{currDoc.Title}</h3>
-                  <h4 className="proposalOwner">By {currDoc.DisplayName}</h4>
+                  <h4 className="proposalOwner pt-2">By {currDoc.DisplayName}</h4>
                   <img src={image} alt="Category" className="categoryImage" />
                   <h5 className="proposalCategory md:text-base text-sm">{currDoc.Category}</h5>
                 </section>
@@ -162,7 +162,7 @@ function Proposal(props) {
               <div className="proposalContainer">
                 <section className="proposalHeader bg-black text-white">
                   <h3 className="proposalTitle md:text-4xl">{currDoc.Title}</h3>
-                  <h4 className="proposalOwner">By {currDoc.DisplayName}</h4>
+                  <h4 className="proposalOwner pt-2">By {currDoc.DisplayName}</h4>
                   <img src={image} alt="Category" className="categoryImage" />
                   <h5 className="proposalCategory md:text-base text-sm">{currDoc.Category}</h5>
                 </section>
