@@ -42,20 +42,20 @@ function ProposalsHome() {
 
   // paginate using hooks
   const { paginatedProposals: paginatedBills, getNextProposals: getNextBills } =
-    usePaginate("OpenBills", null, 10, 10, "proposals");
+    usePaginate("OpenBills", null, 20, 10, "proposals");
 
   const {
     paginatedProposals: paginatedQuestions,
     getNextProposals: getNextQuestions,
-  } = usePaginate("OpenQuestions", null, 10, 10, "proposals");
+  } = usePaginate("OpenQuestions", null, 20, 10, "proposals");
 
   const { paginatedPropsUpvotes: paginatedBillsUpvotes, getNextPropsUpvotes: getNextBillsUpvotes } =
-    usePaginateUpvotes("OpenBills", null, 10, 10, "proposals");
+    usePaginateUpvotes("OpenBills", null, 20, 10, "proposals");
 
   const {
     paginatedPropsUpvotes: paginatedQuestionsUpvotes,
     getNextPropsUpvotes: getNextQuestionsUpvotes,
-  } = usePaginateUpvotes("OpenQuestions", null, 10, 10, "proposals");
+  } = usePaginateUpvotes("OpenQuestions", null, 20, 10, "proposals");
 
   const toggleHandler = (e) => {
     e.preventDefault();

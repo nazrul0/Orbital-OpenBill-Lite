@@ -161,9 +161,9 @@ function ProposalCard(props) {
     return (
       <div className={`cardContainer rounded-xl ${color}`}>
         <div className="grid grid-cols-6">
-          <h6 className="text-white col-start-1 col-span-5">By {str}</h6>
-          <div className="col-end-7">
-            <div className="upvotesContainer flex flex-row p-0 mx-0">
+          <h6 className="text-white col-start-1 col-span-3">By {str}</h6>
+          <div className="col-start-4 col-span-3 justify-self-end">
+            <div className="upvotesContainer flex flex-row">
               <h6 className="mr-1 text-white py-1 -mt-1">{currDoc.Upvotes}</h6>
               {user && (!isUpvoted && (
                 <button onClick={addUpvote} className="hover:bg-slate-700 rounded-md p-1 -mt-1 -mr-1">

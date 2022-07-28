@@ -1,26 +1,28 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 
-// props have been destructured
 // sendUp is the prop passed in from the parent- which is a function
 // payload prop is only used for readOnly case
 function QuillEditor({ sendUp, readMode, payload }) {
-  // we track the contents with local state
-  const [contents, setContents] = useState();
+  
+  // Tracking contents with local state
+  const [contents, setContents] = useState("");
 
-  // content here is DIFF from contents above
-  // content is 1 of the 4 arguments expected by react-quill for a handler function
+  // 'content' is DIFF from 'contents'- content is 1 of 4 arguments expected by react-quill for a handler function
   function handleChange(content, delta, source, editor) {
-    // // we set contents after we get a quill delta
     setContents(editor.getContents());
-    console.log(editor.getContents());
-    // // we send the contentS up to parent. Not content- that would be html string
-    // // we also stringify it first
-    console.log(JSON.stringify(contents));
-    sendUp(JSON.stringify(contents));
   }
 
+  // CANNOT SENDUP IN THE ONCHANGE FUNCTION! - IT WILL LAG BY ONE CHANGE
+  useEffect(() => {
+    if(sendUp !== undefined){
+      console.log(JSON.stringify(contents));
+      sendUp(JSON.stringify(contents)); // stringify before sendup. pass sendup to useEffect callback
+    }
+  }, [contents]);
+
+  // ReactQuill element to return
   if (readMode === false) {
     return (
       <div>
