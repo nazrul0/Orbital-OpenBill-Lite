@@ -12,7 +12,7 @@ const Data = [
   {
     question: "Do MPs or policymakers see my Proposals?",
     answer:
-      "While we cannot guarantee that policymakers will have the time to see every proposal, OpenBill exists to narrow the gulf between individuals and policymaking teams. You can be assured that, internally, the OpenBill team will be trying their best to have feedback from OpenBill viewed by the appropriate parties! Use the upvotes feature to mark proposals that should get more attention. If an MP team deems follow-up necessary, OpenBill administrators will contact the author via their provided email",
+      "While we cannot guarantee that policymakers will have the time to see every proposal, OpenBill exists to narrow the gulf between individuals and policymaking teams. Internally, our team will always be trying its best to improve OpenBill SG's reach! We strive to forward a selection of the top proposals on a periodic basis to the appropriate parties, so use the upvotes feature to boost proposals that you believe deserve more attention. If an MP team deems follow-up necessary, OpenBill administrators will contact the author via their provided email",
   },
   {
     question: "How do I write for the Column? And other points to note:",

@@ -220,7 +220,7 @@ function SubmitOpenB() {
                 <h5 className="md:text-lg">
                   Why do these measures work? If you have theoretical
                   explanations/ supporting data, present these arguments here
-                  (Optional)
+                  (Optional, but highly recommended)
                 </h5>
                 <QuillEditor
                   sendUp={setElabWhy}

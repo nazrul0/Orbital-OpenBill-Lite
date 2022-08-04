@@ -218,7 +218,7 @@ function EditProposalB(props) {
                   <h3>Bibliography</h3>
                   <QuillEditor
                     readMode={false}
-                    payload={JSON.parse(currDoc.Elaboration2)}
+                    payload={JSON.parse(currDoc.Bibliography)}
                     sendUp={setBibliography}
                   /> 
                 </section>
